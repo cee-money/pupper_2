@@ -1,68 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Pupper-2
 
-## Available Scripts
+For this application our group used MySQL, Express, Node.js, Passport (authentication) and NodeMailer. Styling was accomplished by using Bootstrap and Bootswatch. 
 
-In the project directory, you can run:
+* About Pupper *
+Dog parks can be chaotic and overwhelming or just not the right setting for your dog to enjoy play. This is where Pupper steps in. Pupper is an app that takes in information about the owner and the dog and matches them with other dogs that may be a good fit, based on the owners ideal playmate. 
 
-### `npm start`
+![Pupper Logo Screenshot](public/assets/images/pupperlogo1.png)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The user is first prompted to sign in (using a previously created email and password) or to sign up (if this is their first time visiting the site).
+    * Using passport, the user's input will be crosschecked to ensure authentication. If their input is incorrect with our records, an error message will display asking them to please try again.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Once the log in credentials are correct, the user will be granted access to the site. To get started, two surveys will be displayed.
 
-### `npm test`
+The **first survey** will be for the user and their pet. If the owner has a new pet they would like to add, they will need to answer all *required* fields and dog characteristic questions (if they wish to find an accurate match). 
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Pupper Survey Screenshot](public/assets/images/pupperaboutyou.png)
 
-### `npm run build`
+Once the survey is complete, the user will click "submit" if they are adding a new pet or next if they have already completed a survey and wish to see matches. Both buttons will direct the user to the matches page.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Match Survey Screenshot](public/assets/images/pupperaboutthem.png)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+The **second survey** will filter the search for matches in the database based on three common pupper characteristics:
+* Desired size of playmate
+* Desired Energy
+* Dominancy
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+After submission of the form, pupper will display the most ideal playmates based on survey answers.
 
-### `npm run eject`
+![Match Screenshot](public/assets/images/puppermatches.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The owner will have two options once matches have been found:
+* If the owner wishes to contact a pupper from the results, they can click the "Contact" button that will prompt a contact modal.
+* If the owner wishes to find more matches with other filtering, they can click "Find More Matches" taking them back to the previous page. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Bork Screenshot](public/assets/images/pupperborkbox.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Once the owner has sent a message, the modal will close and an email will be sent directly to the user from "Pupper Contact". The email will include all information that was supplied in the contact modal. If the user emailed wishes to contact back another user back, they would do so by referecing the email address supplied through NodeMailer.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+*built and designed by Claudia Falk, Charlie Parsons, Carolyn Moneymaker and Jessica Sewell.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
