@@ -140,7 +140,7 @@ render() {
                     </select>
                 </div>
                 <div className="col-md-6 col-xs-12 form-group">
-                    <label for="q10">My dog likes to share their toys.</label>
+                    <label for="q10">My dog does not like to share their toys.</label>
                     <select className="form-control form-group col-md-6 questions" id="q10">
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>

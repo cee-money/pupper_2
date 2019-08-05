@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import MatchCard from "../components/MatchCard";
+
 
 const h1Style = {
     fontFamily: "'Lobster', cursive",
@@ -12,6 +14,7 @@ const iStyle = {
 
 class Match extends Component {
     state = {
+        
     }
 
 
@@ -88,45 +91,9 @@ render() {
         </div>
 
         <div className="container" id="show-matches">
-            <div className="row" id="match-card-row"></div>
+            <MatchCard/>
         </div>
-
-        <div className="container text-info bg-active">
-            <div className="row">
-                <div className="col-12">
-                    <div className="modal fade" id="bork-box" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
-                        <div className="modal-dialog modal-dialog-centered" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                            <h4 className="modal-title" id="title"><i className="fas fa-paw"></i>&nbsp;&nbsp;Bork at your match</h4>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div className="modal-body">
-                                <form method="POST" action="send">
-                                <div className="form-group">
-                                    <label>Your First Name</label>
-                                    <input className="form-control col-md-4" type="text" name="name" id="modalname"/>
-                                    <br/>
-                                        <label>Your Email Address</label>
-                                    <input className="form-control col-md-8" type="email" name="email" id="modalemail"/>
-                                    <br/>  
-                                    <label for="contactbox">Your Bork</label>
-                                    <textarea className="form-control col-md-12" type="text" name="message" id="contactbox" rows="5">My pup would love to meet yours!</textarea>
-                                    <br/>
-                                </div>
-                                </form>
-                            </div>
-                            <div className="modal-footer">
-                                <button className="btn btn-info" type="sumbit" id="send">Bork!</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </>   
     )
 }
 }
