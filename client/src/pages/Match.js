@@ -92,11 +92,7 @@ render() {
         <div className="container" id="show-matches">
             <MatchCard/>
         </div>
-<<<<<<< HEAD
-        </>
-=======
         </>   
->>>>>>> 08456e4164c02e8d85dc17a44d33071794a04217
     )
 }
 }
