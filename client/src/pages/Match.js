@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import MatchCard from "../components/MatchCard";
 import LogoutBtn from "../components/LogoutBtn";
+import YesNoMenu from "../components/YesNoMenu";
+import SizeMenu from "../components/SizeMenu";
 
 
 const h1Style = {
@@ -15,8 +17,27 @@ const iStyle = {
 
 class Match extends Component {
     state = {
-        
+        size: "",
+        energetic: "",
+        dominant: ""
     }
+
+handleInputChange = event => {
+    const { name, value } = event.target;
+
+    this.setState({
+        [name]: value
+    });
+}
+
+handleFormSubmit = event => {
+    event.preventDefault();
+
+    API.find(this.state)
+    .then(this.setState({}))
+    .catch(err => console.log(err))
+    }
+}
 
 
 render() {
@@ -55,23 +76,28 @@ render() {
                 <div className="col-md-4 col-xs-12 form-group">
                     <label for="match-q1">I am looking to meet dogs that are:</label>
                     <select className="form-control form-group col-md-6 match-questions" id="match-q1">
-                        <option value="Small">Small (under 25 lbs)</option>
-                        <option value="Medium">Medium (between 25-50 lbs)</option>
-                        <option value="Large">Large (over 50 lbs)</option>
+                        <SizeMenu 
+                            name="size"
+                            onChange={this.handleInputChange}
+                        />
                     </select>
                 </div>
                 <div className="col-md-4 col-xs-12 form-group">
                     <label for="match-q2">I want to meet dogs with lots of energy!</label>
                     <select className="form-control form-group col-md-6 match-questions" id="match-q2">
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        <YesNoMenu 
+                            name="energetic"
+                            onChange={this.handleInputChange}
+                        />
                     </select>
                 </div>
                 <div className="col-md-4 col-xs-12 form-group">
                     <label for="match-q3">My dog plays well with dominant dogs.</label>
                     <select className="form-control form-group col-md-6 match-questions" id="match-q3">
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        <YesNoMenu
+                            name="dominant" 
+                            onChange={this.handleInputChange}
+                        />
                     </select>
                 </div>
             </div>

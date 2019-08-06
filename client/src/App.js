@@ -14,8 +14,8 @@ function App() {
   return (
     <>
     <Router>
+      <>
       <Switch>
-      <div >
         <Route exact path="/" component={Home} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={LogIn} />
@@ -23,9 +23,10 @@ function App() {
         <Route exact path="/survey" component={Survey} />
         <Route exact path="/match" component={Match} />
         <Route component={Err} />
-      </div>
       </Switch>
+      </>
     </Router>
+    
     <Footer/>
     </>
   );
