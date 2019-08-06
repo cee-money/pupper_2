@@ -9,6 +9,7 @@ module.exports = {
         db.Pupper.findAll({
             where: {
                 UserId: {
+                    // probably need to change this over to auth0 specific syntax
                     [Op.not]: req.session.passport.user
                 },
                 size: req.params.size,
@@ -16,6 +17,14 @@ module.exports = {
                 dominant: req.params.dominant
             }, include: [db.User]
         }).then(data => res.json(data)).catch(err => res.status(422).json(err))
+      },
+
+      findOne: (req, res) => {
+        db.Pupper.findAll({
+          where: {
+            userEmail: req.params.email
+          }
+        }).then(data => res.json(data)).catch(err => res.status(422).json(err));
       },
 
       create: (req, res) => {

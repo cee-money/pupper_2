@@ -6,12 +6,16 @@ export default {
         return axios.get("/api/matches");
     },
 
-    getMatch: id => {
+    getProfile: id => {
         return axios.get("/api/matches/" + id);
     },
 
     updateProfile: profileData => {
-        return axios.post("/api/matches", profileData )
+        return axios.put("/api/matches", profileData )
+    },
+
+    create: profileData => {
+        return axios.post("/api/matches", profileData)
     },
 
     deleteMatch: id => {

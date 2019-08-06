@@ -16,6 +16,8 @@ class Survey extends Component {
     state = {
     }
 
+    // in the handleFormSubmit method, we want to bundle up the the user.name, user.email with the survey responses
+
 
 render() {
     return (
