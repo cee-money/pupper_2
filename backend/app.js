@@ -8,7 +8,6 @@
 // Config
 const port = 3001;
 
-
 const app = express(); // Define our app
 
 app.use(cors())

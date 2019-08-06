@@ -8,6 +8,7 @@ import Survey from "./pages/Survey";
 import Match from "./pages/Match";
 import Err from "./pages/Err";
 import Footer from "./components/Footer";
+import ChatApp from './pages/ChatApp.js';
 import './App.css';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/survey" component={Survey} />
         <Route exact path="/match" component={Match} />
+        <Route exact path="/contact" component={ChatApp} />
         <Route component={Err} />
       </div>
       </Switch>
