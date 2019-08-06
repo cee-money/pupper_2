@@ -302,6 +302,8 @@ class Survey extends Component {
                             </div>
                         </div>
                     </div>
+                    </div>
+                    </div>
     </>
                 )
             }
