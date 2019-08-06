@@ -11,7 +11,6 @@ const iStyle = {
 
 function Home() {
     return (
-      <>
         <div className="jumbotron jumbotron-fluid bg-secondary" id="jumbo-main">
             <div className="container">
                 <div className="row">
@@ -31,7 +30,6 @@ function Home() {
                 </div>
             </div>
         </div>
-      </>
     );
   }
 

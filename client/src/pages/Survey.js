@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import LogoutBtn from "../components/LogoutBtn";
+
 
 const h1Style = {
     fontFamily: "'Lobster', cursive",
@@ -26,9 +28,7 @@ render() {
                         <br/>
                         <h3 className="text-white">Tell us about you and your pup.</h3>
                     </div>
-                    <div className="col-md-2 col-sm-12">
-                        <a className="btn btn-info btn-lg" id="logout-btn" href="/logout" role="button">Logout</a>
-                    </div>
+                    <LogoutBtn />
                 </div>
             </div>
         </div>
@@ -117,14 +117,14 @@ render() {
             </div>
             <div className="row">
                 <div className="col-md-6 col-xs-12 form-group">
-                    <label for="q7">My dog doesn’t do well around dogs that are larger than them.</label>
+                    <label for="q7">My dog does well around dogs that are larger than them.</label>
                     <select className="form-control form-group col-md-6 questions" id="q7">
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
                 </div>
                 <div className="col-md-6 col-xs-12 form-group">
-                    <label for="q8">My dog doesn’t do well around dogs that are smaller than them.</label>
+                    <label for="q8">My dog does well around dogs that are smaller than them.</label>
                     <select className="form-control form-group col-md-6 questions" id="q8">
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
@@ -140,7 +140,7 @@ render() {
                     </select>
                 </div>
                 <div className="col-md-6 col-xs-12 form-group">
-                    <label for="q10">My dog likes to share their toys.</label>
+                    <label for="q10">My dog does not like to share their toys.</label>
                     <select className="form-control form-group col-md-6 questions" id="q10">
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
