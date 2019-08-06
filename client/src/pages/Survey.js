@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 const h1Style = {
     fontFamily: "'Lobster', cursive",
     fontSize: 185
@@ -117,14 +118,14 @@ render() {
             </div>
             <div className="row">
                 <div className="col-md-6 col-xs-12 form-group">
-                    <label for="q7">My dog doesn’t do well around dogs that are larger than them.</label>
+                    <label for="q7">My dog does well around dogs that are larger than them.</label>
                     <select className="form-control form-group col-md-6 questions" id="q7">
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
                 </div>
                 <div className="col-md-6 col-xs-12 form-group">
-                    <label for="q8">My dog doesn’t do well around dogs that are smaller than them.</label>
+                    <label for="q8">My dog does well around dogs that are smaller than them.</label>
                     <select className="form-control form-group col-md-6 questions" id="q8">
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>

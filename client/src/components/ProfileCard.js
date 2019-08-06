@@ -17,7 +17,7 @@ render () {
             <div className="col-md-12">
                 <div className="card text-white bg-info mb-3">
                     <div className="card-header">
-                        <h4>Dog's Name 
+                        <h4>"[Dog's Name]'s Profile" 
                             <EditRemoveBtn /> 
                         </h4>  
                     </div>
