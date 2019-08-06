@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ProfileCard from "../components/ProfileCard";
 import LogoutBtn from "../components/LogoutBtn";
+import API from "../utils/API";
 
 
 const h1Style = {
@@ -18,6 +19,10 @@ class Profile extends Component {
         
     }
 
+
+    componentDidMount() {
+        API.getProfile
+    }
 
 render() {
     return (
