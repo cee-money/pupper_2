@@ -38,6 +38,8 @@ class BorkModal extends React.Component {
 
 export default BorkModal;
 
+// to contact another owner
+
 {/* <div className="container text-info bg-active">
 <div className="row">
     <div className="col-12">

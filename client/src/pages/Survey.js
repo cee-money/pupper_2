@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import LogoutBtn from "../components/LogoutBtn";
 
 
 const h1Style = {
@@ -27,9 +28,7 @@ render() {
                         <br/>
                         <h3 className="text-white">Tell us about you and your pup.</h3>
                     </div>
-                    <div className="col-md-2 col-sm-12">
-                        <a className="btn btn-info btn-lg" id="logout-btn" href="/logout" role="button">Logout</a>
-                    </div>
+                    <LogoutBtn />
                 </div>
             </div>
         </div>

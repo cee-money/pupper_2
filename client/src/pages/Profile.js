@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ProfileCard from "../components/ProfileCard";
+import LogoutBtn from "../components/LogoutBtn";
 
 
 const h1Style = {
@@ -27,9 +28,7 @@ render() {
                     <div className="col-md-10 col-sm-12">
                         <h1 className="display-1 text-white" id="logo" style={h1Style}>pupper&nbsp;<i className="fas fa-paw" id="paw" style={iStyle}></i></h1>
                     </div>
-                    <div className="col-md-2 col-sm-12">
-                        <a className="btn btn-info btn-lg" id="logout-btn "href="/logout" role="button">Logout</a>
-                    </div>
+                    <LogoutBtn />
                 </div>
             </div>
         </div>
