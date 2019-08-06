@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import LogoutBtn from "../components/LogoutBtn";
 
 
@@ -13,14 +14,74 @@ const iStyle = {
 
 
 class Survey extends Component {
-    state = {
-    }
+    constructor(props){
+        super(props);
+        this.state = {
+          success : false,
+          url : "",
+          error: false,
+          errorMessage : ""
+        }
+      }
+      handleChange = (ev) => {
+        this.setState({success: false, url : ""});
+    
+      }
+      handleUpload = (ev) => {
+        let file = this.uploadInput.files[0];
+        // Split the filename to get the name and type
+        let fileParts = this.uploadInput.files[0].name.split('.');
+        let fileName = fileParts[0];
+        let fileType = fileParts[1];
+        console.log("Preparing the upload");
+        axios.post("http://localhost:3001/sign_s3",{
+          fileName : fileName,
+          fileType : fileType
+        })
+        .then(response => {
+          var returnData = response.data.data.returnData;
+          var signedRequest = returnData.signedRequest;
+          var url = returnData.url;
+          this.setState({url: url})
+          console.log("Recieved a signed request " + signedRequest);
+    
+          var options = {
+            headers: {
+              'Content-Type': fileType
+            }
+          };
+          axios.put(signedRequest,file,options)
+          .then(result => {
+            console.log("Response from s3")
+            this.setState({success: true});
+          })
+          .catch(error => {
+            alert("ERROR " + JSON.stringify(error));
+          })
+        })
+        .catch(error => {
+          alert(JSON.stringify(error));
+        })
+      }
+    
 
-    // in the handleFormSubmit method, we want to bundle up the the user.name, user.email with the survey responses
-
-
-render() {
-    return (
+    render() {
+        const SuccessMessage = () => (
+            <div style={{padding:50}}>
+              <h3 style={{color: 'green'}}>SUCCESSFUL UPLOAD</h3>
+              {/* <a href={this.state.url}>Access the file here</a> */}
+              <br/>
+            </div>
+          )
+          const ErrorMessage = () => (
+            <div style={{padding:50}}>
+              <h3 style={{color: 'red'}}>FAILED UPLOAD</h3>
+              <span style={{color: 'red', backgroundColor: 'black'}}>ERROR: </span>
+              <span>{this.state.errorMessage}</span>
+              <br/>
+            </div>
+          )      
+        return (
         <>
         <div className="jumbotron jumbotron-fluid bg-secondary" id= "mainsurveyjumbo">
             <div className="container">
@@ -32,35 +93,37 @@ render() {
                     </div>
                     <LogoutBtn />
                 </div>
-            </div>
-        </div>
 
-        <div className="container bg-active text-info">
-            <div className="row">
-                <div className="col-md-12">
-                    <br/>
-                    <h3><i className="fas fa-paw"></i><strong>&nbsp;About You</strong></h3>
-                </div>
-            </div>
-            <br/>
-            <form id="main-form">
-            <div className="row">
-                <div className="col-md-4 col-xs-12 form-group">
-                    <label for="name">Your Pupper's Name*</label>
-                    <input type="text" className="form-control" id="dog-name" required/>
-                </div>
-                <div className="col-md-4 col-xs-12 form-group">
-                    <label for="dog-photo" id="file-name">URL of Your Pupper's Photo</label>
-                    <input type="text" className="form-control" id="dog-photo" name="image"/>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-12">
-                    <small>* indicates required field</small>
-                </div>
-            </div>
+                <div className="container bg-active text-info">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <br />
+                            <h3><i className="fas fa-paw"></i><strong>&nbsp;About You</strong></h3>
+                        </div>
+                    </div>
+                    <br />
+                    <form id="main-form">
+                        <div className="row">
+                            <div className="col-md-4 col-xs-12 form-group">
+                                <label for="name">Your Pupper's Name*</label>
+                                <input type="text" className="form-control" id="dog-name" required />
+                            </div>
+                            <div className="App">
+                                    <label for='upload'>UPLOAD A FILE</label>
+                                <center>
+                                    {this.state.success ? <SuccessMessage /> : null}
+                                    {this.state.error ? <ErrorMessage /> : null}
 
-            <hr/>
+                                    <input onChange={this.handleChange} ref={(ref) => { this.uploadInput = ref; }} type="file" />
+                                    <button onClick={this.handleUpload}>UPLOAD</button>
+                                </center>
+                            </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12">
+                                    <small>* indicates required field</small>
+                                </div>
+                            </div>
 
             <div className="row">
                 <div className="col-12">
@@ -178,70 +241,72 @@ render() {
                 <div className="col-md-12">
                     <button type="submit" className="btn btn-info" id="submit">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a className="btn btn-info" href="/match" role="button">Next</a>
-                </div>
-            </div>
+                                </div>
+                            </div>
             </form>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
         </div>
 
-        <div className="container bg-active text-info">
-            <div className="row">
-                <div className="col-12">
-                    <div className="modal fade" id="survey-modal" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
-                        <div className="modal-dialog modal-dialog-centered" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                            <h4 className="modal-title" id="title">Survey completed!</h4>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                    <div className="container bg-active text-info">
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="modal fade" id="survey-modal" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
+                                    <div className="modal-dialog modal-dialog-centered" role="document">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h4 className="modal-title" id="title">Survey completed!</h4>
+                                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div className="modal-body mx-auto">
+                                                <h5 id="match-message">Thanks for telling us about your pup. Click next to tell us about ideal playmates.</h5>
+                                            </div>
+                                            <div className="modal-footer">
+                                                <button type="button" className="btn btn-info" data-toggle="modal" data-dismiss="modal" id="close">Close</button>
+                                                <a className="btn btn-info" href="/match" role="button">Next</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="modal-body mx-auto">
-                                <h5 id="match-message">Thanks for telling us about your pup. Click next to tell us about ideal playmates.</h5>
-                            </div>
-                            <div className="modal-footer">
-                            <button type="button" className="btn btn-info" data-toggle="modal" data-dismiss="modal" id="close">Close</button>
-                            <a className="btn btn-info" href="/match" role="button">Next</a>
-                            </div>
-                        </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
 
-        <div className="container bg-active text-info">
-            <div className="row">
-                <div className="col-12">
-                    <div className="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
-                        <div className="modal-dialog modal-dialog-centered" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                            <h4 className="modal-title" id="title">Oops!</h4>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                    <div className="container bg-active text-info">
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
+                                    <div className="modal-dialog modal-dialog-centered" role="document">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h4 className="modal-title" id="title">Oops!</h4>
+                                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div className="modal-body mx-auto">
+                                                <h5 id="match-message">Please complete all required fields.</h5>
+                                            </div>
+                                            <div className="modal-footer">
+                                                <button type="button" className="btn btn-info" data-dismiss="modal" id="close">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="modal-body mx-auto">
-                                <h5 id="match-message">Please complete all required fields.</h5>
-                            </div>
-                            <div className="modal-footer">
-                            <button type="button" className="btn btn-info" data-dismiss="modal" id="close">Close</button>
-                            </div>
-                        </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                    </div>
+                    </div>
     </>
-    )
-}
-}
-
+                )
+            }
+            }
+            
 export default Survey;
