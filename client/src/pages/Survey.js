@@ -68,6 +68,21 @@ class Survey extends Component {
 
 
     render() {
+        const SuccessMessage = () => (
+            <div style={{padding:50}}>
+              <h3 style={{color: 'green'}}>SUCCESSFUL UPLOAD</h3>
+              <a href={this.state.url}>Access the file here</a>
+              <br/>
+            </div>
+          )
+          const ErrorMessage = () => (
+            <div style={{padding:50}}>
+              <h3 style={{color: 'red'}}>FAILED UPLOAD</h3>
+              <span style={{color: 'red', backgroundColor: 'black'}}>ERROR: </span>
+              <span>{this.state.errorMessage}</span>
+              <br/>
+            </div>
+          )
         return (
             <>
                 <div className="jumbotron jumbotron-fluid bg-secondary" id="mainsurveyjumbo">
