@@ -64,6 +64,19 @@ class Survey extends Component {
     //         })
     //     }
     // }
+    addToState() {
+        const {user, loading } = useAuth0();
+        if(loading){
+            console.log("Loading");
+        } else {
+            this.setState({
+                ownerFirstName: user.given_name,
+                ownerLastName: user.family_name,
+                ownerEmail: user.email
+            })
+        }
+    };
+    
 
     handleFormSubmit = event => {
         event.preventDefault();
@@ -105,21 +118,6 @@ class Survey extends Component {
     }
 
     render() {
-        const SuccessMessage = () => (
-            <div style={{ padding: 50 }}>
-                <h3 style={{ color: 'green' }}>SUCCESSFUL UPLOAD</h3>
-                {/* <a href={this.state.url}>Access the file here</a> */}
-                <br />
-            </div>
-        )
-        const ErrorMessage = () => (
-            <div style={{ padding: 50 }}>
-                <h3 style={{ color: 'red' }}>FAILED UPLOAD</h3>
-                <span style={{ color: 'red', backgroundColor: 'black' }}>ERROR: </span>
-                <span>{this.state.errorMessage}</span>
-                <br />
-            </div>
-        )
         return (
             <>
                 <div className="jumbotron jumbotron-fluid bg-secondary" id="mainsurveyjumbo">
