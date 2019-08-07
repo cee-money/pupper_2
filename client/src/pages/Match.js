@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import MatchCard from "../components/MatchCard";
 import LogoutBtn from "../components/LogoutBtn";
-
+import YesNoMenu from "../components/YesNoMenu";
+import SizeMenu from "../components/SizeMenu";
+import API from "../utils/API";
 
 const h1Style = {
     fontFamily: "'Lobster', cursive",
@@ -15,9 +17,28 @@ const iStyle = {
 
 class Match extends Component {
     state = {
-        
+        matches: [],
+        size: "",
+        energetic: "",
+        dominant: ""
     }
 
+handleInputChange = event => {
+    const { name, value } = event.target;
+
+    this.setState({
+        [name]: value
+    });
+};
+
+handleFormSubmit = event => {
+    event.preventDefault();
+
+    API.getMatches(this.state)
+        .then(res => 
+            this.setState({ matches: res.data, size: "", energetic: "", dominant: ""}))
+        .catch(err => console.log(err))
+};
 
 render() {
     return (
@@ -35,7 +56,8 @@ render() {
             </div>
         </div>
 
-        <div className="container bg-active text-info" id="filters">
+    {this.state.matches = [] ? (  
+       <div className="container bg-active text-info" id="filters">
             <div className="row">
                 <div className="col-md-12">
                     <br/>
@@ -55,23 +77,28 @@ render() {
                 <div className="col-md-4 col-xs-12 form-group">
                     <label for="match-q1">I am looking to meet dogs that are:</label>
                     <select className="form-control form-group col-md-6 match-questions" id="match-q1">
-                        <option value="Small">Small (under 25 lbs)</option>
-                        <option value="Medium">Medium (between 25-50 lbs)</option>
-                        <option value="Large">Large (over 50 lbs)</option>
+                        <SizeMenu 
+                            name="size"
+                            onChange={this.handleInputChange}
+                        />
                     </select>
                 </div>
                 <div className="col-md-4 col-xs-12 form-group">
                     <label for="match-q2">I want to meet dogs with lots of energy!</label>
                     <select className="form-control form-group col-md-6 match-questions" id="match-q2">
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        <YesNoMenu 
+                            name="energetic"
+                            onChange={this.handleInputChange}
+                        />
                     </select>
                 </div>
                 <div className="col-md-4 col-xs-12 form-group">
                     <label for="match-q3">My dog plays well with dominant dogs.</label>
                     <select className="form-control form-group col-md-6 match-questions" id="match-q3">
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        <YesNoMenu
+                            name="dominant" 
+                            onChange={this.handleInputChange}
+                        />
                     </select>
                 </div>
             </div>
@@ -80,21 +107,25 @@ render() {
                     <button type="submit" data-toggle="modal" className="btn btn-info" id="find-match">Find Match</button>&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
             </div>
-            </form>
+            </form> 
         <br/>
         <br/>
         <br/>
         <br/>
         <br/>
         <br/>
-        </div>
+       </div> 
+       
+    ) : (
 
         <div className="container" id="show-matches">
             <MatchCard/>
         </div>
+
+    )}
         </>   
     )
-}
+};
 }
 
 export default Match;
