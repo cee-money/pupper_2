@@ -19,39 +19,44 @@ class ChatApp extends Component {
   }
 
   componentWillMount = () => {
+    console.log("componentWillMount was hit")
     if (this.state.loggedIn) {
       this.getToken();
     }
   };
 
   onNameChanged = event => {
+    console.log("onNameChanged was hit")
     this.setState({ name: event.target.value });
   };
 
-  // logIn = event => {
-  //   event.preventDefault();
-  //   if (this.state.name !== '') {
-  //     localStorage.setItem('name', this.state.name);
-  //     this.setState({ loggedIn: true }, this.getToken);
-  //   }
-  // };
+  logIn = event => {
+    event.preventDefault();
+    console.log("login was hit")
+    if (this.state.name !== '') {
+      localStorage.setItem('name', this.state.name);
+      this.setState({ loggedIn: true }, this.getToken);
+    }
+  };
 
-  // logOut = event => {
-  //   event.preventDefault();
-  //   this.setState({
-  //     name: '',
-  //     loggedIn: false,
-  //     token: '',
-  //     chatReady: false,
-  //     messages: [],
-  //     newMessage: ''
-  //   });
-  //   localStorage.removeItem('name');
-  //   this.chatClient.shutdown();
-  //   this.channel = null;
-  // };
+  logOut = event => {
+    event.preventDefault();
+    console.log("logout was hit")
+    this.setState({
+      name: '',
+      loggedIn: false,
+      token: '',
+      chatReady: false,
+      messages: [],
+      newMessage: ''
+    });
+    localStorage.removeItem('name');
+    this.chatClient.shutdown();
+    this.channel = null;
+  };
 
   getToken = () => {
+    console.log("gittoken was hit")
     fetch(`/token/${this.state.name}`, {
       method: 'POST'
     })
@@ -62,11 +67,13 @@ class ChatApp extends Component {
   };
 
   initChat = () => {
+    console.log("initchat was hit")
     this.chatClient = new Chat(this.state.token);
     this.chatClient.initialize().then(this.clientInitiated.bind(this));
   };
 
   clientInitiated = () => {
+    console.log("clientInitiated was hit")
     this.setState({ chatReady: true }, () => {
       this.chatClient
         .getChannelByUniqueName(this.channelName)
@@ -90,25 +97,30 @@ class ChatApp extends Component {
         .then(() => {
           this.channel.getMessages().then(this.messagesLoaded);
           this.channel.on('messageAdded', this.messageAdded);
+          console.log(this.channel)
         });
     });
   };
 
   messagesLoaded = messagePage => {
+    console.log("messagesLoaded was hit")
     this.setState({ messages: messagePage.items });
   };
 
   messageAdded = message => {
+    console.log("messagesAdded was hit")
     this.setState((prevState, props) => ({
       messages: [...prevState.messages, message]
     }));
   };
 
   onMessageChanged = event => {
+    console.log("onMessageChanged was hit")
     this.setState({ newMessage: event.target.value });
   };
 
   sendMessage = event => {
+    console.log("sendMessage was hit")
     event.preventDefault();
     const message = this.state.newMessage;
     this.setState({ newMessage: '' });
@@ -116,6 +128,7 @@ class ChatApp extends Component {
   };
 
   newMessageAdded = li => {
+    console.log("newMessageAdded was hit")
     if (li) {
       li.scrollIntoView();
     }

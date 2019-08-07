@@ -8,15 +8,15 @@ import Survey from "./pages/Survey";
 import Match from "./pages/Match";
 import Err from "./pages/Err";
 import Footer from "./components/Footer";
-import ChatApp from './components/ChatApp.js/index.js';
+import ChatApp from './components/ChatApp';
 import './App.css';
 
 function App() {
   return (
     <>
     <Router>
+      <>
       <Switch>
-      <div >
         <Route exact path="/" component={Home} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={LogIn} />
@@ -25,9 +25,10 @@ function App() {
         <Route exact path="/match" component={Match} />
         <Route exact path="/contact" component={ChatApp} />
         <Route component={Err} />
-      </div>
       </Switch>
+      </>
     </Router>
+    
     <Footer/>
     </>
   );
