@@ -19,11 +19,6 @@ class Profile extends Component {
         
     }
 
-
-    componentDidMount() {
-        API.getProfile
-    }
-
 render() {
     return (
         <>

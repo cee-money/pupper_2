@@ -1,8 +1,4 @@
-
 const db = require("../models");
-// const nodemailer = require("nodemailer");
-const Sequelize = require("sequelize");
-const Op = Sequelize.Op
 
 module.exports = {
     findAll: (req, res) => {
