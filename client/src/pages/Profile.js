@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import ProfileCard from "../components/ProfileCard";
 import LogoutBtn from "../components/LogoutBtn";
-// import { APIGateway } from "aws-sdk";
-import { useAuth0 } from "../../react-autho0-wrapper";
+// import { useAuth0 } from "../react-auth0-wrapper";
+import API from "../utils/API";
 
 
 const h1Style = {
@@ -14,7 +14,7 @@ const iStyle = {
     fontSize: 135
 }
 
-const {user, loading } = useAuth0();
+// const {user, loading } = useAuth0();
 
 
 class Profile extends Component {
@@ -24,15 +24,15 @@ class Profile extends Component {
         ownerEmail: ""
     }
 
-addToState() {
-    if (loading) {
-        console.log("Loading");
-    } else {
-        this.setState({
-            ownerEmail: user.email
-        })
-    }
-};
+// addToState() {
+//     if (loading) {
+//         console.log("Loading");
+//     } else {
+//         this.setState({
+//             ownerEmail: user.email
+//         })
+//     }
+// };
 
 componentDidMount() {
     this.loadPuppers();

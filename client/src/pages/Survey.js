@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import LogoutBtn from "../components/LogoutBtn";
 import YesNoMenu from "../components/YesNoMenu";
 import SizeMenu from "../components/SizeMenu";
-import API from "../utils.API";
-import { useAuth0 } from "../../react-autho0-wrapper";
+import { APIGateway } from "aws-sdk";
+import API from "../utils/API";
+// import { useAuth0 } from "../react-auth0-wrapper";
 
 
 const h1Style = {
@@ -15,13 +17,23 @@ const iStyle = {
     fontSize: 135
 }
 
-const {user, loading } = useAuth0();
+const uploadBtn = {
+    marginTop: 32,
+    marginLeft: -10
+}
+
+
+// const {user, loading } = useAuth0();
+
 
 class Survey extends Component {
 
     state = {
+        success: false,
+        url:"",
+        error: false,
+        errorMessage: "",
         dogName: "",
-        image: "",
         size: "",
         familyFriendly: "",
         energetic: "",
@@ -40,25 +52,63 @@ class Survey extends Component {
         ownerEmail: ""
     }
 
-addToState() {
-    if(loading){
-        console.log("Loading");
-    } else {
-        this.setState({
-            ownerFirstName: user.given_name,
-            ownerLastName: user.family_name,
-            ownerEmail: user.email
-        })
-    }
-}
+// addToState() {
+//     if(loading){
+//         console.log("Loading");
+//     } else {
+//         this.setState({
+//             ownerFirstName: user.given_name,
+//             ownerLastName: user.family_name,
+//             ownerEmail: user.email
+//         })
+//     }
+// }
 
 handleInputChange = event => {
     const { name, value } = event.target;
 
     this.setState({
-      [name]: value
+      [name]: value,
+      success: false,
+      url: ""
     });
 }
+
+handleUpload = (ev) => {
+    let file = this.uploadInput.files[0];
+    // Split the filename to get the name and type
+    let fileParts = this.uploadInput.files[0].name.split('.');
+    let fileName = fileParts[0];
+    let fileType = fileParts[1];
+    console.log("Preparing the upload");
+    axios.post("http://localhost:3000/sign_s3",{
+      fileName : fileName,
+      fileType : fileType
+    })
+    .then(response => {
+      var returnData = response.data.data.returnData;
+      var signedRequest = returnData.signedRequest;
+      var url = returnData.url;
+      this.setState({url: url})
+      console.log("Recieved a signed request " + signedRequest);
+      var options = {
+        headers: {
+          'Content-Type': fileType
+        }
+      };
+      axios.put(signedRequest,file,options)
+      .then(result => {
+        console.log("Response from s3")
+        this.setState({success: true});
+      })
+      .catch(error => {
+        alert("ERROR " + JSON.stringify(error));
+      })
+    })
+    .catch(error => {
+      alert(JSON.stringify(error));
+    })
+  }
 
 handleFormSubmit = event => {
     event.preventDefault();
@@ -72,8 +122,11 @@ handleFormSubmit = event => {
 
         API.create(this.state)
         .then(this.setState({
+            success: false,
+            url:"",
+            error: false,
+            errorMessage: "",
             dogName: "",
-            image: "",
             size: "",
             familyFriendly: "",
             energetic: "",
@@ -97,6 +150,21 @@ handleFormSubmit = event => {
 }
 
 render() {
+    const SuccessMessage = () => (
+        <div style={{padding:50}}>
+            <h3 style={{color: 'green'}}>SUCCESSFUL UPLOAD</h3>
+            {/* <a href={this.state.url}>Access the file here</a> */}
+            <br/>
+        </div>
+    )
+    const ErrorMessage = () => (
+    <div style={{padding:50}}>
+        <h3 style={{color: 'red'}}>FAILED UPLOAD</h3>
+        <span style={{color: 'red', backgroundColor: 'black'}}>ERROR: </span>
+        <span>{this.state.errorMessage}</span>
+        <br/>
+    </div>
+    )      
     return (
         <>
         <div className="jumbotron jumbotron-fluid bg-secondary" id= "mainsurveyjumbo">
@@ -134,28 +202,38 @@ render() {
                         required
                     />
                 </div>
-                <div className="col-md-4 col-xs-12 form-group">
-                    <label for="dog-photo" id="file-name">URL of Your Pupper's Photo</label>
+                <div className="col-md-4 col-xs-12 form-group App">
+                    <label for='upload'>Your Pupper's Photo*:</label>
+                    <center>
+                        {this.state.success ? <SuccessMessage /> : null}
+                        {this.state.error ? <ErrorMessage /> : null}
                     <input 
-                        type="text" 
                         className="form-control" 
                         id="dog-photo" 
                         name="image"
                         value={this.state.image}
-                        onChange={this.handleInputChange}
+                        onChange={this.handleChange} 
+                        ref={(ref) => { this.uploadInput = ref; }} 
+                        type="file"
                     />
+                    </center>
                 </div>
-            </div>
-            <div className="row">
+                <div className="col-md-2 col-xs-12 form-group">
+                    <button 
+                        className="btn btn-info btn-sm"
+                        onClick={this.handleUpload}
+                        style={uploadBtn}>Upload
+                    </button>
+                </div>
                 <div className="col-12">
                     <small>* indicates required field</small>
                 </div>
             </div>
-
-            <hr/>
-
+            <div className="row">
+            </div>
             <div className="row">
                 <div className="col-12">
+                    <hr/>
                     <h5>Select an answer to each question below.</h5>
                     <br/>
                 </div>
@@ -298,16 +376,16 @@ render() {
                 </div>
             </div>
             </form>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
         </div>
     </>
     )
 }
 }
-
+            
 export default Survey;

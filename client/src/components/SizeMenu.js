@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SizeMenu() {
+function SizeMenu(props) {
     return (
         <>
             <option {...props} value="Small">Small (under 25 lbs)</option>

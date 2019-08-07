@@ -3,7 +3,7 @@ import MatchCard from "../components/MatchCard";
 import LogoutBtn from "../components/LogoutBtn";
 import YesNoMenu from "../components/YesNoMenu";
 import SizeMenu from "../components/SizeMenu";
-
+import API from "../utils/API";
 
 const h1Style = {
     fontFamily: "'Lobster', cursive",
@@ -56,7 +56,7 @@ render() {
             </div>
         </div>
 
-    {!res.data ? (  
+    {this.state.matches = [] ? (  
        <div className="container bg-active text-info" id="filters">
             <div className="row">
                 <div className="col-md-12">
