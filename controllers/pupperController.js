@@ -3,15 +3,9 @@ const db = require("../models");
 module.exports = {
     findAll: (req, res) => {
         db.Pupper.findAll({
-            where: {
-                UserId: {
-                    // probably need to change this over to auth0 specific syntax
-                    [Op.not]: req.session.passport.user
-                },
                 size: req.params.size,
                 energetic: req.params.energetic,
                 dominant: req.params.dominant
-            }, include: [db.User]
         }).then(data => res.json(data)).catch(err => res.status(422).json(err))
       },
 
@@ -30,13 +24,14 @@ module.exports = {
       },
     
       update: (req, res) => {
-        db.Pupper.update(req.body, {where:  {_id: req.params.id }})
+        db.Pupper.findOneandUpdate(req.body, {where:  {_id: req.params.id }})
           .then(dbPup => res.json(dbPup))
           .catch(err => res.status(422).json(err));
       },
     
       remove: (req, res) => {
-        db.Pupper.destroy({where: {_id: req.params.id }})
+        db.Pupper.findById({_id: req.params.id })
+          .then(dbPup => dbPup.remove())
           .then(dbPup => res.json(dbPup))
           .catch(err => res.statue(422).json(err));
       }

@@ -36,7 +36,7 @@ class Survey extends Component {
         let fileName = fileParts[0];
         let fileType = fileParts[1];
         console.log("Preparing the upload");
-        axios.post("http://localhost:3001/sign_s3",{
+        axios.post("http://localhost:3000/sign_s3",{
             fileName : fileName,
             fileType : fileType
         })
@@ -84,7 +84,7 @@ class Survey extends Component {
             </div>
           )      
         return (
-        <>
+
         <div className="jumbotron jumbotron-fluid bg-secondary" id= "mainsurveyjumbo">
             <div className="container">
                 <div className="row">
@@ -95,6 +95,7 @@ class Survey extends Component {
                     </div>
                     <LogoutBtn />
                 </div>
+            </div>
 
                 <div className="container bg-active text-info">
                     <div className="row">
@@ -252,63 +253,11 @@ class Survey extends Component {
                         <br />
                         <br />
                         <br />
-        </div>
-
-                    <div className="container bg-active text-info">
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="modal fade" id="survey-modal" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
-                                    <div className="modal-dialog modal-dialog-centered" role="document">
-                                        <div className="modal-content">
-                                            <div className="modal-header">
-                                                <h4 className="modal-title" id="title">Survey completed!</h4>
-                                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div className="modal-body mx-auto">
-                                                <h5 id="match-message">Thanks for telling us about your pup. Click next to tell us about ideal playmates.</h5>
-                                            </div>
-                                            <div className="modal-footer">
-                                                <button type="button" className="btn btn-info" data-toggle="modal" data-dismiss="modal" id="close">Close</button>
-                                                <a className="btn btn-info" href="/match" role="button">Next</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="container bg-active text-info">
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
-                                    <div className="modal-dialog modal-dialog-centered" role="document">
-                                        <div className="modal-content">
-                                            <div className="modal-header">
-                                                <h4 className="modal-title" id="title">Oops!</h4>
-                                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div className="modal-body mx-auto">
-                                                <h5 id="match-message">Please complete all required fields.</h5>
-                                            </div>
-                                            <div className="modal-footer">
-                                                <button type="button" className="btn btn-info" data-dismiss="modal" id="close">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    </div>
-    </>
+        </div> 
+            </div>
                 )
             }
             }
+            
             
 export default Survey;
