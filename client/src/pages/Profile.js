@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ProfileCard from "../components/ProfileCard";
 import LogoutBtn from "../components/LogoutBtn";
+// import { APIGateway } from "aws-sdk";
+import { useAuth0 } from "../../react-autho0-wrapper";
 
 
 const h1Style = {
@@ -12,12 +14,36 @@ const iStyle = {
     fontSize: 135
 }
 
+const {user, loading } = useAuth0();
+
 
 class Profile extends Component {
+
     state = {
-        
+        puppers: [],
+        ownerEmail: ""
     }
 
+addToState() {
+    if (loading) {
+        console.log("Loading");
+    } else {
+        this.setState({
+            ownerEmail: user.email
+        })
+    }
+};
+
+componentDidMount() {
+    this.loadPuppers();
+};
+
+loadPuppers = () => {
+    API.getProfile(this.state)
+        .then(res => 
+            this.setState({ puppers: res.data, ownerEmail:"" }))
+        .catch(err => console.log(err))
+};
 
 render() {
     return (
@@ -54,7 +80,7 @@ render() {
 
         </>   
     )
-}
+};
 }
 
 export default Profile;

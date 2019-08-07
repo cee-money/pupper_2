@@ -3,7 +3,7 @@ import LogoutBtn from "../components/LogoutBtn";
 import YesNoMenu from "../components/YesNoMenu";
 import SizeMenu from "../components/SizeMenu";
 import API from "../utils.API";
-// import { useAuth0 } from "../../react-autho0-wrapper";
+import { useAuth0 } from "../../react-autho0-wrapper";
 
 
 const h1Style = {
@@ -15,9 +15,9 @@ const iStyle = {
     fontSize: 135
 }
 
+const {user, loading } = useAuth0();
 
 class Survey extends Component {
-    // const {user, loading } = useAuth0();
 
     state = {
         dogName: "",
@@ -35,10 +35,22 @@ class Survey extends Component {
         chaser: "",
         wrestler: "",
         allDogFriendly: "",
-        // ownerFirstName: user.given_name,
-        // ownerLastName: user.family_name,
-        // ownerEmail: user.email
+        ownerFirstName: "",
+        ownerLastName: "",
+        ownerEmail: ""
     }
+
+addToState() {
+    if(loading){
+        console.log("Loading");
+    } else {
+        this.setState({
+            ownerFirstName: user.given_name,
+            ownerLastName: user.family_name,
+            ownerEmail: user.email
+        })
+    }
+}
 
 handleInputChange = event => {
     const { name, value } = event.target;
@@ -53,6 +65,7 @@ handleFormSubmit = event => {
 
     if (!this.state.dogName && this.state.image) {
         
+        //oops modal
         alert("Please fill in all required fields!");
 
     } else {
@@ -74,11 +87,11 @@ handleFormSubmit = event => {
             chaser: "",
             wrestler: "",
             allDogFriendly: "",
-            // ownerFirstName: user.given_name,
-            // ownerLastName: user.family_name,
-            // ownerEmail: user.email
+            ownerFirstName: "",
+            ownerLastName: "",
+            ownerEmail: ""
         }))
-        // success modal
+        // success modal ??
         .catch(err => console.log(err))
     }
 }

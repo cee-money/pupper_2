@@ -17,6 +17,7 @@ const iStyle = {
 
 class Match extends Component {
     state = {
+        matches: [],
         size: "",
         energetic: "",
         dominant: ""
@@ -28,17 +29,16 @@ handleInputChange = event => {
     this.setState({
         [name]: value
     });
-}
+};
 
 handleFormSubmit = event => {
     event.preventDefault();
 
-    API.find(this.state)
-    .then(this.setState({}))
-    .catch(err => console.log(err))
-    }
-}
-
+    API.getMatches(this.state)
+        .then(res => 
+            this.setState({ matches: res.data, size: "", energetic: "", dominant: ""}))
+        .catch(err => console.log(err))
+};
 
 render() {
     return (
@@ -56,7 +56,8 @@ render() {
             </div>
         </div>
 
-        <div className="container bg-active text-info" id="filters">
+    {!res.data ? (  
+       <div className="container bg-active text-info" id="filters">
             <div className="row">
                 <div className="col-md-12">
                     <br/>
@@ -106,21 +107,25 @@ render() {
                     <button type="submit" data-toggle="modal" className="btn btn-info" id="find-match">Find Match</button>&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
             </div>
-            </form>
+            </form> 
         <br/>
         <br/>
         <br/>
         <br/>
         <br/>
         <br/>
-        </div>
+       </div> 
+       
+    ) : (
 
         <div className="container" id="show-matches">
             <MatchCard/>
         </div>
+
+    )}
         </>   
     )
-}
+};
 }
 
 export default Match;
