@@ -8,7 +8,7 @@ import Survey from "./pages/Survey";
 import Match from "./pages/Match";
 import Err from "./pages/Err";
 import Footer from "./components/Footer";
-import ChatApp from './pages/ChatApp.js';
+import ChatApp from './components/ChatApp.js/index.js';
 import './App.css';
 
 function App() {

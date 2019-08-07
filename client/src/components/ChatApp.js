@@ -28,28 +28,28 @@ class ChatApp extends Component {
     this.setState({ name: event.target.value });
   };
 
-  logIn = event => {
-    event.preventDefault();
-    if (this.state.name !== '') {
-      localStorage.setItem('name', this.state.name);
-      this.setState({ loggedIn: true }, this.getToken);
-    }
-  };
+  // logIn = event => {
+  //   event.preventDefault();
+  //   if (this.state.name !== '') {
+  //     localStorage.setItem('name', this.state.name);
+  //     this.setState({ loggedIn: true }, this.getToken);
+  //   }
+  // };
 
-  logOut = event => {
-    event.preventDefault();
-    this.setState({
-      name: '',
-      loggedIn: false,
-      token: '',
-      chatReady: false,
-      messages: [],
-      newMessage: ''
-    });
-    localStorage.removeItem('name');
-    this.chatClient.shutdown();
-    this.channel = null;
-  };
+  // logOut = event => {
+  //   event.preventDefault();
+  //   this.setState({
+  //     name: '',
+  //     loggedIn: false,
+  //     token: '',
+  //     chatReady: false,
+  //     messages: [],
+  //     newMessage: ''
+  //   });
+  //   localStorage.removeItem('name');
+  //   this.chatClient.shutdown();
+  //   this.channel = null;
+  // };
 
   getToken = () => {
     fetch(`/token/${this.state.name}`, {

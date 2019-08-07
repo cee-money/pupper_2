@@ -1,24 +1,18 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const cors = require('cors');
 const routes = require("./routes");
+const bodyParser = require('body-parser');
 const app = express();
-const config = require("./config")
-const twilio = require("twilio")
+const PORT = process.env.PORT || 3000;
+const sign_s3 = require('./controllers/sign_s3');
+const config     = require('./controllers/config');
+const twilio     = require('twilio');
+
+// TWILIO ================================
+
 const AccessToken = twilio.jwt.AccessToken;
 const ChatGrant = AccessToken.IpMessagingGrant;
 
-const PORT = process.env.PORT || 3000;
-
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-
-
-// Twilio ====================
 app.post('/token/:identity', (request, response) => {
   const identity = request.params.identity;
   const accessToken = new AccessToken(config.twilio.accountSid, config.twilio.apiKey, config.twilio.apiSecret);
@@ -34,21 +28,28 @@ app.post('/token/:identity', (request, response) => {
     identity: identity
   }));
 })
-//=============================
 
+// =========================================
+
+// Define middleware here
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 // Add routes, both API and view
 app.use(routes);
-
+app.use(cors())
+app.use('/sign_s3', sign_s3.sign_s3);
+app.listen(3001);
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
-
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
 // Start the API server
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
 
-// TWILIO=======================
-app.listen(config.port, () => {
-  console.log(`Application started at localhost:${config.port}`)
-});
-//==============================
+// app.listen(config.port, () => {
+//   console.log(`Application started at localhost:${config.port}`);
+// });
