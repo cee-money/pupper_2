@@ -81,7 +81,7 @@ handleUpload = (ev) => {
     let fileName = fileParts[0];
     let fileType = fileParts[1];
     console.log("Preparing the upload");
-    axios.post("http://localhost:3000/sign_s3",{
+    axios.post("http://localhost:6969/sign_s3",{
       fileName : fileName,
       fileType : fileType
     })
