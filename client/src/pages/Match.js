@@ -33,7 +33,7 @@ handleInputChange = event => {
 
 handleFormSubmit = event => {
     event.preventDefault();
-
+// need to grab ownerEmail and send with req.body
     API.getMatches(this.state)
         .then(res => 
             this.setState({ matches: res.data, size: "", energetic: "", dominant: ""}))

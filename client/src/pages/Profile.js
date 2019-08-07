@@ -14,25 +14,25 @@ const iStyle = {
     fontSize: 135
 }
 
-// const {user, loading } = useAuth0();
 
 
 class Profile extends Component {
-
+    
     state = {
         puppers: [],
         ownerEmail: ""
     }
-
-// addToState() {
-//     if (loading) {
-//         console.log("Loading");
-//     } else {
-//         this.setState({
-//             ownerEmail: user.email
-//         })
-//     }
-// };
+    
+    addToState() {
+        const {user, loading } = useAuth0();
+    if (loading) {
+        console.log("Loading");
+    } else {
+        this.setState({
+            ownerEmail: user.email
+        })
+    }
+};
 
 componentDidMount() {
     this.loadPuppers();

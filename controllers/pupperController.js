@@ -2,17 +2,18 @@ const db = require("../models");
 
 module.exports = {
     findAll: (req, res) => {
-        db.Pupper.findAll({
+        db.Pupper.find({
                 size: req.params.size,
                 energetic: req.params.energetic,
-                dominant: req.params.dominant
+                dominant: req.params.dominant,
+                ownerEmail: { $ne: req.body.user.email } 
         }).then(data => res.json(data)).catch(err => res.status(422).json(err))
       },
 
       findOne: (req, res) => {
-        db.Pupper.findAll({
+        db.Pupper.find({
           where: {
-            userEmail: req.params.email
+            ownerEmail: req.body.user.email
           }
         }).then(data => res.json(data)).catch(err => res.status(422).json(err));
       },
@@ -24,7 +25,7 @@ module.exports = {
       },
     
       update: (req, res) => {
-        db.Pupper.findOneandUpdate(req.body, {where:  {_id: req.params.id }})
+        db.Pupper.findOneAndUpdate(req.body, {where:  {_id: req.params.id }})
           .then(dbPup => res.json(dbPup))
           .catch(err => res.status(422).json(err));
       },
