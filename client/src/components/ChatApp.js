@@ -85,7 +85,8 @@ class ChatApp extends Component {
         .catch(err => {
           if(err.body.code === 50300){
             return this.chatClient.createChannel({
-              uniqueName: this.channelName
+              uniqueName: this.channelName,
+              isPrivate: true
             });
           }
         })
@@ -97,7 +98,6 @@ class ChatApp extends Component {
         .then(() => {
           this.channel.getMessages().then(this.messagesLoaded);
           this.channel.on('messageAdded', this.messageAdded);
-          console.log(this.channel)
         });
     });
   };
