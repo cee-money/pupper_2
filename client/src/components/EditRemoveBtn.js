@@ -1,15 +1,18 @@
 import React from 'react';
+import RemoveModal from "./RemoveModal";
 
 const buttonStyle = {
-    float: "right"
+    float: "right",
+    margin: 5
 }
 
 function EditRemoveBtn() {
     return (
-        <div style={buttonStyle}>
-            <button className="btn btn-secondary contact-btn"  id="edit-profile">Edit Profile</button>&nbsp;&nbsp;
-            <button className="btn btn-secondary contact-btn" id="remove-profile">Remove Profile</button>
-        </div>
+        <>
+       <button style={buttonStyle} type="button" className="btn btn-secondary" role="button" id="edit-profile">Edit Profile</button>
+            {/* <button className="btn btn-secondary" id="remove-profile">Remove Profile</button> */}
+        <RemoveModal/>
+        </>
     )
 }
 

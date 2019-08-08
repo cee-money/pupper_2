@@ -17,7 +17,44 @@ const iStyle = {
 
 class Match extends Component {
     state = {
-        matches: [],
+        matches: [
+        // {
+        //     dogName: "Fido",
+        //     url:"https://www.azhumane.org/wp-content/uploads/2015/10/iStock-623499258-200x200.jpg",
+        //     ownerFirstName: "Dawn",
+        //     ownerEmail: "dawn@me.com",
+        //     size: "Small",
+        //     energetic: "Yes",
+        //     dominant: "No"
+        // },
+        // {
+        //     dogName: "Frank",
+        //     url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbYquZS-VxQyz92r3dmKeBzx-V_o7xm3jobIXOftVk7T03YffF",
+        //     ownerFirstName: "Sherry",
+        //     ownerEmail: "sherry@aol.com",
+        //     size: "Medium",
+        //     energetic: "Yes",
+        //     dominant: "No"
+        // },
+        // {
+        //     dogName: "Hooch",
+        //     url:"https://www.dogthelove.com/images/dog_200x200.jpg",
+        //     ownerFirstName: "Carol",
+        //     ownerEmail: "carol@gmail.com",
+        //     size: "Large",
+        //     energetic: "Yes",
+        //     dominant: "Yes"
+        // },
+        // {
+        //     dogName: "Cecil",
+        //     url:"https://thedogstop.com/pa-pittsburgh-sewickley/wp-content/uploads/sites/7/2017/08/george.jpg",
+        //     ownerFirstName: "Avery",
+        //     ownerEmail: "cecil@optonline.net",
+        //     size: "Medium",
+        //     energetic: "No",
+        //     dominant: "No"
+        // }
+    ],
         size: "",
         energetic: "",
         dominant: ""
@@ -40,6 +77,10 @@ handleFormSubmit = event => {
         .catch(err => console.log(err))
 };
 
+resetMatches() {
+    this.setState({ matches: []})
+};
+
 render() {
     return (
         <>
@@ -56,7 +97,7 @@ render() {
             </div>
         </div>
 
-    {this.state.matches = [] ? (  
+    {!this.state.matches.length ? (  
        <div className="container bg-active text-info" id="filters">
             <div className="row">
                 <div className="col-md-12">
@@ -104,7 +145,7 @@ render() {
             </div>
             <div className="row">
                 <div className="col-md-12">
-                    <button type="submit" data-toggle="modal" className="btn btn-info" id="find-match">Find Match</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="submit" data-toggle="modal" className="btn btn-info" onClick={this.handleFormSubmit}>Find Match</button>
                 </div>
             </div>
             </form> 
@@ -119,7 +160,36 @@ render() {
     ) : (
 
         <div className="container" id="show-matches">
-            <MatchCard/>
+            {this.state.matches.length ? (
+                <>
+                <div className="row">                
+                    {this.state.matches.map(match => (
+                        <MatchCard
+                            key={match._id}
+                            url={match.url}
+                            ownerFirstName={match.ownerFirstName}
+                            dogName={match.dogName}
+                            ownerEmail={match.ownerEmail}
+                        />   
+                    ))}
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <button className="btn btn-info btn-lg text-white" onClick={this.resetMatches}>Find More Matches</button>
+                    </div>
+                </div>
+                </>
+            ) : (
+
+                <h3>There are no matches to display.</h3>
+
+            )}
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         </div>
 
     )}

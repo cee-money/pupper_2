@@ -3,9 +3,10 @@ import axios from 'axios';
 import LogoutBtn from "../components/LogoutBtn";
 import YesNoMenu from "../components/YesNoMenu";
 import SizeMenu from "../components/SizeMenu";
-import { APIGateway } from "aws-sdk";
+import SuccessModal from "../components/SuccessModal";
+// import { APIGateway } from "aws-sdk";
 import API from "../utils/API";
-// import { useAuth0 } from "../react-auth0-wrapper";
+import { useAuth0 } from "../react-auth0-wrapper";
 
 
 const h1Style = {
@@ -21,9 +22,6 @@ const uploadBtn = {
     marginTop: 32,
     marginLeft: -10
 }
-
-
-// const {user, loading } = useAuth0();
 
 
 class Survey extends Component {
@@ -52,17 +50,19 @@ class Survey extends Component {
         ownerEmail: ""
     }
 
-// addToState() {
-//     if(loading){
-//         console.log("Loading");
-//     } else {
-//         this.setState({
-//             ownerFirstName: user.given_name,
-//             ownerLastName: user.family_name,
-//             ownerEmail: user.email
-//         })
-//     }
-// }
+addToState() {
+    const {user, loading } = useAuth0();
+
+    if(loading){
+        console.log("Loading");
+    } else {
+        this.setState({
+            ownerFirstName: user.given_name,
+            ownerLastName: user.family_name,
+            ownerEmail: user.email
+        })
+    }
+};
 
 handleInputChange = event => {
     const { name, value } = event.target;
@@ -72,9 +72,10 @@ handleInputChange = event => {
       success: false,
       url: ""
     });
-}
+};
 
 handleUpload = (ev) => {
+    ev.preventDefault()
     let file = this.uploadInput.files[0];
     // Split the filename to get the name and type
     let fileParts = this.uploadInput.files[0].name.split('.');
@@ -108,46 +109,40 @@ handleUpload = (ev) => {
     .catch(error => {
       alert(JSON.stringify(error));
     })
-  }
+};
 
 handleFormSubmit = event => {
     event.preventDefault();
 
-    if (!this.state.dogName && this.state.image) {
-        
-        //oops modal
-        alert("Please fill in all required fields!");
-
-    } else {
+    if (this.state.dogName && this.state.url) {
 
         API.create(this.state)
-        .then(this.setState({
-            success: false,
-            url:"",
-            error: false,
-            errorMessage: "",
-            dogName: "",
-            size: "",
-            familyFriendly: "",
-            energetic: "",
-            lazy: "",
-            strangerDanger: "",
-            dogDanger: "",
-            largeDogDanger: "",
-            smallDogDanger: "",
-            dominant: "",
-            doesntShare: "",
-            chaser: "",
-            wrestler: "",
-            allDogFriendly: "",
-            ownerFirstName: "",
-            ownerLastName: "",
-            ownerEmail: ""
-        }))
-        // success modal ??
-        .catch(err => console.log(err))
-    }
-}
+            .then(this.setState({
+                success: false,
+                url:"",
+                error: false,
+                errorMessage: "",
+                dogName: "",
+                size: "",
+                familyFriendly: "",
+                energetic: "",
+                lazy: "",
+                strangerDanger: "",
+                dogDanger: "",
+                largeDogDanger: "",
+                smallDogDanger: "",
+                dominant: "",
+                doesntShare: "",
+                chaser: "",
+                wrestler: "",
+                allDogFriendly: "",
+                ownerFirstName: "",
+                ownerLastName: "",
+                ownerEmail: ""
+            }))
+            .catch(err => console.log(err))
+    } 
+};
 
 render() {
     const SuccessMessage = () => (
@@ -215,6 +210,7 @@ render() {
                         onChange={this.handleChange} 
                         ref={(ref) => { this.uploadInput = ref; }} 
                         type="file"
+                        required
                     />
                     </center>
                 </div>
@@ -370,8 +366,13 @@ render() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-12">
-                    <button type="submit" className="btn btn-info" id="submit">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <div className="col-md-2">
+                    <SuccessModal 
+                        dogName={this.state.dogName}
+                        url={this.state.url}
+                    />
+                </div>
+                <div className="col-md-1">
                     <a className="btn btn-info" href="/match" role="button">Next</a>
                 </div>
             </div>
@@ -385,7 +386,7 @@ render() {
         </div>
     </>
     )
-}
+};
 }
             
 export default Survey;
