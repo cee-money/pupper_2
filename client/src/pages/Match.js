@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import MatchCard from "../components/MatchCard";
+import LogoutBtn from "../components/LogoutBtn";
+import YesNoMenu from "../components/YesNoMenu";
+import SizeMenu from "../components/SizeMenu";
+import API from "../utils/API";
 
 const h1Style = {
     fontFamily: "'Lobster', cursive",
@@ -12,8 +17,28 @@ const iStyle = {
 
 class Match extends Component {
     state = {
+        matches: [],
+        size: "",
+        energetic: "",
+        dominant: ""
     }
 
+handleInputChange = event => {
+    const { name, value } = event.target;
+
+    this.setState({
+        [name]: value
+    });
+};
+
+handleFormSubmit = event => {
+    event.preventDefault();
+
+    API.getMatches(this.state)
+        .then(res => 
+            this.setState({ matches: res.data, size: "", energetic: "", dominant: ""}))
+        .catch(err => console.log(err))
+};
 
 render() {
     return (
@@ -26,14 +51,13 @@ render() {
                         <br/>
                         <h3 className="text-white">Tell us what you're looking for in a pupper playmate.</h3>
                     </div>
-                    <div className="col-md-2 col-sm-12">
-                        <a className="btn btn-info btn-lg" id="logout-btn "href="/logout" role="button">Logout</a>
-                    </div>
+                    <LogoutBtn />
                 </div>
             </div>
         </div>
 
-        <div className="container bg-active text-info" id="filters">
+    {this.state.matches = [] ? (  
+       <div className="container bg-active text-info" id="filters">
             <div className="row">
                 <div className="col-md-12">
                     <br/>
@@ -53,23 +77,28 @@ render() {
                 <div className="col-md-4 col-xs-12 form-group">
                     <label for="match-q1">I am looking to meet dogs that are:</label>
                     <select className="form-control form-group col-md-6 match-questions" id="match-q1">
-                        <option value="Small">Small (under 25 lbs)</option>
-                        <option value="Medium">Medium (between 25-50 lbs)</option>
-                        <option value="Large">Large (over 50 lbs)</option>
+                        <SizeMenu 
+                            name="size"
+                            onChange={this.handleInputChange}
+                        />
                     </select>
                 </div>
                 <div className="col-md-4 col-xs-12 form-group">
                     <label for="match-q2">I want to meet dogs with lots of energy!</label>
                     <select className="form-control form-group col-md-6 match-questions" id="match-q2">
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        <YesNoMenu 
+                            name="energetic"
+                            onChange={this.handleInputChange}
+                        />
                     </select>
                 </div>
                 <div className="col-md-4 col-xs-12 form-group">
                     <label for="match-q3">My dog plays well with dominant dogs.</label>
                     <select className="form-control form-group col-md-6 match-questions" id="match-q3">
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        <YesNoMenu
+                            name="dominant" 
+                            onChange={this.handleInputChange}
+                        />
                     </select>
                 </div>
             </div>
@@ -78,57 +107,25 @@ render() {
                     <button type="submit" data-toggle="modal" className="btn btn-info" id="find-match">Find Match</button>&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
             </div>
-            </form>
+            </form> 
         <br/>
         <br/>
         <br/>
         <br/>
         <br/>
         <br/>
-        </div>
+       </div> 
+       
+    ) : (
 
         <div className="container" id="show-matches">
-            <div className="row" id="match-card-row"></div>
+            <MatchCard/>
         </div>
 
-        <div className="container text-info bg-active">
-            <div className="row">
-                <div className="col-12">
-                    <div className="modal fade" id="bork-box" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
-                        <div className="modal-dialog modal-dialog-centered" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                            <h4 className="modal-title" id="title"><i className="fas fa-paw"></i>&nbsp;&nbsp;Bork at your match</h4>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div className="modal-body">
-                                <form method="POST" action="send">
-                                <div className="form-group">
-                                    <label>Your First Name</label>
-                                    <input className="form-control col-md-4" type="text" name="name" id="modalname"/>
-                                    <br/>
-                                        <label>Your Email Address</label>
-                                    <input className="form-control col-md-8" type="email" name="email" id="modalemail"/>
-                                    <br/>  
-                                    <label for="contactbox">Your Bork</label>
-                                    <textarea className="form-control col-md-12" type="text" name="message" id="contactbox" rows="5">My pup would love to meet yours!</textarea>
-                                    <br/>
-                                </div>
-                                </form>
-                            </div>
-                            <div className="modal-footer">
-                                <button className="btn btn-info" type="sumbit" id="send">Bork!</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    )}
+        </>   
     )
-}
+};
 }
 
 export default Match;
