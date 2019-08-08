@@ -19,12 +19,20 @@ class AWS extends Component {
         }
     }
     handleChange = (ev) => {
+<<<<<<< HEAD
         // ev.preventDefault;
+=======
+       
+>>>>>>> 5dbee333c0c5ce284037e0ac4e55e9a6e21fbbaf
         this.setState({ success: false, url: "" });
 
     }
     handleUpload = (ev) => {
+<<<<<<< HEAD
         // ev.preventDefault;
+=======
+       
+>>>>>>> 5dbee333c0c5ce284037e0ac4e55e9a6e21fbbaf
         let file = this.uploadInput.files[0];
         // Split the filename to get the name and type
         let fileParts = this.uploadInput.files[0].name.split('.');
