@@ -7,11 +7,6 @@ import { APIGateway } from "aws-sdk";
 import API from "../utils/API";
 import { useAuth0 } from "../react-auth0-wrapper";
 import AWS from "./AWS";
-<<<<<<< HEAD
-
-=======
-import { useAuth0 } from "../react-auth0-wrapper";
->>>>>>> 5dbee333c0c5ce284037e0ac4e55e9a6e21fbbaf
 
 
 const h1Style = {
@@ -29,10 +24,6 @@ const uploadBtn = {
 }
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5dbee333c0c5ce284037e0ac4e55e9a6e21fbbaf
 
 class Survey extends Component {
 
