@@ -20,7 +20,7 @@ class SuccessModal extends Component {
   render() {
     return (
       <div>
-        <Button color="info" type="submit" onClick={this.toggle}>Submit</Button>
+        <Button disabled={!(this.props.dogName && this.props.url)} color="info" type="submit" onClick={this.toggle}>Submit</Button>
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
             <ModalHeader className="text-info" toggle={this.toggle}><i className="fas fa-paw"></i>&nbsp;&nbsp;Profile Saved
             </ModalHeader>

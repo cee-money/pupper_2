@@ -366,7 +366,7 @@ render() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-2">
+                <div className="col-md-1">
                     <SuccessModal 
                         dogName={this.state.dogName}
                         url={this.state.url}
