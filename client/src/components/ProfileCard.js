@@ -1,38 +1,35 @@
-import React, { Component } from "react";
+import React from "react";
 import EditRemoveBtn from "../components/EditRemoveBtn";
 import ProfileImage from "../components/ProfileImage";
 import ProfileSummary from "../components/ProfileSummary";
-import FindMatchesBtn from "../components/FindMatches";
 
+const h4Style = {
+    float: "left"
 
-class ProfileCard extends Component {
-    state = {
-        
-    }
+}
 
-render () {
+function ProfileCard(props) {
+
     return (
         <>
-        <div className="row" id="match-card-row">
-            <div className="col-md-12">
-                <div className="card text-white bg-info mb-3">
-                    <div className="card-header">
-                        <h4>"[Dog's Name]'s Profile" 
-                            <EditRemoveBtn /> 
-                        </h4>  
-                    </div>
-                    <div className="card-body row">
-                        <ProfileImage />
-                        <ProfileSummary />
-                    </div>
+        <div className="col-md-12">
+            <div className="card text-white bg-info mb-3">
+                <div className="card-header">
+                    <h4 style={h4Style}>{props.dogName}'s Profile
+                        
+                    </h4>  
+                    <EditRemoveBtn 
+                            id={props._id}
+                        /> 
+                </div>
+                <div className="card-body row">
+                    <ProfileImage {...props} />
+                    <ProfileSummary {...props} />
                 </div>
             </div>
         </div>
-        <FindMatchesBtn />
-        
         </>
     )
-}
 }
 
 export default ProfileCard;

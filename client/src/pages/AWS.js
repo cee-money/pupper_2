@@ -79,15 +79,15 @@ class AWS extends Component {
         return (
             <>
             <div className="col-md-4 col-xs-12 form-group App">
-                <label for='upload'>Your Pupper's Photo*:</label>
+                <label>Your Pupper's Photo*:</label>
                 <center>
                     {this.state.success ? <SuccessMessage /> : null}
                     {this.state.error ? <ErrorMessage /> : null}
                     <input
                         className="form-control"
                         id="dog-photo"
-                        name="image"
-                        value={this.state.image}
+                        name="url"
+                        value={this.state.url}
                         onChange={this.handleChange}
                         ref={(ref) => { this.uploadInput = ref; }}
                         type="file"
