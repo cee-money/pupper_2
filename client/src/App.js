@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import SignUp from "./pages/SignUp";
-import LogIn from "./pages/LogIn";
+import { useAuth0 } from "./react-auth0-wrapper";
 import Profile from "./pages/Profile";
 import Survey from "./pages/Survey";
 import Match from "./pages/Match";
@@ -10,26 +9,41 @@ import Err from "./pages/Err";
 import Footer from "./components/Footer";
 import ChatApp from './components/ChatApp';
 import Navbar from './components/NavBar'
-import './App.css';
 
 function App() {
+  const { isAuthenticated, loginWithRedirect, logout, user, loading } = useAuth0()
+
   return (
     <>
     <Navbar />
     <Router>
       <>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/login" component={LogIn} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/survey" component={Survey} />
-        <Route exact path="/match" component={Match} />
-        <Route exact path="/contact" component={ChatApp} />
+        <Route exact path="/" render={(props) => 
+        <Home {...props}
+        isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading} 
+       />}/>
+        <Route exact path="/profile" render={(props) => 
+        <Profile {...props}
+        isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading} 
+       />}/>
+        <Route exact path="/survey" render={(props) => 
+        <Survey {...props}
+        isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading} 
+       />}/>
+        <Route exact path="/match" render={(props) => 
+        <Match {...props}
+        isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading} 
+       />}/>
+        <Route exact path="/contact" render={(props) => 
+        <ChatApp {...props}
+        isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading} 
+       />}/>
         <Route component={Err} />
       </Switch>
       </>
     </Router>
+
     
     <Footer/>
     </>

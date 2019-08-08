@@ -5,10 +5,10 @@ const imgStyle = {
     width: "100%",
 }
 
-function ProfileImage() {
+function ProfileImage(props) {
     return (
         <div className="col-md-6 col-sm-12">
-            <img className="rounded" src="https://www.doggroomingcourse.com/wp-content/uploads/2018/02/groomed-dog-header.jpg" alt="Pupper Pic" style={imgStyle}/>
+            <img className="rounded" src={props.url} alt="Pupper Pic" style={imgStyle}/>
         </div>
     )
 }

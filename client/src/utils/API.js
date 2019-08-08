@@ -18,7 +18,7 @@ export default {
         return axios.post("/api/matches", profileData)
     },
 
-    deleteMatch: id => {
+    deleteProfile: id => {
         return axios.delete("/api/matches/" + id);
     }
     
