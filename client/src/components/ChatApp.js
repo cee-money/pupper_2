@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NameBox from './NameBox.js';
 import Chat from 'twilio-chat';
+import { useAuth0 } from "../react-auth0-wrapper";
 
 class ChatApp extends Component {
   constructor(props) {
@@ -8,7 +9,8 @@ class ChatApp extends Component {
     const name = localStorage.getItem('name') || '';
     const loggedIn = name !== '';
     this.state = {
-      name,
+      name: "",
+      uniqueID: "",
       loggedIn,
       token: '',
       chatReady: false,
@@ -17,6 +19,18 @@ class ChatApp extends Component {
     };
     this.channelName = 'general';
   }
+
+  addToState() {
+    const {user, loading } = useAuth0();
+    if(loading){
+        console.log("Loading");
+    } else {
+        this.setState({
+            uniqueID: user._id,
+            name: user.given_name
+        })
+    }
+}
 
   componentWillMount = () => {
     console.log("componentWillMount was hit")
@@ -57,7 +71,7 @@ class ChatApp extends Component {
 
   getToken = () => {
     console.log("gittoken was hit")
-    fetch(`/token/${this.state.name}`, {
+    fetch(`/token/${this.state.uniqueID}`, {
       method: 'POST'
     })
       .then(response => response.json())
@@ -77,6 +91,7 @@ class ChatApp extends Component {
     this.setState({ chatReady: true }, () => {
       this.chatClient
         .getChannelByUniqueName(this.channelName)
+        console.log("Line 94" + this.channelName)
         .then(channel => {
           if (channel) {
             return (this.channel = channel);

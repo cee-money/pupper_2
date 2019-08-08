@@ -51,7 +51,6 @@ render() {
                         <br/>
                         <h3 className="text-white">Tell us what you're looking for in a pupper playmate.</h3>
                     </div>
-                    <LogoutBtn />
                 </div>
             </div>
         </div>
