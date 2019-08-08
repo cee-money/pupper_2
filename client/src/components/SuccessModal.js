@@ -1,27 +1,36 @@
-//survey submitted successfully
-
-{/* <div className="container bg-active text-info">
-<div className="row">
-    <div className="col-12">
-        <div className="modal fade" id="survey-modal" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered" role="document">
-            <div className="modal-content">
-                <div className="modal-header">
-                <h4 className="modal-title" id="title">Survey completed!</h4>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div className="modal-body mx-auto">
-                    <h5 id="match-message">Thanks for telling us about your pup. Click next to tell us about ideal playmates.</h5>
-                </div>
-                <div className="modal-footer">
-                <button type="button" className="btn btn-info" data-toggle="modal" data-dismiss="modal" id="close">Close</button>
-                <a className="btn btn-info" href="/match" role="button">Next</a>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div> */}
+import React, { Component } from 'react';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+class SuccessModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false
+    };
+    this.toggle = this.toggle.bind(this);
+  }
+  toggle() {
+    this.setState(prevState => ({
+        modal: !prevState.modal
+        }));
+  }
+  render() {
+    return (
+      <div>
+        {console.log(this.props)}
+        
+            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+            <ModalHeader className="text-info" toggle={this.toggle}><i className="fas fa-paw"></i>&nbsp;&nbsp;Profile Saved
+            </ModalHeader>
+            <ModalBody className="text-info">
+                Thanks for telling us about your pup! Click close to add another profile for your other pup/pups. Or click next to tell us about ideal playmates.    
+            </ModalBody>
+            <ModalFooter>
+                <Button color="info" href="/match">Next</Button>
+                <Button color="secondary" onClick={this.toggle}>Close</Button>
+            </ModalFooter>
+            </Modal>
+      </div>
+    );
+  }
+}
+export default SuccessModal;

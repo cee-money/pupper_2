@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ProfileCard from "../components/ProfileCard";
 import LogoutBtn from "../components/LogoutBtn";
-// import { useAuth0 } from "../react-auth0-wrapper";
+import { useAuth0 } from "../react-auth0-wrapper";
 import API from "../utils/API";
 
 

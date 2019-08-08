@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const h1Style = {
     fontFamily: "'Lobster', cursive",
@@ -9,7 +10,7 @@ const iStyle = {
     fontSize: 135
 }
 
-function Home() {
+function Home(props) {
     return (
         <div className="jumbotron jumbotron-fluid bg-secondary" id="jumbo-main">
             <div className="container">
@@ -21,9 +22,22 @@ function Home() {
                         <br/>
                         <div className="row">
                             <div className="col-12">
-                                <a className="btn btn-info btn-lg" href="/signup" role="button">Sign
-                                    Up</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a className="btn btn-info btn-lg" href="/login" role="button">Log In</a>
+                                {!props.isAuthenticated && (
+                                    <button onClick={() => props.loginWithRedirect({})}>Log In!</button>
+                                )}
+                                {props.isAuthenticated && (
+                                    <Link to="/survey">
+                                        <a className="btn btn-info btn-lg" role="button">Survey</a>
+                                    </Link>
+                                )}
+                                {props.isAuthenticated && (
+                                    <Link to="/profile">
+                                    <a className="btn btn-info btn-lg" role="button">Profile</a>
+                                </Link>
+                                )}
+                                {props.isAuthenticated && (
+                                    <button onClick={() => props.logout()}>Log Out</button>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -34,3 +48,4 @@ function Home() {
   }
 
 export default Home;  
+
