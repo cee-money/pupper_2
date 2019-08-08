@@ -9,11 +9,13 @@ import Match from "./pages/Match";
 import Err from "./pages/Err";
 import Footer from "./components/Footer";
 import ChatApp from './components/ChatApp';
+import Navbar from './components/NavBar'
 import './App.css';
 
 function App() {
   return (
     <>
+    <Navbar />
     <Router>
       <>
       <Switch>

@@ -1,7 +1,5 @@
-const express = require("express");
-const cors = require('cors');
 const routes = require("./routes");
-const bodyParser = require('body-parser');
+const express = require("express")
 const app = express();
 const PORT = process.env.PORT || 3001;
 const sign_s3 = require('./controllers/sign_s3');
@@ -40,8 +38,6 @@ app.post('/token/:identity', (request, response) => {
 // ===================================================
 // Add routes, both API and view
 app.use(routes);
-app.use(cors())
-app.use('/sign_s3', sign_s3.sign_s3);
 
 
 // Connect to the Mongo DB

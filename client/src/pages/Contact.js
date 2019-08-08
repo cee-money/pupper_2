@@ -30,7 +30,6 @@ render() {
                     <br/>
                     <h3 className="text-white">Bork at a match!</h3>
                 </div>
-                <LogoutBtn />
             </div>
         </div>
         </div>
