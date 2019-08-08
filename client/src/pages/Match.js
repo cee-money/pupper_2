@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import MatchCard from "../components/MatchCard";
-import LogoutBtn from "../components/LogoutBtn";
 import YesNoMenu from "../components/YesNoMenu";
 import SizeMenu from "../components/SizeMenu";
 import { useAuth0 } from "../react-auth0-wrapper";
@@ -111,7 +110,6 @@ render() {
                         <br/>
                         <h3 className="text-white">Tell us what you're looking for in a pupper playmate.</h3>
                     </div>
-                    <LogoutBtn />
                 </div>
             </div>
         </div>

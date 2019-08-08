@@ -28,10 +28,10 @@ function Home(props) {
                             {props.isAuthenticated && (
                                 <>
                                 <Link to="/profile">
-                                    <a className="btn btn-info btn-lg text-white"  role="button">Profile</a>
+                                    <button className="btn btn-info btn-lg text-white">Profile</button>
                                 </Link>
                                 <Link to="/survey">
-                                    <a className="btn btn-info btn-lg text-white"  role="button">Survey</a>
+                                    <button className="btn btn-info btn-lg text-white">Survey</button>
                                 </Link>
                                 </>
                             )}

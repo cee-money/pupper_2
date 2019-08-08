@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import axios from 'axios';
-import API from "../utils/API";
-import LogoutBtn from "../components/LogoutBtn";
+// import axios from 'axios';
 import YesNoMenu from "../components/YesNoMenu";
 import SizeMenu from "../components/SizeMenu";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { APIGateway } from "aws-sdk";
+// import { APIGateway } from "aws-sdk";
+import API from "../utils/API";
 import { useAuth0 } from "../react-auth0-wrapper";
+import AWS from "./AWS";
 
 
 const h1Style = {
@@ -16,11 +16,6 @@ const h1Style = {
 
 const iStyle = {
     fontSize: 135
-}
-
-const uploadBtn = {
-    marginTop: 32,
-    marginLeft: -10
 }
 
 
@@ -58,7 +53,6 @@ class Survey extends Component {
           }));
     }
  
-
 addToState() {
     const {user, loading } = useAuth0();
 
@@ -130,6 +124,8 @@ render() {
                         <h3 className="text-white">Tell us about you and your pup.</h3>
                     </div>
                 </div>
+            </div>
+        </div>
 
         <div className="container bg-active text-info">
             <div className="row">
@@ -158,8 +154,7 @@ render() {
                     <small>* indicates required field</small>
                 </div>
             </div>
-            <div className="row">
-            </div>
+            {/* <div className="row"></div> */}
             <div className="row">
                 <div className="col-12">
                     <hr/>
@@ -300,22 +295,20 @@ render() {
             </div>
             <div className="row">
                 <div className="col-md-1">
-                <button className="btn btn-info" onClick={this.handleFormSubmit}>Submit</button>
+                    <button className="btn btn-info" onClick={this.handleFormSubmit}>Submit</button>
                 </div>
                 <div className="col-md-1">
                     <a className="btn btn-info" href="/match" role="button">Next</a>
-                            </div>
-                        </div>
-                    </form>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
                 </div>
             </div>
-            <div>
+            </form>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+        </div>
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalHeader className="text-info" toggle={this.toggle}><i className="fas fa-paw"></i>&nbsp;&nbsp;Profile Saved
                 </ModalHeader>
@@ -327,14 +320,6 @@ render() {
                     <Button color="secondary" onClick={this.toggle}>Close</Button>
                 </ModalFooter>
             </Modal>
-      </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-        </div>
     </>
     )
 };

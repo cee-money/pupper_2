@@ -3,7 +3,7 @@ import React from 'react';
 function LogoutBtn(){
     return (
         <div className="col-md-2 col-sm-12">
-            <a className="btn btn-info btn-lg" id="logout-btn" href="/logout" role="button">Logout</a>
+            <a className="btn btn-info btn-lg bg-secondary" id="logout-btn" href="/logout" role="button">Logout</a>
         </div>
     )
 }

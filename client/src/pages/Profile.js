@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ProfileCard from "../components/ProfileCard";
-import LogoutBtn from "../components/LogoutBtn";
 import { useAuth0 } from "../react-auth0-wrapper";
 import API from "../utils/API";
 
@@ -72,7 +71,6 @@ render() {
                     <div className="col-md-10 col-sm-12">
                         <h1 className="display-1 text-white" id="logo" style={h1Style}>pupper&nbsp;<i className="fas fa-paw" id="paw" style={iStyle}></i></h1>
                     </div>
-                    <LogoutBtn />
                 </div>
             </div>
         </div>
