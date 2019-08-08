@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from "../utils/API";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const buttonStyle = {
@@ -22,6 +23,14 @@ class RemoveModal extends Component {
         }));
   }
 
+  handleFormSubmit = event => {
+    event.preventDefault();
+
+    API.deleteProfile(this.props.id)
+        .then(res => this.loadPuppers())
+        .catch(err => console.log(err))
+};
+
   render() {
     return (
       <div>
@@ -33,7 +42,7 @@ class RemoveModal extends Component {
                 Are you sure you want to remove this pupper's profile?    
             </ModalBody>
             <ModalFooter>
-                <Button color="info" onClick="">Confirm</Button>
+                <Button color="info" type="submit" onClick={this.handleFormSubmit}>Confirm</Button>
                 <Button color="danger" onClick={this.toggle}>Cancel</Button>
             </ModalFooter>
             </Modal>

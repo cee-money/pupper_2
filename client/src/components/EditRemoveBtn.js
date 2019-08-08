@@ -6,12 +6,13 @@ const buttonStyle = {
     margin: 5
 }
 
-function EditRemoveBtn() {
+function EditRemoveBtn(props) {
     return (
         <>
-       <button style={buttonStyle} type="button" className="btn btn-secondary" role="button" id="edit-profile">Edit Profile</button>
-            {/* <button className="btn btn-secondary" id="remove-profile">Remove Profile</button> */}
-        <RemoveModal/>
+       <button style={buttonStyle} className="btn btn-secondary" id="edit-profile">Edit Profile</button>
+        <RemoveModal
+            id={props._id}
+        />
         </>
     )
 }

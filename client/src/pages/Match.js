@@ -3,6 +3,7 @@ import MatchCard from "../components/MatchCard";
 import LogoutBtn from "../components/LogoutBtn";
 import YesNoMenu from "../components/YesNoMenu";
 import SizeMenu from "../components/SizeMenu";
+import { useAuth0 } from "../react-auth0-wrapper";
 import API from "../utils/API";
 
 const h1Style = {
@@ -57,8 +58,26 @@ class Match extends Component {
     ],
         size: "",
         energetic: "",
-        dominant: ""
+        dominant: "",
+        ownerFirstName: "",
+        ownerLastName: "",
+        ownerEmail: "",
     }
+
+addToState() {
+    const {user, loading } = useAuth0();
+
+    if(loading){
+        console.log("Loading");
+    } else {
+        this.setState({
+            ownerFirstName: user.given_name,
+            ownerLastName: user.family_name,
+            ownerEmail: user.email
+        })
+    }
+};
+
 
 handleInputChange = event => {
     const { name, value } = event.target;
