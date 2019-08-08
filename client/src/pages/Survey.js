@@ -6,7 +6,7 @@ import SizeMenu from "../components/SizeMenu";
 import { APIGateway } from "aws-sdk";
 import API from "../utils/API";
 import AWS from "./AWS";
-// import { useAuth0 } from "../react-auth0-wrapper";
+import { useAuth0 } from "../react-auth0-wrapper";
 
 
 const h1Style = {
@@ -24,7 +24,6 @@ const uploadBtn = {
 }
 
 
-// const {user, loading } = useAuth0();
 
 
 class Survey extends Component {
@@ -53,17 +52,6 @@ class Survey extends Component {
         ownerEmail: ""
     }
 
-    // addToState() {
-    //     if(loading){
-    //         console.log("Loading");
-    //     } else {
-    //         this.setState({
-    //             ownerFirstName: user.given_name,
-    //             ownerLastName: user.family_name,
-    //             ownerEmail: user.email
-    //         })
-    //     }
-    // }
     addToState() {
         const {user, loading } = useAuth0();
         if(loading){
