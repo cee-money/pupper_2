@@ -5,8 +5,8 @@ import YesNoMenu from "../components/YesNoMenu";
 import SizeMenu from "../components/SizeMenu";
 import { APIGateway } from "aws-sdk";
 import API from "../utils/API";
-import AWS from "./AWS";
 import { useAuth0 } from "../react-auth0-wrapper";
+import AWS from "./AWS";
 
 
 const h1Style = {
@@ -22,7 +22,6 @@ const uploadBtn = {
     marginTop: 32,
     marginLeft: -10
 }
-
 
 
 
@@ -65,6 +64,12 @@ class Survey extends Component {
         }
     };
     
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+          [name]: value,
+        });
+    };
 
     handleFormSubmit = event => {
         event.preventDefault();
@@ -116,7 +121,6 @@ class Survey extends Component {
                                 <br />
                                 <h3 className="text-white">Tell us about you and your pup.</h3>
                             </div>
-                            <LogoutBtn />
                         </div>
                     </div>
                 </div>
