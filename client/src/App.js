@@ -7,6 +7,7 @@ import Survey from "./pages/Survey";
 import Match from "./pages/Match";
 import Err from "./pages/Err";
 import Footer from "./components/Footer";
+import ChatApp from './components/ChatApp';
 
 function App() {
   const { isAuthenticated, loginWithRedirect, logout, user, loading } = useAuth0()

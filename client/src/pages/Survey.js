@@ -129,10 +129,7 @@ render() {
                         <br/>
                         <h3 className="text-white">Tell us about you and your pup.</h3>
                     </div>
-                    <LogoutBtn />
                 </div>
-            </div>
-        </div>
 
         <div className="container bg-active text-info">
             <div className="row">
@@ -156,30 +153,7 @@ render() {
                         required
                     />
                 </div>
-                <div className="col-md-4 col-xs-12 form-group App">
-                    <label>Your Pupper's Photo*:</label>
-                    <center>
-                        {/* {this.state.success ? <SuccessMessage /> : null}
-                        {this.state.error ? <ErrorMessage /> : null} */}
-                    <input 
-                        className="form-control" 
-                        id="dog-photo" 
-                        name="url"
-                        value={this.state.url}
-                        onChange={this.handleInputChange} 
-                        // ref={(ref) => { this.uploadInput = ref; }} 
-                        type="file"
-                        required
-                    />
-                    </center>
-                </div>
-                <div className="col-md-2 col-xs-12 form-group">
-                    <button 
-                        className="btn btn-info btn-sm"
-                        onClick={this.handleUpload}
-                        style={uploadBtn}>Upload
-                    </button>
-                </div>
+                <AWS/>
                 <div className="col-12">
                     <small>* indicates required field</small>
                 </div>
@@ -330,9 +304,17 @@ render() {
                 </div>
                 <div className="col-md-1">
                     <a className="btn btn-info" href="/match" role="button">Next</a>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                 </div>
             </div>
-            </form>
             <div>
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalHeader className="text-info" toggle={this.toggle}><i className="fas fa-paw"></i>&nbsp;&nbsp;Profile Saved
@@ -357,5 +339,5 @@ render() {
     )
 };
 }
-            
+
 export default Survey;
