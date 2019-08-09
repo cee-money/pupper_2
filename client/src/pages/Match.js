@@ -73,9 +73,9 @@ class Match extends Component {
     }
 
 
-    componentDidMount() {
-        API.getMatches().then(res => this.setState({matches: res.data})).catch(err => console.log(err))
-    }
+    // componentDidMount() {
+    //     API.getMatches().then(res => this.setState({matches: res.data})).catch(err => console.log(err))
+    // }
 
 addToState() {
     const {user, loading } = useAuth0();
