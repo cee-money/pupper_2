@@ -23,15 +23,16 @@ class Profile extends Component {
 
     state = {
         puppers: [
-        // {
-        //     dogName: "Fido",
-        //     _id: 7,
-        //     url:"https://www.azhumane.org/wp-content/uploads/2015/10/iStock-623499258-200x200.jpg",
-        //     ownerEmail: "dawn@me.com",
-        //     size: "Small",
-        //     energetic: "Yes",
-        //     dominant: "No"
-        // },
+        {
+            dogName: "Fido",
+            _id: 7,
+            url:"https://www.azhumane.org/wp-content/uploads/2015/10/iStock-623499258-200x200.jpg",
+            ownerEmail: "dawn@me.com",
+            size: "Small",
+            energetic: "Yes",
+            dominant: "No"
+        }
+        // ,
         // {
         //     dogName: "Frank",
         //     _id: 8,
@@ -62,7 +63,7 @@ componentDidMount() {
 };
 
 loadPuppers = () => {
-    API.getProfile(this.state)
+    API.getProfile()
         .then(res => 
             this.setState({ puppers: res.data }))
         .catch(err => console.log(err))
