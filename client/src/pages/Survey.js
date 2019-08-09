@@ -53,6 +53,10 @@ class Survey extends Component {
     }));
   }
 
+  closeModal() {
+      this.setState({modal : false})
+  }
+
 
   handleInputChange = event => {
     const { name, value } = event.target;

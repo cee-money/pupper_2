@@ -27,9 +27,10 @@ class BorkModal extends React.Component {
 
   handleInputChange(event) {
 
-    const { name, value } = event.target;
+    const name = event.target.name;
+    const value = event.target.value;
 
-    this.setState({
+    this.state.setState({
       [name]: value,
 
     });
