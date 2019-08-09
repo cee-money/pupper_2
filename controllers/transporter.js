@@ -1,11 +1,12 @@
 var nodemailer = require('nodemailer');
+var creds = require("./config")
 
 var transport = {
   host: 'smtp.gmail.com',
 //   port: 465,
   auth: {
-    user: USER,
-    pass: PASS
+    USER: creds.USER,
+    PASS: creds.PASS
   }
 }
 

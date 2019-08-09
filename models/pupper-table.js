@@ -16,10 +16,10 @@ const pupperSchema = new Schema({
   chaser: { type: String },
   wrestler: { type: String },
   allDogFriendly: { type: String },
-  ownerFirstName: { type: String, required: true },
-  ownerLastName: { type: String, required: true },
-  ownerEmail: { type: String, required: true },
-  url: { type: String, required: true }
+  ownerFirstName: { type: String },
+  ownerLastName: { type: String },
+  ownerEmail: { type: String},
+  url: { type: String }
 });
 
 const Pupper = mongoose.model("Pupper", pupperSchema);

@@ -2,23 +2,23 @@ import axios from "axios";
 
 export default {
 
-    getMatches: () => {
+    getMatches: function() {
         return axios.get("/api/matches");
     },
 
-    getProfile: id => {
+    getProfile: function(id) {
         return axios.get("/api/matches/" + id);
     },
 
-    updateProfile: profileData => {
+    updateProfile: function(profileData) {
         return axios.put("/api/matches", profileData )
     },
 
-    create: profileData => {
+    create: function(profileData) {
         return axios.post("/api/matches", profileData)
     },
 
-    deleteProfile: id => {
+    deleteProfile: function(id) {
         return axios.delete("/api/matches/" + id);
     }
     

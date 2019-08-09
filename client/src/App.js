@@ -20,18 +20,22 @@ function App() {
       <>
     <Navbar isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading} />
       <Switch>
+
         <Route exact path="/" render={(props) => 
         <Home {...props}
         isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading} 
        />}/>
+
         <Route exact path="/profile" render={(props) => 
         <Profile {...props}
         isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading} 
        />}/>
+
         <Route exact path="/survey" render={(props) => 
         <Survey {...props}
         isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading} 
        />}/>
+       
         <Route exact path="/match" render={(props) => 
         <Match {...props}
         isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading} 

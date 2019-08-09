@@ -12,7 +12,7 @@ try {
     port: process.env.PORT || 3001
   }
   module.exports = {
-    nodemailer: {
+    auth: {
       USER: process.env.USER,
       PASS: process.env.PASS
     }

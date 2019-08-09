@@ -26,7 +26,7 @@ function Navbar(props) {
           <ul className="navbar-nav mr-auto">
             {!props.isAuthenticated && (
               <li className="nav-item">
-                <button className="btn btn-info btn-lg bg-secondary" onClick={() => props.loginWithRedirect({})}>
+                <button className="btn btn-info bg-secondary" onClick={() => props.loginWithRedirect({})}>
                   Log in
                 </button>
               </li>
@@ -53,7 +53,7 @@ function Navbar(props) {
           </ul>
         {props.isAuthenticated && (
           <div className="nav-item">
-              <button className="btn btn-info btn-lg bg-secondary" onClick={() => props.logout()}>Log out</button>
+              <button className="btn btn-info bg-secondary" onClick={() => props.logout()}>Log out</button>
             </div>
           )}
         </div>

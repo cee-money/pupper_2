@@ -3,8 +3,8 @@ import React from 'react';
 function YesNoMenu(props) {
     return (
         <>
-            <option {...props} value="Yes">Yes</option>
-            <option {...props} value="No">No</option>
+            <option {...props} value="yes">Yes</option>
+            <option {...props} value="no">No</option>
         </> 
     )
 }
