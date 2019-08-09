@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { useAuth0 } from "../react-auth0-wrapper";
+// import { APIGateway } from "aws-sdk";
 // import axios from 'axios';
 import YesNoMenu from "../components/YesNoMenu";
 import SizeMenu from "../components/SizeMenu";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-// import { APIGateway } from "aws-sdk";
 import API from "../utils/API";
-import { useAuth0 } from "../react-auth0-wrapper";
 import AWS from "./AWS";
 
 
@@ -15,9 +15,13 @@ const h1Style = {
 }
 
 const iStyle = {
-    fontSize: 135
+    fontSize: 135,
+    transform: "rotate(20deg)"
 }
 
+const jumboStyle ={
+    paddingTop: 0
+}
 
 class Survey extends Component {
     constructor(props) {
@@ -79,7 +83,7 @@ handleInputChange = event => {
 handleFormSubmit = event => {
     event.preventDefault();
 
-    if (this.state.dogName && this.state.url) {
+    if (this.state.dogName) {
 
         console.log("Yup!")
         console.log(this.state)
@@ -109,17 +113,19 @@ handleFormSubmit = event => {
             
             })
             .catch(err => this.toggle())
-    } 
+    } else {
+        console.log("Nope!")
+    }
 };
 
 render() {    
     return (
         <>
-        <div className="jumbotron jumbotron-fluid bg-secondary" id= "mainsurveyjumbo">
+        <div className="jumbotron jumbotron-fluid bg-secondary" id= "mainsurveyjumbo" style={jumboStyle}>
             <div className="container">
                 <div className="row">
                     <div className="col-md-10 col-sm-12" id="tellustext">
-                        <h1 className="display-1 text-white" id="logo" style={h1Style}>pupper&nbsp;<i className="fas fa-paw" id="paw" style={iStyle}></i></h1>
+                        <h1 className="display-1 text-white" id="logo" style={h1Style}>pupper<i className="fas fa-paw" id="paw" style={iStyle}></i></h1>
                         <br/>
                         <h3 className="text-white">Tell us about you and your pup.</h3>
                     </div>
@@ -149,12 +155,14 @@ render() {
                         required
                     />
                 </div>
-                <AWS/>
+                <AWS
+                    name="url"
+                    value={this.state.url}
+                />
                 <div className="col-12">
                     <small>* indicates required field</small>
                 </div>
             </div>
-            {/* <div className="row"></div> */}
             <div className="row">
                 <div className="col-12">
                     <hr/>

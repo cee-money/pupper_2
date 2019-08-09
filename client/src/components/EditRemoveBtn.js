@@ -11,7 +11,7 @@ function EditRemoveBtn(props) {
         <>
        <button style={buttonStyle} className="btn btn-secondary" id="edit-profile">Edit Profile</button>
         <RemoveModal
-            id={props._id}
+            _id={props._id}
         />
         </>
     )

@@ -78,6 +78,7 @@ class AWS extends Component {
         )
         return (
             <>
+            {console.log(this.props.url)}
             <div className="col-md-4 col-xs-12 form-group App">
                 <label>Your Pupper's Photo*:</label>
                 <center>
@@ -99,10 +100,10 @@ class AWS extends Component {
                     className="btn btn-info btn-sm"
                     onClick={this.handleUpload}
                     style={uploadBtn}>Upload
- </button>
+                </button>
             </div>
             </>
-                        )
+        )
     }
 }
 export default AWS;
