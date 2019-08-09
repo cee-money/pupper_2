@@ -18,12 +18,15 @@ class AWS extends Component {
             errorMessage: ""
         }
     }
-    handleChange = (ev) => {
+    handleChange = (event) => {
+
+        const value = event.target
        
-        this.setState({ success: false, url: "" });
+        this.setState({ success: false, url: value });
 
     }
-    handleUpload = (ev) => {
+    handleUpload = (event) => {
+        event.preventDefault()
        
         let file = this.uploadInput.files[0];
         // Split the filename to get the name and type

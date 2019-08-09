@@ -93,19 +93,19 @@ handleFormSubmit = event => {
                 this.setState({
                 url:"",
                 dogName: "",
-                size: "",
-                familyFriendly: "",
-                energetic: "",
-                lazy: "",
-                strangerDanger: "",
-                dogDanger: "",
-                largeDogDanger: "",
-                smallDogDanger: "",
-                dominant: "",
-                doesntShare: "",
-                chaser: "",
-                wrestler: "",
-                allDogFriendly: "",
+                size: "Medium",
+                familyFriendly: "Yes",
+                energetic: "Yes",
+                lazy: "Yes",
+                strangerDanger: "Yes",
+                dogDanger: "Yes",
+                largeDogDanger: "Yes",
+                smallDogDanger: "Yes",
+                dominant: "Yes",
+                doesntShare: "Yes",
+                chaser: "Yes",
+                wrestler: "Yes",
+                allDogFriendly: "Yes",
                 ownerFirstName: "",
                 ownerLastName: "",
                 ownerEmail: ""
@@ -113,9 +113,10 @@ handleFormSubmit = event => {
             
             })
             .catch(err => this.toggle())
-    } else {
-        console.log("Nope!")
-    }
+    } 
+    // else {
+    //     console.log("Nope!")
+    // }
 };
 
 render() {    

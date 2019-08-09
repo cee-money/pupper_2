@@ -6,9 +6,13 @@ import SizeMenu from "./SizeMenu";
 
 class ProfileEdit extends Component {  
     state = {
-        puppers: [],
-
+        myPupper: this.props.pupper,
     }
+
+componentDidMount() {
+    console.log(this.state.myPupper)
+};
+
 
 
 handleInputChange = event => {

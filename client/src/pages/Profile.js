@@ -98,6 +98,7 @@ render() {
             <div className="row">                
                 {this.state.puppers.map(pupper => (
                     <ProfileCard
+                        pupper={pupper}
                         key={pupper._id}
                         _id={pupper._id}
                         url={pupper.url}

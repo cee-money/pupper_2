@@ -26,8 +26,8 @@ function ProfileCard(props) {
                 </div>
                 <div className="card-body row">
                     <ProfileImage {...props} />
-                    <ProfileSummary {...props} />
-                    {/* <ProfileEdit {...props} /> */}
+                    {/* <ProfileSummary {...props} /> */}
+                    <ProfileEdit {...props} />
                 </div>
             </div>
         </div>
