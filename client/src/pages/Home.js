@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const h1Style = {
     fontFamily: "'Lobster', cursive",
@@ -22,7 +22,7 @@ function Home(props) {
                         <br/>
                         <div className="row">
                             <div className="col-12">
-                            {!props.isAuthenticated && (
+                            {/* {!props.isAuthenticated && (
                                 <button onClick={() => props.loginWithRedirect({})}>Log in</button>
                             )}
                             {props.isAuthenticated && (
@@ -34,7 +34,7 @@ function Home(props) {
                                     <button className="btn btn-info btn-lg text-white">Survey</button>
                                 </Link>
                                 </>
-                            )}
+                            )} */}
                             </div>
                         </div>
                     </div>
