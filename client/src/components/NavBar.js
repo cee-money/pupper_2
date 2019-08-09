@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 const iStyle = {
   fontSize: 25,
-  margin: 5
+  margin: 8
 };
 
 function Navbar(props) {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-info bg-info text-white">
-        <i className="fas fa-paw" id="paw" href="/" style={iStyle} />
+        <Link to="/"><i className="fas fa-paw text-white" id="paw" href="/" style={iStyle}/></Link>
         <button
           className="navbar-toggler"
           type="button"
