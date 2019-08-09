@@ -9,9 +9,9 @@ const buttonStyle = {
 function EditRemoveBtn(props) {
     return (
         <>
-       <button style={buttonStyle} className="btn btn-secondary" id="edit-profile">Edit Profile</button>
+       <button style={buttonStyle} className="btn btn-secondary" _id={props._id} id="edit-profile">Edit Profile</button>
         <RemoveModal
-            id={props._id}
+            _id={props._id}
         />
         </>
     )
