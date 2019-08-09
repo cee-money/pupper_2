@@ -23,16 +23,16 @@ const jumboStyle ={
 class Match extends Component {
     state = {
         matches: [
-        // {
-        //     dogName: "Fido",
-        //     _id: 7,
-        //     url:"https://www.azhumane.org/wp-content/uploads/2015/10/iStock-623499258-200x200.jpg",
-        //     ownerFirstName: "Dawn",
-        //     ownerEmail: "dawn@me.com",
-        //     size: "Small",
-        //     energetic: "Yes",
-        //     dominant: "No"
-        // },
+        {
+            dogName: "Fido",
+            _id: 7,
+            url:"https://www.azhumane.org/wp-content/uploads/2015/10/iStock-623499258-200x200.jpg",
+            ownerFirstName: "Dawn",
+            ownerEmail: "dawn@me.com",
+            size: "Small",
+            energetic: "Yes",
+            dominant: "No"
+        },
         // {
         //     dogName: "Frank",
         //     _id: 8,
@@ -72,10 +72,6 @@ class Match extends Component {
         ownerEmail: "",
     }
 
-
-    componentDidMount() {
-        API.getMatches().then(res => this.setState({matches: res.data})).catch(err => console.log(err))
-    }
 
 addToState() {
     const {user, loading } = useAuth0();

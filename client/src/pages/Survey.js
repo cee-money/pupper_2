@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { useAuth0 } from "../react-auth0-wrapper";
 // import { APIGateway } from "aws-sdk";
@@ -24,31 +25,29 @@ const jumboStyle ={
 }
 
 class Survey extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+        state = {
             url:"",
             dogName: "",
-            size: "",
-            familyFriendly: "",
-            energetic: "",
-            lazy: "",
-            strangerDanger: "",
-            dogDanger: "",
-            largeDogDanger: "",
-            smallDogDanger: "",
-            dominant: "",
-            doesntShare: "",
-            chaser: "",
-            wrestler: "",
-            allDogFriendly: "",
+            size: "Medium",
+            familyFriendly: "Yes",
+            energetic: "Yes",
+            lazy: "Yes",
+            strangerDanger: "Yes",
+            dogDanger: "Yes",
+            largeDogDanger: "Yes",
+            smallDogDanger: "Yes",
+            dominant: "Yes",
+            doesntShare: "Yes",
+            chaser: "Yes",
+            wrestler: "Yes",
+            allDogFriendly: "Yes",
             ownerFirstName: "",
             ownerLastName: "",
             ownerEmail: "",
             modal: false
         }
-        this.toggle = this.toggle.bind(this);
-    };
+    //     this.toggle = this.toggle.bind(this);
+    // };
 
     toggle() {
 
@@ -56,26 +55,19 @@ class Survey extends Component {
             modal: !prevState.modal
           }));
     }
- 
-addToState() {
-    const {user, loading } = useAuth0();
 
-    if(loading){
-        console.log("Loading");
-    } else {
-        this.setState({
-            ownerFirstName: user.given_name,
-            ownerLastName: user.family_name,
-            ownerEmail: user.email
-        })
-    }
-};
 
 handleInputChange = event => {
     const { name, value } = event.target;
 
+    // const { user } = useAuth0()
+    // ownerFirstName: user.given_name,
+    // ownerLastName: user.family_name,
+    // ownerEmail: user.email
+
     this.setState({
       [name]: value,
+
     });
 };
 
@@ -85,31 +77,31 @@ handleFormSubmit = event => {
 
     if (this.state.dogName) {
 
-        console.log("Yup!")
+        // console.log("Yup!")
         console.log(this.state)
 
         API.create(this.state)
             .then(res => {
                 this.setState({
-                url:"",
-                dogName: "",
-                size: "Medium",
-                familyFriendly: "Yes",
-                energetic: "Yes",
-                lazy: "Yes",
-                strangerDanger: "Yes",
-                dogDanger: "Yes",
-                largeDogDanger: "Yes",
-                smallDogDanger: "Yes",
-                dominant: "Yes",
-                doesntShare: "Yes",
-                chaser: "Yes",
-                wrestler: "Yes",
-                allDogFriendly: "Yes",
-                ownerFirstName: "",
-                ownerLastName: "",
-                ownerEmail: ""
-            })
+                    url:"",
+                    dogName: "",
+                    size: "Medium",
+                    familyFriendly: "Yes",
+                    energetic: "Yes",
+                    lazy: "Yes",
+                    strangerDanger: "Yes",
+                    dogDanger: "Yes",
+                    largeDogDanger: "Yes",
+                    smallDogDanger: "Yes",
+                    dominant: "Yes",
+                    doesntShare: "Yes",
+                    chaser: "Yes",
+                    wrestler: "Yes",
+                    allDogFriendly: "Yes",
+                    ownerFirstName: "",
+                    ownerLastName: "",
+                    ownerEmail: ""
+                })
             
             })
             .catch(err => this.toggle())
@@ -303,9 +295,9 @@ render() {
                 <div className="col-md-1">
                     <button className="btn btn-info" onClick={this.handleFormSubmit}>Submit</button>
                 </div>
-                <div className="col-md-1">
-                    <a className="btn btn-info" href="/match" role="button">Next</a>
-                </div>
+                {/* <div className="col-md-1">
+                    <Link className="btn btn-info" to="/match" role="button">Next</Link>
+                </div> */}
             </div>
             </form>
                     <br />
@@ -322,7 +314,7 @@ render() {
                     Thanks for telling us about your pup! Click close to add another profile for your other pup/pups. Or click next to tell us about ideal playmates.    
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="info" href="/match">Next</Button>
+                    <Link className="btn btn-info" to="/match" role="button">Next</Link>
                     <Button color="secondary" onClick={this.toggle}>Close</Button>
                 </ModalFooter>
             </Modal>
