@@ -443,7 +443,7 @@ const pupSeed = [{
 }
 ]
   
-  db.Puper.remove({})
+  db.Pupper.remove({})
     .then(() => db.Pupper.collection.insertMany(pupSeed))
     .then(data => {
       console.log(data.result.n + " records inserted!");
