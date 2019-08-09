@@ -72,6 +72,11 @@ class Match extends Component {
         ownerEmail: "",
     }
 
+
+    componentDidMount() {
+        API.getMatches().then(res => this.setState({matches: res.data})).catch(err => console.log(err))
+    }
+
 addToState() {
     const {user, loading } = useAuth0();
 

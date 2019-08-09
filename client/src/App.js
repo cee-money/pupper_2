@@ -8,16 +8,17 @@ import Match from "./pages/Match";
 import Err from "./pages/Err";
 import Footer from "./components/Footer";
 import ChatApp from './components/ChatApp';
-import Navbar from './components/NavBar'
+import Navbar from './components/NavBar';
+// import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const { isAuthenticated, loginWithRedirect, logout, user, loading } = useAuth0()
 
   return (
     <>
-    <Navbar />
     <Router>
       <>
+    <Navbar isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading} />
       <Switch>
         <Route exact path="/" render={(props) => 
         <Home {...props}

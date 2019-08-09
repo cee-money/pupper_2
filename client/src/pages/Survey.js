@@ -156,10 +156,7 @@ render() {
                         required
                     />
                 </div>
-                <AWS
-                    name="url"
-                    value={this.state.url}
-                />
+                <AWS />
                 <div className="col-12">
                     <small>* indicates required field</small>
                 </div>

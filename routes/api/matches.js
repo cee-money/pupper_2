@@ -9,7 +9,7 @@ router.route("/:email")
     .get(pupperController.findOne)
 // matches with "/api/matches/:size/:energetic/:dominant"
 router.route("/:size/:energetic/:dominant")
-    .get(pupperController.findAll)
+    .get(pupperController.findMatches)
     // matches with /api/matches/:id
 router.route("/:id")
     .delete(pupperController.remove)
