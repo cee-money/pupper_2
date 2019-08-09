@@ -2,6 +2,8 @@ import React from "react";
 import EditRemoveBtn from "../components/EditRemoveBtn";
 import ProfileImage from "../components/ProfileImage";
 import ProfileSummary from "../components/ProfileSummary";
+import ProfileEdit from "../components/ProfileEdit";
+
 
 const h4Style = {
     float: "left"
@@ -25,6 +27,7 @@ function ProfileCard(props) {
                 <div className="card-body row">
                     <ProfileImage {...props} />
                     <ProfileSummary {...props} />
+                    {/* <ProfileEdit {...props} /> */}
                 </div>
             </div>
         </div>
