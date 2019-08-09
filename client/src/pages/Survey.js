@@ -8,7 +8,6 @@ import { useAuth0 } from "../react-auth0-wrapper";
 // import SizeMenu from "../components/SizeMenu";
 import API from "../utils/API";
 import AWS from "./AWS";
-import { useAuth0 } from "../react-auth0-wrapper";
 
 const h1Style = {
   fontFamily: "'Lobster', cursive",
@@ -24,10 +23,9 @@ const jumboStyle = {
   paddingTop: 0
 };
 
+
 class Survey extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+    state = {
       url: "",
       dogName: "",
       size: "",
@@ -48,8 +46,6 @@ class Survey extends Component {
       ownerEmail: "",
       modal: false
     };
-    this.toggle = this.toggle.bind(this);
-  }
 
   toggle() {
     this.setState(prevState => ({
@@ -57,22 +53,6 @@ class Survey extends Component {
     }));
   }
 
-  addToState() {
-    const {user, loading} = useAuth0();
-      if(loading){
-          console.log("Loading");
-      } else {
-          this.setState({
-              ownerFirstName: user.given_name,
-              ownerLastName: user.family_name,
-              ownerEmail: user.email
-          })
-      }
-  };
-
-  // componentDidMount () {
-  //     this.addToState()
-  // }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -81,13 +61,13 @@ class Survey extends Component {
       [name]: value
     });
   };
-
+  
+  
   handleFormSubmit = event => {
     event.preventDefault();
-    // this.addToState()
     if (this.state.dogName) {
       console.log("Yup!");
-      console.log(this.state);
+      console.log(this.props);
 
       API.create({
         url: this.state.url,
@@ -105,9 +85,9 @@ class Survey extends Component {
         chaser: this.state.doesntShare,
         wrestler: this.state.wrestler,
         allDogFriendly: this.state.allDogFriendly,
-        ownerFirstName: this.state.ownerFirstName,
-        ownerLastName: this.state.ownerLastName,
-        ownerEmail: this.state.ownerEmail
+        ownerFirstName: this.props.user.given_name,
+        ownerLastName: this.props.user.family_name,
+        ownerEmail: this.props.user.email
       })
         .then(res => {
           this.setState({
@@ -130,8 +110,9 @@ class Survey extends Component {
             ownerLastName: "",
             ownerEmail: ""
           });
+          this.toggle()
         })
-        .catch(err => this.toggle());
+        .catch(err => console.log(err));
     }
     // else {
     //     console.log("Nope!")
@@ -139,6 +120,7 @@ class Survey extends Component {
   };
 
   render() {
+    console.log(this.props)
     return (
       <>
         <div
