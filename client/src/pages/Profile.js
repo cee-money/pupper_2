@@ -32,15 +32,15 @@ class Profile extends Component {
         //     energetic: "Yes",
         //     dominant: "No"
         // },
-        {
-            dogName: "Frank",
-            _id: 8,
-            url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbYquZS-VxQyz92r3dmKeBzx-V_o7xm3jobIXOftVk7T03YffF",
-            ownerEmail: "sherry@aol.com",
-            size: "Medium",
-            energetic: "Yes",
-            dominant: "No"
-        }
+        // {
+        //     dogName: "Frank",
+        //     _id: 8,
+        //     url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbYquZS-VxQyz92r3dmKeBzx-V_o7xm3jobIXOftVk7T03YffF",
+        //     ownerEmail: "sherry@aol.com",
+        //     size: "Medium",
+        //     energetic: "Yes",
+        //     dominant: "No"
+        // }
         ],
         ownerEmail: ""
     }
