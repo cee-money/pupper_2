@@ -11,18 +11,44 @@ class BorkModal extends React.Component {
     this.toggle = this.toggle.bind(this);
   }
 
+  handleSubmit(event){
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    axios({
+        method: "POST", 
+        url:"http://localhost:3002/send", 
+        data: {
+            name: name,   
+            email: email,  
+            messsage: message
+        }
+    }).then((response)=>{
+        if (response.data.msg === 'success'){
+            alert("Message Sent."); 
+            this.resetForm()
+        }else if(response.data.msg === 'fail'){
+            alert("Message failed to send.")
+        }
+    })
+}
+// resetForm(){
+//   document.getElementById('contact-form').reset();
+// }
+
   toggle() {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
-  }
+  
 
   render() {
     return (
       <div>
         <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Contact</ModalHeader>
           <ModalBody>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </ModalBody>
@@ -35,12 +61,12 @@ class BorkModal extends React.Component {
     );
   }
 }
-
+}
 export default BorkModal;
 
 // to contact another owner
 
-{/* <div className="container text-info bg-active">
+/* <div className="container text-info bg-active">
 <div className="row">
     <div className="col-12">
         <div className="modal fade" id="bork-box" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
@@ -75,4 +101,4 @@ export default BorkModal;
         </div>
     </div>
 </div>
-</div>  */}
+</div>  */

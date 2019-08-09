@@ -10,7 +10,7 @@ function Navbar(props) {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-info bg-info text-white">
-        <Link to="/"><i className="fas fa-paw text-white" id="paw" href="/" style={iStyle}/></Link>
+        <Link to="/"><i className="fas fa-paw text-white" id="paw" href="/" style={iStyle} /></Link>
         <button
           className="navbar-toggler"
           type="button"

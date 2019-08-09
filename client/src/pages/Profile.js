@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Alert } from 'reactstrap';
 import ProfileCard from "../components/ProfileCard";
 import { useAuth0 } from "../react-auth0-wrapper";
 import API from "../utils/API";
@@ -10,7 +11,12 @@ const h1Style = {
 }
 
 const iStyle = {
-    fontSize: 135
+    fontSize: 135,
+    transform: "rotate(20deg)"
+}
+
+const jumboStyle ={
+    paddingTop: 0
 }
 
 class Profile extends Component {
@@ -34,7 +40,7 @@ class Profile extends Component {
         //     size: "Medium",
         //     energetic: "Yes",
         //     dominant: "No"
-        // },
+        // }
         ],
         ownerEmail: ""
     }
@@ -58,18 +64,19 @@ componentDidMount() {
 loadPuppers = () => {
     API.getProfile(this.state)
         .then(res => 
-            this.setState({ puppers: res.data, ownerEmail:"" }))
+            this.setState({ puppers: res.data }))
         .catch(err => console.log(err))
 };
 
 render() {
     return (
         <>
-        <div className="jumbotron jumbotron-fluid bg-secondary">
+        <div className="jumbotron jumbotron-fluid bg-secondary" style={jumboStyle}>
             <div className="container">
                 <div className="row">
                     <div className="col-md-10 col-sm-12">
-                        <h1 className="display-1 text-white" id="logo" style={h1Style}>pupper&nbsp;<i className="fas fa-paw" id="paw" style={iStyle}></i></h1>
+                        <h1 className="display-1 text-white" id="logo" style={h1Style}>pupper<i className="fas fa-paw" id="paw" style={iStyle}></i></h1>
+                        <br/>
                     </div>
                 </div>
             </div>
@@ -84,13 +91,16 @@ render() {
             </div>
         </div>            
         <br/>
-            
+        
+        
         <div className="container" id="show-profile">
+        {this.state.puppers.length ? (  
             <div className="row">                
                 {this.state.puppers.map(pupper => (
                     <ProfileCard
+                        pupper={pupper}
                         key={pupper._id}
-                        id={pupper._id}
+                        _id={pupper._id}
                         url={pupper.url}
                         dogName={pupper.dogName}
                         size={pupper.size}
@@ -108,14 +118,23 @@ render() {
                         ownerEmail={pupper.ownerEmail}
                     />   
                 ))}
-            </div>
+            </div> 
+        ) : (
+            <div className="row">
+                <h5>
+                <br/>
+                <Alert color="light">
+                    You have not yet created a pupper profile. Go to <a href="/survey" className="alert-link text-info">Add Profile</a> to begin.
+                </Alert>
+                </h5>
+            </div>  
+        )}
         <br/>
         <br/>
         <br/>
         <br/>
         <br/>
         </div>
-
         </>   
     )
 };

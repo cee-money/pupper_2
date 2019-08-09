@@ -7,7 +7,7 @@ aws.config.update({
   secretAccessKey: process.env.AWSSecretKey
 })
 
-const S3_BUCKET = process.env.bucket
+const S3_BUCKET = process.env.Bucket
 // Now lets export this function so we can call it from somewhere else
 exports.sign_s3 = (req,res) => {
   const s3 = new aws.S3();  // Create a new instance of S3
