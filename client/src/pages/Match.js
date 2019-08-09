@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Alert } from 'reactstrap';
 import MatchCard from "../components/MatchCard";
 import YesNoMenu from "../components/YesNoMenu";
 import SizeMenu from "../components/SizeMenu";
@@ -11,15 +12,20 @@ const h1Style = {
 }
 
 const iStyle = {
-    fontSize: 135
+    fontSize: 135,
+    transform: "rotate(20deg)"
 }
 
+const jumboStyle ={
+    paddingTop: 0
+}
 
 class Match extends Component {
     state = {
         matches: [
         // {
         //     dogName: "Fido",
+        //     _id: 7,
         //     url:"https://www.azhumane.org/wp-content/uploads/2015/10/iStock-623499258-200x200.jpg",
         //     ownerFirstName: "Dawn",
         //     ownerEmail: "dawn@me.com",
@@ -29,6 +35,7 @@ class Match extends Component {
         // },
         // {
         //     dogName: "Frank",
+        //     _id: 8,
         //     url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbYquZS-VxQyz92r3dmKeBzx-V_o7xm3jobIXOftVk7T03YffF",
         //     ownerFirstName: "Sherry",
         //     ownerEmail: "sherry@aol.com",
@@ -38,6 +45,7 @@ class Match extends Component {
         // },
         // {
         //     dogName: "Hooch",
+        //     _id: 3,
         //     url:"https://www.dogthelove.com/images/dog_200x200.jpg",
         //     ownerFirstName: "Carol",
         //     ownerEmail: "carol@gmail.com",
@@ -47,6 +55,7 @@ class Match extends Component {
         // },
         // {
         //     dogName: "Cecil",
+        //     _id: 2,
         //     url:"https://thedogstop.com/pa-pittsburgh-sewickley/wp-content/uploads/sites/7/2017/08/george.jpg",
         //     ownerFirstName: "Avery",
         //     ownerEmail: "cecil@optonline.net",
@@ -107,11 +116,11 @@ resetMatches() {
 render() {
     return (
         <>
-        <div className="jumbotron jumbotron-fluid bg-secondary">
+        <div className="jumbotron jumbotron-fluid bg-secondary" style={jumboStyle}>
             <div className="container">
                 <div className="row">
                     <div className="col-md-10 col-sm-12">
-                        <h1 className="display-1 text-white" id="logo" style={h1Style}>pupper&nbsp;<i className="fas fa-paw" id="paw" style={iStyle}></i></h1>
+                        <h1 className="display-1 text-white" id="logo" style={h1Style}>pupper<i className="fas fa-paw" id="paw" style={iStyle}></i></h1>
                         <br/>
                         <h3 className="text-white">Tell us what you're looking for in a pupper playmate.</h3>
                     </div>
@@ -138,7 +147,7 @@ render() {
             </div>
             <div className="row">
                 <div className="col-md-4 col-xs-12 form-group">
-                    <label for="match-q1">I am looking to meet dogs that are:</label>
+                    <label>I am looking to meet dogs that are:</label>
                     <select className="form-control form-group col-md-6 match-questions" id="match-q1">
                         <SizeMenu 
                             name="size"
@@ -147,7 +156,7 @@ render() {
                     </select>
                 </div>
                 <div className="col-md-4 col-xs-12 form-group">
-                    <label for="match-q2">I want to meet dogs with lots of energy!</label>
+                    <label>I want to meet dogs with lots of energy!</label>
                     <select className="form-control form-group col-md-6 match-questions" id="match-q2">
                         <YesNoMenu 
                             name="energetic"
@@ -156,7 +165,7 @@ render() {
                     </select>
                 </div>
                 <div className="col-md-4 col-xs-12 form-group">
-                    <label for="match-q3">My dog plays well with dominant dogs.</label>
+                    <label>My dog plays well with dominant dogs.</label>
                     <select className="form-control form-group col-md-6 match-questions" id="match-q3">
                         <YesNoMenu
                             name="dominant" 
@@ -188,6 +197,7 @@ render() {
                     {this.state.matches.map(match => (
                         <MatchCard
                             key={match._id}
+                            _id={match._id}
                             url={match.url}
                             ownerFirstName={match.ownerFirstName}
                             dogName={match.dogName}
@@ -202,9 +212,13 @@ render() {
                 </div>
                 </>
             ) : (
-
-                <h3>There are no matches to display.</h3>
-
+                <div className="row">
+                <h4>
+                <Alert color="light">
+                    There are no matches. Select different parameters and<a href="/match" className="alert-link">search again</a>.
+                </Alert>
+                </h4>
+            </div> 
             )}
         <br/>
         <br/>

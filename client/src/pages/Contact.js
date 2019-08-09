@@ -9,7 +9,8 @@ const h1Style = {
 }
 
 const iStyle = {
-    fontSize: 135
+    fontSize: 135,
+    transform: "rotate(20deg)"
 }
 
 
@@ -26,7 +27,7 @@ render() {
         <div className="container">
             <div className="row">
                 <div className="col-md-10 col-sm-12">
-                    <h1 className="display-1 text-white" id="logo" style={h1Style}>pupper&nbsp;<i className="fas fa-paw" id="paw" style={iStyle}></i></h1>
+                    <h1 className="display-1 text-white" id="logo" style={h1Style}>pupper<i className="fas fa-paw" id="paw" style={iStyle}></i></h1>
                     <br/>
                     <h3 className="text-white">Bork at a match!</h3>
                 </div>
