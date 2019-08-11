@@ -1,81 +1,27 @@
-module.exports = function(sequelize, DataTypes) {
-    var Pupper = sequelize.define("Pupper", {
-      dogName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
-      },
-      image: {
-        type: DataTypes.STRING,
-      },
-      size: {
-        type: DataTypes.STRING,
-        defaultValue: "Small"
-      },
-      familyFriendly: {
-        type: DataTypes.STRING,
-        defaultValue: "Yes"
-      },
-      energetic: {
-        type: DataTypes.STRING,
-        defaultValue: "Yes"
-      },
-      lazy: {
-        type: DataTypes.STRING,
-        defaultValue: "Yes"
-      },
-      strangerDanger: {
-        type: DataTypes.STRING,
-        defaultValue: "Yes"
-      },
-      dogDanger: {
-        type: DataTypes.STRING,
-        defaultValue: "Yes"
-      },
-      largeDogDanger: {
-        type: DataTypes.STRING,
-        defaultValue: "Yes"
-      }, 
-      smallDogDanger: {
-        type: DataTypes.STRING,
-        defaultValue: "Yes"
-      },
-      dominant: {
-        type: DataTypes.STRING,
-        defaultValue: "Yes"
-      },
-      doesntShare: {
-        type: DataTypes.STRING,
-        defaultValue: "Yes"
-      },
-      chaser: {
-        type: DataTypes.STRING,
-        defaultValue: "Yes"
-      },
-      wrestler: {
-        type: DataTypes.STRING,
-        defaultValue: "Yes"
-      },
-      allDogFriendly: {
-        type: DataTypes.STRING,
-        defaultValue: "Yes"
-      }
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-    });
+const pupperSchema = new Schema({
+  dogName: { type: String, required: true },
+  size: { type: String },
+  familyFriendly: { type: String },
+  energetic: { type: String },
+  lazy: { type: String },
+  strangerDanger: { type: String },
+  dogDanger: { type: String },
+  largeDogDanger: { type: String },
+  smallDogDanger: { type: String },
+  dominant: { type: String },
+  doesntShare: { type: String },
+  chaser: { type: String },
+  wrestler: { type: String },
+  allDogFriendly: { type: String },
+  ownerFirstName: { type: String },
+  ownerLastName: { type: String },
+  ownerEmail: { type: String},
+  url: { type: String }
+});
 
-    Pupper.associate = function (models) {
-      Pupper.belongsTo(models.User, {
-        foreignKey: {
-          allowNull: false
-        }
-      });
-    };
+const Pupper = mongoose.model("Pupper", pupperSchema);
 
-    return Pupper;
-    
-  };
-
-
-  
+module.exports = Pupper;

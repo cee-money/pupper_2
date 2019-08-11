@@ -26,7 +26,7 @@ class RemoveModal extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
 
-    API.deleteProfile(this.props.id)
+    API.deleteProfile(this.props._id)
         .then(res => this.loadPuppers())
         .catch(err => console.log(err))
 };
@@ -34,6 +34,7 @@ class RemoveModal extends Component {
   render() {
     return (
       <div>
+        {/* {console.log(this.props)} */}
         <Button style={buttonStyle} color="secondary" onClick={this.toggle}>Remove Profile</Button>
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
             <ModalHeader className="text-info" toggle={this.toggle}><i className="fas fa-paw"></i>&nbsp;&nbsp;Confirm Delete

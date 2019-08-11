@@ -10,8 +10,9 @@ const h1Style = {
 };
 
 const iStyle = {
-    fontSize: 135
-};
+    fontSize: 135,
+    transform: "rotate(20deg)"
+}
 
 
 class Contact extends Component {
@@ -51,6 +52,19 @@ class Contact extends Component {
                     {/*<NameBox/>*/}
                     <ChatApp />
 
+<<<<<<< HEAD
+=======
+render() {
+    return (
+        <>
+        <div className="jumbotron jumbotron-fluid bg-secondary">
+        <div className="container">
+            <div className="row">
+                <div className="col-md-10 col-sm-12">
+                    <h1 className="display-1 text-white" id="logo" style={h1Style}>pupper<i className="fas fa-paw" id="paw" style={iStyle}></i></h1>
+                    <br/>
+                    <h3 className="text-white">Bork at a match!</h3>
+>>>>>>> 030471bdc9ff27162625ac7a1b55ae6ba4b9c5e6
                 </div>
             </div>
         )

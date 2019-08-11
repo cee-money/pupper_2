@@ -18,13 +18,13 @@ class AWS extends Component {
             errorMessage: ""
         }
     }
-    handleChange = (ev) => {
-       
-        this.setState({ success: false, url: "" });
+    handleChange = (event) => {
+       const {value} = event.target
+        this.setState({ success: false, url: value });
 
     }
-    handleUpload = (ev) => {
-       
+    handleUpload = (event) => {
+       event.preventDefault();
         let file = this.uploadInput.files[0];
         // Split the filename to get the name and type
         let fileParts = this.uploadInput.files[0].name.split('.');
@@ -74,7 +74,12 @@ class AWS extends Component {
         )
         return (
             <>
+<<<<<<< HEAD
             <div className="col-md-4 col-xs-12 form-group AWS">
+=======
+            {console.log(this.props.url)}
+            <div className="col-md-4 col-xs-12 form-group App">
+>>>>>>> 030471bdc9ff27162625ac7a1b55ae6ba4b9c5e6
                 <label>Your Pupper's Photo*:</label>
                 <center>
                     <input
@@ -95,10 +100,10 @@ class AWS extends Component {
                     className="btn btn-info btn-sm"
                     onClick={this.handleUpload}
                     style={uploadBtn}>Upload
- </button>
+                </button>
             </div>
             </>
-                        )
+        )
     }
 }
 export default AWS;

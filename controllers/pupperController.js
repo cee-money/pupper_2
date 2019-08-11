@@ -1,24 +1,23 @@
 const db = require("../models");
 
 module.exports = {
-    findAll: (req, res) => {
-        db.Pupper.findAll({
+    findMatches: (req, res) => {
+        db.Pupper.find({
             where: {
-                UserId: {
-                    // probably need to change this over to auth0 specific syntax
-                    [Op.not]: req.session.passport.user
+                ownerEmail: {
+                    $ne: req.body.ownerEmail
                 },
                 size: req.params.size,
                 energetic: req.params.energetic,
                 dominant: req.params.dominant
-            }, include: [db.User]
+            }
         }).then(data => res.json(data)).catch(err => res.status(422).json(err))
       },
 
       findOne: (req, res) => {
-        db.Pupper.findAll({
+        db.Pupper.find({
           where: {
-            userEmail: req.params.email
+            ownerEmail: req.params.email
           }
         }).then(data => res.json(data)).catch(err => res.status(422).json(err));
       },
@@ -30,14 +29,15 @@ module.exports = {
       },
     
       update: (req, res) => {
-        db.Pupper.update(req.body, {where:  {_id: req.params.id }})
+        db.Pupper.findOneAndUpdate({where:  {_id: req.params.id }}, req.body)
           .then(dbPup => res.json(dbPup))
           .catch(err => res.status(422).json(err));
       },
     
       remove: (req, res) => {
-        db.Pupper.destroy({where: {_id: req.params.id }})
+        db.Pupper.findById({_id: req.params.id })
+          .then(dbPup => dbPup.remove())
           .then(dbPup => res.json(dbPup))
           .catch(err => res.statue(422).json(err));
       }
-}
+};
