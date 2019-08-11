@@ -149,6 +149,7 @@ render() {
                         required
                     />
                 </div>
+                {/* this is the link for AWS */}
                 <AWS/>
                 <div className="col-12">
                     <small>* indicates required field</small>
