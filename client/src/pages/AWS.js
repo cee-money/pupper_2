@@ -74,12 +74,8 @@ class AWS extends Component {
         )
         return (
             <>
-<<<<<<< HEAD
-            <div className="col-md-4 col-xs-12 form-group AWS">
-=======
             {console.log(this.props.url)}
             <div className="col-md-4 col-xs-12 form-group App">
->>>>>>> 030471bdc9ff27162625ac7a1b55ae6ba4b9c5e6
                 <label>Your Pupper's Photo*:</label>
                 <center>
                     <input
