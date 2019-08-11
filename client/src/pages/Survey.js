@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { useAuth0 } from "../react-auth0-wrapper";
-// import { APIGateway } from "aws-sdk";
-// import axios from 'axios';
-// import YesNoMenu from "../components/YesNoMenu";
-// import SizeMenu from "../components/SizeMenu";
 import API from "../utils/API";
 import AWS from "./AWS";
 
@@ -48,14 +44,16 @@ class Survey extends Component {
     };
 
   toggle() {
-    this.setState(prevState => ({
-      modal: !prevState.modal
-    }));
-  }
 
-  closeModal() {
-      this.setState({modal : false})
-  }
+    if (this.state.modal === false) {
+        console.log("modal to true")
+        this.setState({ modal : true})
+    } else if (this.state.modal === true){
+        console.log("modal to false")
+        this.setState({modal : false})
+    }
+  };
+
 
 
   handleInputChange = event => {
@@ -69,7 +67,8 @@ class Survey extends Component {
   
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.dogName) {
+
+    if (this.state.dogName && this.state.url) {
       console.log("Yup!");
       console.log(this.props);
 
@@ -404,7 +403,7 @@ class Survey extends Component {
           toggle={this.toggle}
           className={this.props.className}
         >
-          <ModalHeader className="text-info" toggle={this.toggle}>
+          <ModalHeader className="text-info" toggle={(e) => {this.toggle(e)}}>
             <i className="fas fa-paw" />
             &nbsp;&nbsp;Profile Saved
           </ModalHeader>
@@ -417,7 +416,7 @@ class Survey extends Component {
             <Link className="btn btn-info" role="button" to="/match">
               Next
             </Link>
-            <Button color="secondary" onClick={this.toggle}>
+            <Button color="secondary" onClick={(e) => {this.toggle(e)}}>
               Close
             </Button>
           </ModalFooter>
