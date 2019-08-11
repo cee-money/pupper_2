@@ -8,8 +8,8 @@ class BorkModal extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      name: "",
-      email: "",
+      name: "Carolyn",
+      email: "moneymaker.carolyn@gmail.com",
       recipient: this.props.ownerEmail,
       // name: this.props.user.given_name,
       // email: this.props.user.email,
@@ -43,7 +43,7 @@ class BorkModal extends React.Component {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const message = document.getElementById('message').value;
-    const recipient= this.state.recipient;
+    const recipient= document.getElementById('recipient').value;
 
     axios({
         method: "POST", 
@@ -82,6 +82,9 @@ class BorkModal extends React.Component {
                     <br/>
                   <label>Your Email Address</label>
                   <input className="form-control col-md-8" type="email" name="email" id="email" value={this.state.email} onChange={this.handleInputChange} placeholder={this.state.email}/>
+                    <br/> 
+                  <label>Recipient Email</label>
+                  <input className="form-control col-md-8" type="email" name="recipient" id="recipient" value={this.state.recipient} onChange={this.handleInputChange} placeholder={this.state.recipient}/>
                     <br/>  
                   <label>Your Bork</label>
                   <textarea className="form-control col-md-12" type="text" name="message" id="message" value={this.state.message} onChange={this.handleInputChange} rows="5" placeholder={this.state.message}></textarea>

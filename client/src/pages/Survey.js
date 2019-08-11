@@ -386,11 +386,6 @@ class Survey extends Component {
                   Submit
                 </button>
               </div>
-              <div className="col-md-1">
-                <Link className="btn btn-info" to="/match" role="button">
-                  Next
-                </Link>
-              </div>
             </div>
           </form>
           <br />
