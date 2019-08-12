@@ -1,6 +1,6 @@
 import React from "react";
 import BorkModal from "./BorkModal";
-import { useAuth0 } from "../react-auth0-wrapper";
+
 
 const cardStyleDiv = {
     maxWidth: "20rem"
@@ -28,10 +28,8 @@ function MatchCard(props) {
                     <img src={props.url} alt="Pupper Pic" style={imgStyle}/>
                     <br/>
                     <BorkModal
-                        ownerFirstName={props.ownerFirstName}
-                        ownerEmail={props.ownerEmail}
-                        // userName={user.given_name}
-                        // userEmail={user.email}
+                        recipientFirstName={props.recipientFirstName}
+                        recipientEmail={props.recipientEmail}
                     />
                 </div>
             </div>
