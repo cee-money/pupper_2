@@ -212,8 +212,8 @@ class Survey extends Component {
                   value={this.state.familyFriendly}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
                 </select>
               </div>
             </div>
@@ -229,8 +229,8 @@ class Survey extends Component {
                   value={this.state.energetic}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
                 </select>
               </div>
               <div className="col-md-6 col-xs-12 form-group">
@@ -242,8 +242,8 @@ class Survey extends Component {
                   value={this.state.lazy}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
                 </select>
               </div>
             </div>
@@ -257,8 +257,8 @@ class Survey extends Component {
                   value={this.state.strangerDanger}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
                 </select>
               </div>
               <div className="col-md-6 col-xs-12 form-group">
@@ -270,8 +270,8 @@ class Survey extends Component {
                   value={this.state.dogDanger}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
                 </select>
               </div>
             </div>
@@ -287,8 +287,8 @@ class Survey extends Component {
                   value={this.state.largeDogDanger}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
                 </select>
               </div>
               <div className="col-md-6 col-xs-12 form-group">
@@ -302,8 +302,8 @@ class Survey extends Component {
                   value={this.state.smallDogDanger}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
                 </select>
               </div>
             </div>
@@ -317,8 +317,8 @@ class Survey extends Component {
                   value={this.state.dominant}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
                 </select>
               </div>
               <div className="col-md-6 col-xs-12 form-group">
@@ -330,8 +330,8 @@ class Survey extends Component {
                   value={this.state.doesntShare}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
                 </select>
               </div>
             </div>
@@ -347,8 +347,8 @@ class Survey extends Component {
                   value={this.state.chaser}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
                 </select>
               </div>
               <div className="col-md-6 col-xs-12 form-group">
@@ -360,8 +360,8 @@ class Survey extends Component {
                   value={this.state.wrestler}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
                 </select>
               </div>
             </div>
@@ -375,8 +375,8 @@ class Survey extends Component {
                   value={this.state.allDogFriendly}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
                 </select>
               </div>
             </div>
