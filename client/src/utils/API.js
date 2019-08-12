@@ -10,8 +10,8 @@ export default {
         return axios.get("/api/matches/" + email);
     },
 
-    updateProfile: function(profileData) {
-        return axios.put("/api/matches", profileData)
+    updateProfile: function(id, profileData) {
+        return axios.put("/api/matches/" + id, profileData)
     },
 
     create: function(profileData) {

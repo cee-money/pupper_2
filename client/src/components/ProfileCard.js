@@ -33,10 +33,16 @@ class ProfileCard extends Component {
   }
 
   handleEdit = event => {
-    event.preventDefault();
+    if(this.state.editActive){
     this.setState({
-      editActive: true
-    });
+      editActive: false
+    }) 
+} else {
+    this.setState({
+        editActive: true
+    })
+}
+    
   };
   // need to set editActive to false on click of savebtn, also need api call (update route)
 
@@ -59,6 +65,8 @@ class ProfileCard extends Component {
                 <ProfileEdit
                   {...this.props}
                   pupper={this.state}
+                  handleEdit={this.handleEdit}
+                  loadPuppers={this.props.loadPuppers}
                 />
               ) : (
                 <ProfileSummary {...this.props} />
