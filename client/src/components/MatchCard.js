@@ -30,7 +30,7 @@ function MatchCard(props) {
                     <BorkModal
                         ownerFirstName={props.ownerFirstName}
                         ownerEmail={props.ownerEmail}
-                        // userName={user.given_name}
+                        // userName={props.userName}
                         // userEmail={user.email}
                     />
                 </div>

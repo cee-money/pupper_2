@@ -62,12 +62,11 @@ class AWS extends Component {
     }
     render() {
         const SuccessMessage = () => (
-            <div style={{ padding: 50 }}>
-                <h3 style={{ color: 'green' }}>SUCCESSFUL UPLOAD</h3>
-                {/* <a href={this.state.url}>Access the file here</a> */}
-                <br />
-            </div>
+            <div className='col-md-4 col-xs-12 form-group' value={this.state.url} 
+            style={{ color: 'green' }}>SUCCESSFUL UPLOAD</div>
         )
+
+     
         const ErrorMessage = () => (
             <div style={{ padding: 50 }}>
                 <h3 style={{ color: 'red' }}>FAILED UPLOAD</h3>
@@ -88,7 +87,7 @@ class AWS extends Component {
                         className="form-control"
                         id="dog-photo"
                         name="url"
-                        value={this.state.url}
+                        // value={this.state.url}
                         onChange={this.handleChange}
                         ref={(ref) => { this.uploadInput = ref; }}
                         type="file"

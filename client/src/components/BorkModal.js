@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios';
+
 class BorkModal extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +21,7 @@ class BorkModal extends React.Component {
       modal: !prevState.modal
     }));
   }
-  handleInputChange(event) {
+  handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
@@ -35,7 +36,8 @@ class BorkModal extends React.Component {
     const recipient= document.getElementById('recipient').value;
     axios({
         method: "POST", 
-        url:"http://localhost:3002/send", 
+        url:"http://localhost:3000/send", 
+        // url: "/send",
         data: {
             name,
             email,
