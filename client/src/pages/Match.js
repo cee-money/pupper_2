@@ -21,48 +21,48 @@ const jumboStyle = {
 };
 
 class Match extends Component {
-  state = {
-    matches: [
-      // {
-      //     dogName: "Fido",
-      //     _id: 7,
-      //     url:"https://www.azhumane.org/wp-content/uploads/2015/10/iStock-623499258-200x200.jpg",
-      //     ownerFirstName: "Dawn",
-      //     ownerEmail: "dawn@me.com",
-      //     size: "Small",
-      //     energetic: "Yes",
-      //     dominant: "No"
-      // },
-      // {
-      //     dogName: "Frank",
-      //     _id: 8,
-      //     url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbYquZS-VxQyz92r3dmKeBzx-V_o7xm3jobIXOftVk7T03YffF",
-      //     ownerFirstName: "Sherry",
-      //     ownerEmail: "sherry@aol.com",
-      //     size: "Medium",
-      //     energetic: "Yes",
-      //     dominant: "No"
-      // },
-      // {
-      //     dogName: "Hooch",
-      //     _id: 3,
-      //     url:"https://www.dogthelove.com/images/dog_200x200.jpg",
-      //     ownerFirstName: "Carol",
-      //     ownerEmail: "carol@gmail.com",
-      //     size: "Large",
-      //     energetic: "Yes",
-      //     dominant: "Yes"
-      // },
-      // {
-      //     dogName: "Cecil",
-      //     _id: 2,
-      //     url:"https://thedogstop.com/pa-pittsburgh-sewickley/wp-content/uploads/sites/7/2017/08/george.jpg",
-      //     ownerFirstName: "Avery",
-      //     ownerEmail: "cecil@optonline.net",
-      //     size: "Medium",
-      //     energetic: "No",
-      //     dominant: "No"
-      // }
+    state = {
+        matches: [
+        {
+            dogName: "Fido",
+            _id: 7,
+            url:"https://www.azhumane.org/wp-content/uploads/2015/10/iStock-623499258-200x200.jpg",
+            ownerFirstName: "Dawn",
+            ownerEmail: "dawn@me.com",
+            size: "Small",
+            energetic: "Yes",
+            dominant: "No"
+        },
+        // {
+        //     dogName: "Frank",
+        //     _id: 8,
+        //     url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbYquZS-VxQyz92r3dmKeBzx-V_o7xm3jobIXOftVk7T03YffF",
+        //     ownerFirstName: "Sherry",
+        //     ownerEmail: "sherry@aol.com",
+        //     size: "Medium",
+        //     energetic: "Yes",
+        //     dominant: "No"
+        // },
+        // {
+        //     dogName: "Hooch",
+        //     _id: 3,
+        //     url:"https://www.dogthelove.com/images/dog_200x200.jpg",
+        //     ownerFirstName: "Carol",
+        //     ownerEmail: "carol@gmail.com",
+        //     size: "Large",
+        //     energetic: "Yes",
+        //     dominant: "Yes"
+        // },
+        // {
+        //     dogName: "Cecil",
+        //     _id: 2,
+        //     url:"https://thedogstop.com/pa-pittsburgh-sewickley/wp-content/uploads/sites/7/2017/08/george.jpg",
+        //     ownerFirstName: "Avery",
+        //     ownerEmail: "cecil@optonline.net",
+        //     size: "Medium",
+        //     energetic: "No",
+        //     dominant: "No"
+        // }
     ],
     size: "",
     energetic: "",
@@ -76,19 +76,8 @@ class Match extends Component {
   //     API.getMatches().then(res => this.setState({matches: res.data})).catch(err => console.log(err))
   // }
 
-  // addToState() {
-  //     const {user, loading } = useAuth0();
-
-  //     if(loading){
-  //         console.log("Loading");
-  //     } else {
-  //         this.setState({
-  //             ownerFirstName: user.given_name,
-  //             ownerLastName: user.family_name,
-  //             ownerEmail: user.email
-  //         })
-  //     }
-  // };
+addToState() {
+    const {user, loading } = useAuth0();
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -271,6 +260,7 @@ class Match extends Component {
       </>
     );
   }
+}
 }
 
 export default Match;

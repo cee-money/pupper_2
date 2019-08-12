@@ -93,19 +93,19 @@ class Survey extends Component {
           this.setState({
             url: "",
             dogName: "",
-            size: "",
-            familyFriendly: "",
-            energetic: "",
-            lazy: "",
-            strangerDanger: "",
-            dogDanger: "",
-            largeDogDanger: "",
-            smallDogDanger: "",
-            dominant: "",
-            doesntShare: "",
-            chaser: "",
-            wrestler: "",
-            allDogFriendly: "",
+            size: "Medium",
+            familyFriendly: "Yes",
+            energetic: "Yes",
+            lazy: "Yes",
+            strangerDanger: "Yes",
+            dogDanger: "Yes",
+            largeDogDanger: "Yes",
+            smallDogDanger: "Yes",
+            dominant: "Yes",
+            doesntShare: "Yes",
+            chaser: "Yes",
+            wrestler: "Yes",
+            allDogFriendly: "Yes",
             ownerFirstName: "",
             ownerLastName: "",
             ownerEmail: ""
@@ -385,11 +385,6 @@ class Survey extends Component {
                 >
                   Submit
                 </button>
-              </div>
-              <div className="col-md-1">
-                <Link className="btn btn-info" to="/match" role="button">
-                  Next
-                </Link>
               </div>
             </div>
           </form>
