@@ -37,7 +37,7 @@ class Match extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     console.log(this.state)
-    console.log(this.props.user.email)
+    // console.log(this.props.user.email)
     console.log("hit")
     API.getMatches(
         this.state.size.toLowerCase(), this.state.energetic, this.state.dominant, this.props.user.email

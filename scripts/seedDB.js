@@ -158,7 +158,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Amy",
     ownerLastName: "Poehler",
-    ownerEmail: "apoehler@gmail.com",
+    ownerEmail: "jessicadawnjensen@gmail.com",
     url: "https://cdn.the-scientist.com/assets/articleNo/64930/aImg/29067/labs-s.jpg"
 },
 {
