@@ -5,6 +5,7 @@ const twilio = require('twilio');
 const config = require('./controllers/config');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const morgan = require('morgan')
 
 const app = express();
 const AccessToken = twilio.jwt.AccessToken;
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors());
+app.use(morgan("dev"))
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

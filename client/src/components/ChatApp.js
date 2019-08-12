@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import $ from 'jquery'
+// import $ from 'jquery'
 import Twilio from 'twilio-chat';
 import MessageList from "./MessageList";
 import MessageForm from "./MessageForm";
@@ -14,22 +14,22 @@ class ChatApp extends Component {
         }
     }
 
-    getToken = () => {
-        return new Promise(((resolve, reject) => {
-            this.setState({
-                messages: [...this.state.messages, {body: `Connecting...`}]
-            });
+    // getToken = () => {
+    //     return new Promise(((resolve, reject) => {
+    //         this.setState({
+    //             messages: [...this.state.messages, {body: `Connecting...`}]
+    //         });
 
-            // $.getJSON(`/token/${Math.floor(Math.random() * (100 - 1)) + 1}`, (token) => {
-            $.getJSON(`/token`, (token) => {
-                this.setState({username: token.identity});
-                resolve(token)
-            }).fail(() => {
-                reject(Error("Failed to connect."))
-            });
-        }));
+    //         // $.getJSON(`/token/${Math.floor(Math.random() * (100 - 1)) + 1}`, (token) => {
+    //         $.getJSON(`/token`, (token) => {
+    //             this.setState({username: token.identity});
+    //             resolve(token)
+    //         }).fail(() => {
+    //             reject(Error("Failed to connect."))
+    //         });
+    //     }));
 
-    };
+    // };
 
     componentDidMount = () => {
         this.getToken()

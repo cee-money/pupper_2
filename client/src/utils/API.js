@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
 
-    getMatches: function() {
-        return axios.get("/api/matches");
+    getMatches: function(size, energetic, dominant, email) {
+        return axios.get(`/api/matches/?size=${size}&energetic=${energetic}&dominant=${dominant}&email=${email}`);
     },
 
     getProfile: function(id) {
