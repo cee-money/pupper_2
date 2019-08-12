@@ -7,9 +7,9 @@ module.exports = {
                 ownerEmail: {
                     $ne: req.body.ownerEmail
                 },
-                size: req.params.size,
-                energetic: req.params.energetic,
-                dominant: req.params.dominant
+                size: req.body.size,
+                energetic: req.body.energetic,
+                dominant: req.body.dominant
             }
         }).then(data => res.json(data)).catch(err => res.status(422).json(err))
       },
