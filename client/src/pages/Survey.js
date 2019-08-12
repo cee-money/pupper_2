@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { useAuth0 } from "../react-auth0-wrapper";
-// import { APIGateway } from "aws-sdk";
-// import axios from 'axios';
-// import YesNoMenu from "../components/YesNoMenu";
-// import SizeMenu from "../components/SizeMenu";
+// import { useAuth0 } from "../react-auth0-wrapper";
 import API from "../utils/API";
 import AWS from "./AWS";
 

@@ -7,10 +7,8 @@ class BorkModal extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      name: "",
-      email: "",
       recipient: this.props.recipientEmail,
-      message: "My pup would love to meet yours!"
+      message: ""
     }
     this.toggle = this.toggle.bind(this);
   };
@@ -19,36 +17,36 @@ class BorkModal extends React.Component {
       modal: !prevState.modal
     }));
   }
+
   handleInputChange = event => {
-    const { name, value } = event.target;
+    const { value } = event.target;
+
     this.setState({
-      [name]: value,
+      message: value,
+
     });
   }
-  handleFormSubmit = (event) => {
-    event.preventDefault();
-    console.log(this.state)
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    const recipient= document.getElementById('recipient').value;
+
+  handleFormSubmit = event =>{
+    event.preventDefault(); 
+    
+    console.log(this.props.user.given_name, this.props.user.email, this.state.recipient, this.state.message)
+   
     axios({
         method: "POST", 
-        url:"http://localhost:3000/send", 
-        // url: "/send",
+        url:"/api/transporter/send", 
         data: {
-            name,
-            email,
-            message,
-            recipient
+            name: this.props.user.given_name,
+            email: this.props.user.email,
+            recipient: this.state.recipient,
+            message: this.state.message
         }
     }).then((response)=>{
-      console.log(response.data)
         if (response.data.msg === 'success'){
-            alert("Message Sent."); 
-            // this.resetForm()
+            console.log("Message Sent."); 
+            this.toggle();
         }else if(response.data.msg === 'fail'){
-            alert("Message failed to send.")
+            console.log("Message failed to send.")
         }
     })
 }
@@ -65,17 +63,8 @@ class BorkModal extends React.Component {
           <ModalBody>
             <form method="POST" action="send">
               <div className="form-group">
-                  <label>Your First Name</label>
-                  <input className="form-control col-md-4" type="text" name="name" id="name" value={this.state.name} onChange={this.handleInputChange} placeholder={this.state.name}/>
-                    <br/>
-                  <label>Your Email Address</label>
-                  <input className="form-control col-md-8" type="email" name="email" id="email" value={this.state.email} onChange={this.handleInputChange} placeholder={this.state.email}/>
-                    <br/> 
-                  <label>Recipient Email</label>
-                  <input className="form-control col-md-8" type="email" name="recipient" id="recipient" value={this.state.recipient} onChange={this.handleInputChange} placeholder={this.state.recipient}/>
-                    <br/>  
                   <label>Your Bork</label>
-                  <textarea className="form-control col-md-12" type="text" name="message" id="message" value={this.state.message} onChange={this.handleInputChange} rows="5" placeholder={this.state.message}></textarea>
+                  <textarea className="form-control col-md-12" type="text" name="message" id="message" value={this.state.message} onChange={this.handleInputChange} rows="5" placeholder="Your message here"></textarea>
                     <br/>
                 </div>
               </form>

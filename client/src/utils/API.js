@@ -6,8 +6,8 @@ export default {
         return axios.get(`/api/matches/?size=${size}&energetic=${energetic}&dominant=${dominant}&email=${email}`);
     },
 
-    getProfile: function(id) {
-        return axios.get("/api/matches/" + id);
+    getProfile: function(email) {
+        return axios.get("/api/matches/" + email);
     },
 
     updateProfile: function(profileData) {
