@@ -30,6 +30,7 @@ function MatchCard(props) {
                     <BorkModal
                         recipientFirstName={props.recipientFirstName}
                         recipientEmail={props.recipientEmail}
+                        user={props.user}
                     />
                 </div>
             </div>

@@ -58,7 +58,7 @@ class Match extends Component {
     this.setState({ matches: [] });
   };
 
-  render() {
+  render(props) {
     return (
       <>
         <div
