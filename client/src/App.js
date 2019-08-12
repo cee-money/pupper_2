@@ -7,7 +7,6 @@ import Survey from "./pages/Survey";
 import Match from "./pages/Match";
 import Err from "./pages/Err";
 import Footer from "./components/Footer";
-import Contact from './pages/Contact';
 import Navbar from './components/NavBar';
 // import PrivateRoute from "./components/PrivateRoute";
 
@@ -52,6 +51,11 @@ function App() {
         />
        
         <Route exact path="/match" render={(props) => 
+
+        <Match {...props}
+        isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading}
+       />}/>
+
           <Match {...props}
             isAuthenticated={isAuthenticated} 
             loginWithRedirect={loginWithRedirect} 
