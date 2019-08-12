@@ -36,7 +36,6 @@ class Match extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-
     API.getMatches(
       this.state.size.toLowerCase(),
       this.state.energetic,
