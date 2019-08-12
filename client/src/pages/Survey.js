@@ -414,7 +414,7 @@ class Survey extends Component {
           </ModalBody>
           <ModalFooter>
             <Link className="btn btn-info" role="button" to="/match">
-              Next
+              Find Matches
             </Link>
             <Button color="secondary" onClick={(e) => {this.toggle(e)}}>
               Close

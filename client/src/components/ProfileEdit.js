@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import YesNoMenu from "./YesNoMenu";
-import SizeMenu from "./SizeMenu";
 import API from "../utils/API";
 
 class ProfileEdit extends Component {

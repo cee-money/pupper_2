@@ -40,11 +40,18 @@ class BorkModal extends React.Component {
             message: this.state.message
         }
     }).then((response)=>{
+
+      this.setState({
+        message: ""
+      })
+
         if (response.data.msg === 'success'){
             console.log("Message Sent."); 
             this.toggle();
+            
         }else if(response.data.msg === 'fail'){
-            console.log("Message failed to send.")
+            console.log("Message failed to send.");
+            this.toggle();
         }
     })
 }
