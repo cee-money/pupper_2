@@ -3,6 +3,7 @@ import { Alert } from 'reactstrap';
 import ProfileCard from "../components/ProfileCard";
 // import { useAuth0 } from "../react-auth0-wrapper";
 import API from "../utils/API";
+import {Link} from "react-router-dom";
 
 
 const h1Style = {
@@ -108,6 +109,7 @@ render() {
                         wrestler={pupper.wrestler}
                         allDogFriendly={pupper.allDogFriendly}
                         ownerEmail={pupper.ownerEmail}
+                        loadPuppers={this.loadPuppers}
                     />   
                 ))}
             </div> 
@@ -116,7 +118,7 @@ render() {
                 <h5>
                 <br/>
                 <Alert color="light">
-                    You have not yet created a pupper profile. Go to <a href="/survey" className="alert-link text-info">Add Profile</a> to begin.
+                    You have not yet created a pupper profile. Go to <Link to="/survey" className="alert-link text-info">Add Profile</Link> to begin.
                 </Alert>
                 </h5>
             </div>  

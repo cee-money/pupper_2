@@ -27,7 +27,7 @@ class RemoveModal extends Component {
     event.preventDefault();
 
     API.deleteProfile(this.props._id)
-        .then(res => this.toggle())
+        .then(res => this.props.loadPuppers())
         .catch(err => console.log(err))
 };
 

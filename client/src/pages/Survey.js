@@ -24,22 +24,22 @@ class Survey extends Component {
     state = {
       url: "",
       dogName: "",
-      size: "Medium",
-      familyFriendly: "Yes",
-      energetic: "Yes",
-      lazy: "Yes",
-      strangerDanger: "Yes",
-      dogDanger: "Yes",
-      largeDogDanger: "Yes",
-      smallDogDanger: "Yes",
-      dominant: "Yes",
-      doesntShare: "Yes",
-      chaser: "Yes",
-      wrestler: "Yes",
-      allDogFriendly: "Yes",
-      ownerFirstName: this.props.user.given_name,
-      ownerLastName: this.props.user.family_name,
-      ownerEmail: this.props.user.email,
+      size: "medium",
+      familyFriendly: "yes",
+      energetic: "yes",
+      lazy: "yes",
+      strangerDanger: "yes",
+      dogDanger: "yes",
+      largeDogDanger: "yes",
+      smallDogDanger: "yes",
+      dominant: "yes",
+      doesntShare: "yes",
+      chaser: "yes",
+      wrestler: "yes",
+      allDogFriendly: "yes",
+      ownerFirstName: "",
+      ownerLastName: "",
+      ownerEmail: "",
       modal: false
     };
 
@@ -96,19 +96,19 @@ class Survey extends Component {
           this.setState({
             url: "",
             dogName: "",
-            size: "Medium",
-            familyFriendly: "Yes",
-            energetic: "Yes",
-            lazy: "Yes",
-            strangerDanger: "Yes",
-            dogDanger: "Yes",
-            largeDogDanger: "Yes",
-            smallDogDanger: "Yes",
-            dominant: "Yes",
-            doesntShare: "Yes",
-            chaser: "Yes",
-            wrestler: "Yes",
-            allDogFriendly: "Yes",
+            size: "medium",
+            familyFriendly: "yes",
+            energetic: "yes",
+            lazy: "yes",
+            strangerDanger: "yes",
+            dogDanger: "yes",
+            largeDogDanger: "yes",
+            smallDogDanger: "yes",
+            dominant: "yes",
+            doesntShare: "yes",
+            chaser: "yes",
+            wrestler: "yes",
+            allDogFriendly: "yes",
             ownerFirstName: "",
             ownerLastName: "",
             ownerEmail: ""
@@ -192,13 +192,13 @@ class Survey extends Component {
                   value={this.state.size}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Small">
+                  <option value="small">
                     Small (under 25 lbs)
                   </option>
-                  <option value="Medium">
+                  <option value="medium">
                     Medium (between 25-50 lbs)
                   </option>
-                  <option value="Large">
+                  <option value="large">
                     Large (over 50 lbs)
                   </option>
                 </select>

@@ -7,12 +7,12 @@ import Survey from "./pages/Survey";
 import Match from "./pages/Match";
 import Err from "./pages/Err";
 import Footer from "./components/Footer";
-import ChatApp from './components/ChatApp';
+import Contact from './pages/Contact';
 import Navbar from './components/NavBar';
 // import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
-  const { isAuthenticated, loginWithRedirect, logout, user, loading } = useAuth0()
+  const { isAuthenticated, loginWithRedirect, logout, user, loading } = useAuth0();
 
   return (
     <>
@@ -61,7 +61,7 @@ function App() {
           />}
         />
 
-        <Route exact path="/contact" render={(props) => 
+        {/* <Route exact path="/contact" render={(props) => 
           <ChatApp {...props}
             isAuthenticated={isAuthenticated} 
             loginWithRedirect={loginWithRedirect} 
@@ -69,14 +69,14 @@ function App() {
             user={user} 
             loading={loading} 
           />}
-        />
+        /> */}
         
         <Route component={Err} />
       </Switch>
       </>
     </Router>
 
-    
+
     <Footer/>
     </>
   );

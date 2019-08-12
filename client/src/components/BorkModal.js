@@ -8,12 +8,8 @@ class BorkModal extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      name: this.props.user.given_name,
-      email: this.props.user.email,
-      recipient: this.props.ownerEmail,
-      // name: this.props.user.given_name,
-      // email: this.props.user.email,
-      message: "My pup would love to meet yours!"
+      recipient: this.props.recipientEmail,
+      message: ""
     }
 
     this.toggle = this.toggle.bind(this);
@@ -25,35 +21,34 @@ class BorkModal extends React.Component {
     }));
   }
 
-  handleInputChange(event) {
+  handleInputChange = event => {
 
-    const name = event.target.name;
-    const value = event.target.value;
+    const { value } = event.target;
 
-    this.state.setState({
-      [name]: value,
+    this.setState({
+      message: value,
 
     });
   }
 
-  handleFormSubmit(event){
+  handleFormSubmit = event =>{
     event.preventDefault();
 
-    console.log(this.state)
-
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    const recipient= document.getElementById('recipient').value;
+    
+    // const name = document.getElementById('name').value;
+    // const email = document.getElementById('email').value;
+    
+    console.log(this.props.user.given_name, this.props.user.email, this.state.recipient, this.state.message)
+   
 
     axios({
         method: "POST", 
         url:"http://localhost:3002/send", 
         data: {
-            name,
-            email,
-            message,
-            recipient
+            name: this.props.user.given_name,
+            email: this.props.user.email,
+            recipient: this.state.recipient,
+            message: this.state.message
         }
     }).then((response)=>{
         if (response.data.msg === 'success'){
@@ -88,7 +83,7 @@ class BorkModal extends React.Component {
                   <input className="form-control col-md-8" type="email" name="recipient" id="recipient" value={this.state.recipient} onChange={this.handleInputChange} placeholder={this.state.recipient}/>
                     <br/>   */}
                   <label>Your Bork</label>
-                  <textarea className="form-control col-md-12" type="text" name="message" id="message" value={this.state.message} onChange={this.handleInputChange} rows="5" placeholder={this.state.message}></textarea>
+                  <textarea className="form-control col-md-12" type="text" name="message" id="message" value={this.state.message} onChange={this.handleInputChange} rows="5" placeholder="My pup would love to meet yours!"></textarea>
                     <br/>
                 </div>
               </form>

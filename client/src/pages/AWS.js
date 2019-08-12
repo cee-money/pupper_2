@@ -31,9 +31,9 @@ class AWS extends Component {
         let fileName = fileParts[0];
         let fileType = fileParts[1];
         console.log("Preparing the upload");
-        axios.post("http://localhost:6969/sign_s3", {
-            fileName: fileName,
-            fileType: fileType
+        axios.post("https://protected-chamber-61114.herokuapp.com/sign_s3", {
+            fileName,
+            fileType
         })
             .then(response => {
                 var returnData = response.data.data.returnData;
@@ -81,7 +81,7 @@ class AWS extends Component {
         return (
             <>
             {console.log(this.props.url)}
-            <div className="col-md-4 col-xs-12 form-group App">
+            <div className="col-md-4 col-xs-12 form-group AWS">
                 <label>Your Pupper's Photo*:</label>
                     <input
                         className="form-control"
