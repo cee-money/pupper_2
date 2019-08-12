@@ -8,7 +8,6 @@ router.route("/")
 // matches with /api/matches/:email
 router.route("/:email")
     .get(pupperController.find);
-    
 router.route("/:id")
     .delete(pupperController.remove)
     .put(pupperController.update);
