@@ -9,9 +9,7 @@ class BorkModal extends React.Component {
       modal: false,
       name: "",
       email: "",
-      recipient: this.props.ownerEmail,
-      // name: this.props.user.given_name,
-      // email: this.props.user.email,
+      recipient: this.props.recipientEmail,
       message: "My pup would love to meet yours!"
     }
     this.toggle = this.toggle.bind(this);
@@ -27,7 +25,7 @@ class BorkModal extends React.Component {
       [name]: value,
     });
   }
-  handleFormSubmit(event){
+  handleFormSubmit = (event) => {
     event.preventDefault();
     console.log(this.state)
     const name = document.getElementById('name').value;
@@ -36,7 +34,7 @@ class BorkModal extends React.Component {
     const recipient= document.getElementById('recipient').value;
     axios({
         method: "POST", 
-        url:"http://localhost:3002/send", 
+        url:"http://localhost:3000/send", 
         // url: "/send",
         data: {
             name,
@@ -45,9 +43,10 @@ class BorkModal extends React.Component {
             recipient
         }
     }).then((response)=>{
+      console.log(response.data)
         if (response.data.msg === 'success'){
             alert("Message Sent."); 
-            this.resetForm()
+            // this.resetForm()
         }else if(response.data.msg === 'fail'){
             alert("Message failed to send.")
         }
