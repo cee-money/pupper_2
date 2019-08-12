@@ -1,7 +1,6 @@
 import React from "react";
 import BorkModal from "./BorkModal";
 
-
 const cardStyleDiv = {
     maxWidth: "20rem"
 }

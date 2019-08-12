@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { useAuth0 } from "../react-auth0-wrapper";
-// import { APIGateway } from "aws-sdk";
-// import axios from 'axios';
-// import YesNoMenu from "../components/YesNoMenu";
-// import SizeMenu from "../components/SizeMenu";
+// import { useAuth0 } from "../react-auth0-wrapper";
 import API from "../utils/API";
 import AWS from "./AWS";
 
@@ -48,13 +44,19 @@ class Survey extends Component {
     };
 
   toggle() {
-    this.setState(prevState => ({
-      modal: !prevState.modal
-    }));
-  }
+
+    if (this.state.modal === false) {
+        // console.log("modal to true")
+        this.setState({ modal : true})
+    } else if (this.state.modal === true){
+        // console.log("modal to false")
+        this.setState({modal : false})
+    }
+  };
 
 
   handleInputChange = event => {
+      
     const { name, value } = event.target;
 
     this.setState({
@@ -65,9 +67,10 @@ class Survey extends Component {
   
   handleFormSubmit = event => {
     event.preventDefault();
+
     if (this.state.dogName) {
-      console.log("Yup!");
-      console.log(this.props);
+    //   console.log("Yup!");
+    //   console.log(this.props);
 
       API.create({
         url: this.state.url,
@@ -120,7 +123,7 @@ class Survey extends Component {
   };
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <>
         <div
@@ -400,7 +403,7 @@ class Survey extends Component {
           toggle={this.toggle}
           className={this.props.className}
         >
-          <ModalHeader className="text-info" toggle={this.toggle}>
+          <ModalHeader className="text-info" toggle={(e) => {this.toggle(e)}}>
             <i className="fas fa-paw" />
             &nbsp;&nbsp;Profile Saved
           </ModalHeader>
@@ -413,7 +416,7 @@ class Survey extends Component {
             <Link className="btn btn-info" role="button" to="/match">
               Next
             </Link>
-            <Button color="secondary" onClick={this.toggle}>
+            <Button color="secondary" onClick={(e) => {this.toggle(e)}}>
               Close
             </Button>
           </ModalFooter>
