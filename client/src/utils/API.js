@@ -2,12 +2,12 @@ import axios from "axios";
 
 export default {
 
-    getMatches: function() {
-        return axios.get("/api/matches");
+    getMatches: function(email, size, energetic, dominant) {
+        return axios.get("/api/matches" + email + size + energetic + dominant);
     },
 
-    getProfile: function(id) {
-        return axios.get("/api/matches/" + id);
+    getProfile: function(email) {
+        return axios.get("/api/matches/" + email);
     },
 
     updateProfile: function(profileData) {

@@ -1,6 +1,6 @@
 import React from "react";
 import BorkModal from "./BorkModal";
-import { useAuth0 } from "../react-auth0-wrapper";
+// import { useAuth0 } from "../react-auth0-wrapper";
 
 const cardStyleDiv = {
     maxWidth: "20rem"

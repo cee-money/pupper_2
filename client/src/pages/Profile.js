@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Alert } from 'reactstrap';
 import ProfileCard from "../components/ProfileCard";
-import { useAuth0 } from "../react-auth0-wrapper";
+// import { useAuth0 } from "../react-auth0-wrapper";
 import API from "../utils/API";
 
 
@@ -43,29 +43,20 @@ class Profile extends Component {
         //     dominant: "No"
         // }
         ],
-        ownerEmail: ""
+        ownerEmail: this.props.user.email
     }
-
-addToState() {
-    const {user, loading } = useAuth0();
-
-    if (loading) {
-        console.log("Loading");
-    } else {
-        this.setState({
-            ownerEmail: user.email
-        })
-    }
-};
 
 componentDidMount() {
+    // console.log(this.state.ownerEmail)
     this.loadPuppers();
 };
 
 loadPuppers = () => {
-    API.getProfile()
+    API.getProfile(this.state.ownerEmail)
         .then(res => 
-            this.setState({ puppers: res.data }))
+            // console.log(res)
+            this.setState({ puppers: res.data })
+            )
         .catch(err => console.log(err))
 };
 

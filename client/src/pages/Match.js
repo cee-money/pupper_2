@@ -3,7 +3,6 @@ import { Alert } from 'reactstrap';
 import MatchCard from "../components/MatchCard";
 import YesNoMenu from "../components/YesNoMenu";
 import SizeMenu from "../components/SizeMenu";
-import { useAuth0 } from "../react-auth0-wrapper";
 import API from "../utils/API";
 
 const h1Style = {
@@ -32,7 +31,7 @@ class Match extends Component {
             size: "Small",
             energetic: "Yes",
             dominant: "No"
-        },
+        }
         // {
         //     dogName: "Frank",
         //     _id: 8,
@@ -64,29 +63,11 @@ class Match extends Component {
         //     dominant: "No"
         // }
     ],
-        size: "",
-        energetic: "",
-        dominant: "",
-        ownerFirstName: "",
-        ownerLastName: "",
         ownerEmail: "",
+        size: "Medium",
+        energetic: "Yes",
+        dominant: "Yes"
     }
-
-
-addToState() {
-    const {user, loading } = useAuth0();
-
-    if(loading){
-        console.log("Loading");
-    } else {
-        this.setState({
-            ownerFirstName: user.given_name,
-            ownerLastName: user.family_name,
-            ownerEmail: user.email
-        })
-    }
-};
-
 
 handleInputChange = event => {
     const { name, value } = event.target;
@@ -99,7 +80,14 @@ handleInputChange = event => {
 handleFormSubmit = event => {
     event.preventDefault();
 
-    API.getMatches(this.state)
+    // console.log(this.state)
+
+    API.getMatches({
+        // ownerEmail: this.state.ownerEmail,
+        // size: this.state.size,
+        // energetic: this.state.energetic,
+        // dominant: this.state.dominant,
+    })
         .then(res => 
             this.setState({ matches: res.data, size: "", energetic: "", dominant: ""}))
         .catch(err => console.log(err))
@@ -144,29 +132,35 @@ render() {
             <div className="row">
                 <div className="col-md-4 col-xs-12 form-group">
                     <label>I am looking to meet dogs that are:</label>
-                    <select className="form-control form-group col-md-6 match-questions" id="match-q1">
-                        <SizeMenu 
-                            name="size"
-                            onChange={this.handleInputChange}
-                        />
+                    <select className="form-control form-group col-md-6 match-questions" 
+                        id="match-q1" 
+                        name="size"
+                        value={this.state.size}
+                        onChange={this.handleInputChange}
+                    >
+                        <SizeMenu/>
                     </select>
                 </div>
                 <div className="col-md-4 col-xs-12 form-group">
                     <label>I want to meet dogs with lots of energy!</label>
-                    <select className="form-control form-group col-md-6 match-questions" id="match-q2">
-                        <YesNoMenu 
-                            name="energetic"
-                            onChange={this.handleInputChange}
-                        />
+                    <select className="form-control form-group col-md-6 match-questions"
+                        id="match-q2"
+                        name="energetic"
+                        value={this.state.energetic}
+                        onChange={this.handleInputChange}
+                    >
+                        <YesNoMenu/>
                     </select>
                 </div>
                 <div className="col-md-4 col-xs-12 form-group">
                     <label>My dog plays well with dominant dogs.</label>
-                    <select className="form-control form-group col-md-6 match-questions" id="match-q3">
-                        <YesNoMenu
-                            name="dominant" 
-                            onChange={this.handleInputChange}
-                        />
+                    <select className="form-control form-group col-md-6 match-questions" 
+                        id="match-q3"
+                        name="dominant" 
+                        value={this.state.dominant}
+                        onChange={this.handleInputChange}
+                    >
+                        <YesNoMenu/>
                     </select>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { useAuth0 } from "../react-auth0-wrapper";
+// import { useAuth0 } from "../react-auth0-wrapper";
 import API from "../utils/API";
 import AWS from "./AWS";
 
@@ -24,39 +24,39 @@ class Survey extends Component {
     state = {
       url: "",
       dogName: "",
-      size: "",
-      familyFriendly: "yes",
-      energetic: "yes",
-      lazy: "yes",
-      strangerDanger: "yes",
-      dogDanger: "yes",
-      largeDogDanger: "yes",
-      smallDogDanger: "yes",
-      dominant: "yes",
-      doesntShare: "yes",
-      chaser: "yes",
-      wrestler: "yes",
-      allDogFriendly: "yes",
-      ownerFirstName: "",
-      ownerLastName: "",
-      ownerEmail: "",
+      size: "Medium",
+      familyFriendly: "Yes",
+      energetic: "Yes",
+      lazy: "Yes",
+      strangerDanger: "Yes",
+      dogDanger: "Yes",
+      largeDogDanger: "Yes",
+      smallDogDanger: "Yes",
+      dominant: "Yes",
+      doesntShare: "Yes",
+      chaser: "Yes",
+      wrestler: "Yes",
+      allDogFriendly: "Yes",
+      ownerFirstName: this.props.user.given_name,
+      ownerLastName: this.props.user.family_name,
+      ownerEmail: this.props.user.email,
       modal: false
     };
 
   toggle() {
 
     if (this.state.modal === false) {
-        console.log("modal to true")
+        // console.log("modal to true")
         this.setState({ modal : true})
     } else if (this.state.modal === true){
-        console.log("modal to false")
+        // console.log("modal to false")
         this.setState({modal : false})
     }
   };
 
 
-
   handleInputChange = event => {
+      
     const { name, value } = event.target;
 
     this.setState({
@@ -68,9 +68,9 @@ class Survey extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
 
-    if (this.state.dogName && this.state.url) {
-      console.log("Yup!");
-      console.log(this.props);
+    if (this.state.dogName) {
+    //   console.log("Yup!");
+    //   console.log(this.props);
 
       API.create({
         url: this.state.url,
@@ -123,7 +123,7 @@ class Survey extends Component {
   };
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <>
         <div
@@ -212,8 +212,8 @@ class Survey extends Component {
                   value={this.state.familyFriendly}
                   onChange={this.handleInputChange}
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
             </div>
@@ -229,8 +229,8 @@ class Survey extends Component {
                   value={this.state.energetic}
                   onChange={this.handleInputChange}
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
               <div className="col-md-6 col-xs-12 form-group">
@@ -242,8 +242,8 @@ class Survey extends Component {
                   value={this.state.lazy}
                   onChange={this.handleInputChange}
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
             </div>
@@ -257,8 +257,8 @@ class Survey extends Component {
                   value={this.state.strangerDanger}
                   onChange={this.handleInputChange}
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
               <div className="col-md-6 col-xs-12 form-group">
@@ -270,8 +270,8 @@ class Survey extends Component {
                   value={this.state.dogDanger}
                   onChange={this.handleInputChange}
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
             </div>
@@ -287,8 +287,8 @@ class Survey extends Component {
                   value={this.state.largeDogDanger}
                   onChange={this.handleInputChange}
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
               <div className="col-md-6 col-xs-12 form-group">
@@ -302,8 +302,8 @@ class Survey extends Component {
                   value={this.state.smallDogDanger}
                   onChange={this.handleInputChange}
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
             </div>
@@ -317,8 +317,8 @@ class Survey extends Component {
                   value={this.state.dominant}
                   onChange={this.handleInputChange}
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
               <div className="col-md-6 col-xs-12 form-group">
@@ -330,8 +330,8 @@ class Survey extends Component {
                   value={this.state.doesntShare}
                   onChange={this.handleInputChange}
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
             </div>
@@ -347,8 +347,8 @@ class Survey extends Component {
                   value={this.state.chaser}
                   onChange={this.handleInputChange}
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
               <div className="col-md-6 col-xs-12 form-group">
@@ -360,8 +360,8 @@ class Survey extends Component {
                   value={this.state.wrestler}
                   onChange={this.handleInputChange}
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
             </div>
@@ -375,8 +375,8 @@ class Survey extends Component {
                   value={this.state.allDogFriendly}
                   onChange={this.handleInputChange}
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
             </div>

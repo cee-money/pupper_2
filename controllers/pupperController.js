@@ -2,24 +2,24 @@ const db = require("../models");
 
 module.exports = {
     findMatches: (req, res) => {
+      console.log(req.params)
         db.Pupper.find({
-            where: {
-                ownerEmail: {
-                    $ne: req.body.ownerEmail
-                },
-                size: req.params.size,
-                energetic: req.params.energetic,
-                dominant: req.params.dominant
-            }
-        }).then(data => res.json(data)).catch(err => res.status(422).json(err))
+          ownerEmail: {
+              $ne: req.params.email
+            },
+          size: req.params.size,
+          energetic: req.params.energetic,
+          dominant: req.params.dominant
+        })
+          .then(data => console.log(data))
+            // res.json(data))
+          .catch(err => res.status(422).json(err))
       },
 
-      findOne: (req, res) => {
-        db.Pupper.find({
-          where: {
-            ownerEmail: req.params.email
-          }
-        }).then(data => res.json(data)).catch(err => res.status(422).json(err));
+      find: (req, res) => {
+        db.Pupper.find({ ownerEmail: req.params.email })
+          .then(data => res.json(data))
+          .catch(err => res.status(422).json(err));
       },
 
       create: (req, res) => {
@@ -29,13 +29,13 @@ module.exports = {
       },
     
       update: (req, res) => {
-        db.Pupper.findOneAndUpdate({where:  {_id: req.params.id }}, req.body)
+        db.Pupper.findOneAndUpdate({ _id: req.params.id }, req.body)
           .then(dbPup => res.json(dbPup))
           .catch(err => res.status(422).json(err));
       },
     
       remove: (req, res) => {
-        db.Pupper.findById({_id: req.params.id })
+        db.Pupper.findById({ _id: req.params.id })
           .then(dbPup => dbPup.remove())
           .then(dbPup => res.json(dbPup))
           .catch(err => res.statue(422).json(err));
