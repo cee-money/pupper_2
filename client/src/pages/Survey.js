@@ -167,7 +167,7 @@ class Survey extends Component {
                   required
                 />
               </div>
-              <AWS />
+              <AWS url={this.state.url}/>
               <div className="col-12">
                 <small>* indicates required field</small>
               </div>

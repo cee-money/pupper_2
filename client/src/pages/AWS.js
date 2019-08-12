@@ -63,7 +63,7 @@ class AWS extends Component {
     render() {
         const SuccessMessage = () => (
             <div className='col-md-4 col-xs-12 form-group' value={this.state.url} style={{ color: 'green' }}>SUCCESSFUL UPLOAD</div>
-    )
+            )
         const ErrorMessage = () => (
             <div style={{ padding: 50 }}>
                 <h3 style={{ color: 'red' }}>FAILED UPLOAD</h3>
@@ -74,7 +74,6 @@ class AWS extends Component {
         )
         return (
             <>
-            {console.log(this.props.url)}
             <div className="col-md-4 col-xs-12 form-group AWS">
                 <label>Your Pupper's Photo*:</label>
                 <center>
