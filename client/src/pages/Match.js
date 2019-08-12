@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import { Alert } from "reactstrap";
 import MatchCard from "../components/MatchCard";
 import API from "../utils/API";
@@ -19,11 +19,11 @@ const jumboStyle = {
 };
 
 class Match extends Component {
-    state = {
-        matches: [],
+  state = {
+    matches: [],
     size: "medium",
     energetic: "yes",
-    dominant: "yes",
+    dominant: "yes"
   };
 
   handleInputChange = event => {
@@ -36,29 +36,31 @@ class Match extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this.state)
-    // console.log(this.props.user.email)
-    console.log("hit")
     API.getMatches(
-        this.state.size.toLowerCase(), this.state.energetic, this.state.dominant, this.props.user.email
+      this.state.size.toLowerCase(),
+      this.state.energetic,
+      this.state.dominant,
+      this.props.user.email
     )
       .then(res => {
-        console.log("Res data", res.data)
+        console.log("Res data", res.data);
         this.setState({
           matches: res.data,
-          size: "",
-          energetic: "",
-          dominant: ""
-        })}
-      )
+          size: "medium",
+          energetic: "yes",
+          dominant: "yes"
+        });
+      })
       .catch(err => console.log(err));
+
+    
   };
 
   resetMatches = () => {
     this.setState({ matches: [] });
   };
 
-  render(props) {
+  render() {
     return (
       <>
         <div
@@ -69,7 +71,8 @@ class Match extends Component {
             <div className="row">
               <div className="col-md-10 col-sm-12">
                 <h1 className="display-1 text-white" id="logo" style={h1Style}>
-                  pupper<i className="fas fa-paw" id="paw" style={iStyle} />
+                  pupper
+                  <i className="fas fa-paw" id="paw" style={iStyle} />
                 </h1>
                 <br />
                 <h3 className="text-white">
@@ -171,7 +174,7 @@ class Match extends Component {
                       key={match._id}
                       _id={match._id}
                       url={match.url}
-                      recipientFirstName={match.ownerFirstName}
+                      ownerFirstName={match.ownerFirstName}
                       dogName={match.dogName}
                       recipientEmail={match.ownerEmail}
                       user={this.props.user}
@@ -214,6 +217,5 @@ class Match extends Component {
     );
   }
 }
-
 
 export default Match;
