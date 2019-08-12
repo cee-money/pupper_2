@@ -118,6 +118,7 @@ render() {
                         wrestler={pupper.wrestler}
                         allDogFriendly={pupper.allDogFriendly}
                         ownerEmail={pupper.ownerEmail}
+                        loadPuppers={this.loadPuppers}
                     />   
                 ))}
             </div> 

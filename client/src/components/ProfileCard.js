@@ -22,6 +22,7 @@ function ProfileCard(props) {
                     </h4>  
                     <EditRemoveBtn 
                             _id={props._id}
+                            loadPuppers={props.loadPuppers}
                         /> 
                 </div>
                 <div className="card-body row">
