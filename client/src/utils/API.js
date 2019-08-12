@@ -11,7 +11,7 @@ export default {
     },
 
     updateProfile: function(profileData) {
-        return axios.put("/api/matches", profileData )
+        return axios.put("/api/matches", profileData)
     },
 
     create: function(profileData) {

@@ -8,11 +8,9 @@ class BorkModal extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      name: "Carolyn",
-      email: "moneymaker.carolyn@gmail.com",
-      recipient: this.props.ownerEmail,
       // name: this.props.user.given_name,
       // email: this.props.user.email,
+      recipient: this.props.recipientEmail,
       message: "My pup would love to meet yours!"
     }
 
