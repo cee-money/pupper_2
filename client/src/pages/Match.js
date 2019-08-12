@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { Alert } from "reactstrap";
 import MatchCard from "../components/MatchCard";
-import YesNoMenu from "../components/YesNoMenu";
-import SizeMenu from "../components/SizeMenu";
-import { useAuth0 } from "../react-auth0-wrapper";
 import API from "../utils/API";
 
 const h1Style = {
@@ -22,62 +19,11 @@ const jumboStyle = {
 
 class Match extends Component {
     state = {
-        matches: [
-        {
-            dogName: "Fido",
-            _id: 7,
-            url:"https://www.azhumane.org/wp-content/uploads/2015/10/iStock-623499258-200x200.jpg",
-            ownerFirstName: "Dawn",
-            ownerEmail: "dawn@me.com",
-            size: "Small",
-            energetic: "Yes",
-            dominant: "No"
-        },
-        // {
-        //     dogName: "Frank",
-        //     _id: 8,
-        //     url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbYquZS-VxQyz92r3dmKeBzx-V_o7xm3jobIXOftVk7T03YffF",
-        //     ownerFirstName: "Sherry",
-        //     ownerEmail: "sherry@aol.com",
-        //     size: "Medium",
-        //     energetic: "Yes",
-        //     dominant: "No"
-        // },
-        // {
-        //     dogName: "Hooch",
-        //     _id: 3,
-        //     url:"https://www.dogthelove.com/images/dog_200x200.jpg",
-        //     ownerFirstName: "Carol",
-        //     ownerEmail: "carol@gmail.com",
-        //     size: "Large",
-        //     energetic: "Yes",
-        //     dominant: "Yes"
-        // },
-        // {
-        //     dogName: "Cecil",
-        //     _id: 2,
-        //     url:"https://thedogstop.com/pa-pittsburgh-sewickley/wp-content/uploads/sites/7/2017/08/george.jpg",
-        //     ownerFirstName: "Avery",
-        //     ownerEmail: "cecil@optonline.net",
-        //     size: "Medium",
-        //     energetic: "No",
-        //     dominant: "No"
-        // }
-    ],
+        matches: [],
     size: "",
     energetic: "",
     dominant: "",
-    ownerFirstName: "",
-    ownerLastName: "",
-    ownerEmail: ""
   };
-
-  // componentDidMount() {
-  //     API.getMatches().then(res => this.setState({matches: res.data})).catch(err => console.log(err))
-  // }
-
-addToState() {
-    const {user, loading } = useAuth0();
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -89,22 +35,27 @@ addToState() {
 
   handleFormSubmit = event => {
     event.preventDefault();
-
-    API.getMatches(this.state)
-      .then(res =>
+    console.log(this.state)
+    console.log(this.props.user.email)
+    console.log("hit")
+    API.getMatches(
+        this.state.size.toLowerCase(), this.state.energetic, this.state.dominant, this.props.user.email
+    )
+      .then(res => {
+        console.log("Res data", res.data)
         this.setState({
           matches: res.data,
           size: "",
           energetic: "",
           dominant: ""
-        })
+        })}
       )
       .catch(err => console.log(err));
   };
 
-  resetMatches() {
+  resetMatches = () => {
     this.setState({ matches: [] });
-  }
+  };
 
   render() {
     return (
@@ -157,9 +108,9 @@ addToState() {
                     value={this.state.size}
                     onChange={this.handleInputChange}
                   >
-                    <option value="Small">Small (under 25 lbs)</option>
-                    <option value="Medium">Medium (between 25-50 lbs)</option>
-                    <option value="Large">Large (over 50 lbs)</option>
+                    <option value="small">Small (under 25 lbs)</option>
+                    <option value="medium">Medium (between 25-50 lbs)</option>
+                    <option value="large">Large (over 50 lbs)</option>
                   </select>
                 </div>
                 <div className="col-md-4 col-xs-12 form-group">
@@ -261,6 +212,6 @@ addToState() {
     );
   }
 }
-}
+
 
 export default Match;
