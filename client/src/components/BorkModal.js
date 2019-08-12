@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios';
 
-
 class BorkModal extends React.Component {
   constructor(props) {
     super(props);
@@ -11,10 +10,8 @@ class BorkModal extends React.Component {
       recipient: this.props.recipientEmail,
       message: ""
     }
-
     this.toggle = this.toggle.bind(this);
   };
-
   toggle() {
     this.setState(prevState => ({
       modal: !prevState.modal
@@ -22,7 +19,6 @@ class BorkModal extends React.Component {
   }
 
   handleInputChange = event => {
-
     const { value } = event.target;
 
     this.setState({
@@ -32,11 +28,11 @@ class BorkModal extends React.Component {
   }
 
   handleFormSubmit = event =>{
-    event.preventDefault();  
-
+    event.preventDefault(); 
+       
     axios({
         method: "POST", 
-        url:"http://localhost:3002/send", 
+        url:"/api/transporter/send", 
         data: {
             name: this.props.user.given_name,
             email: this.props.user.email,
@@ -45,14 +41,13 @@ class BorkModal extends React.Component {
         }
     }).then((response)=>{
         if (response.data.msg === 'success'){
-            alert("Message Sent."); 
-            this.resetForm()
+            console.log("Message Sent."); 
+            this.toggle();
         }else if(response.data.msg === 'fail'){
-            alert("Message failed to send.")
+            console.log("Message failed to send.")
         }
     })
 }
-
   render() {
     console.log(this.state)
     console.log(this.props)
@@ -67,19 +62,17 @@ class BorkModal extends React.Component {
             <form method="POST" action="send">
               <div className="form-group">
                   <label>Your Bork</label>
-                  <textarea className="form-control col-md-12" type="text" name="message" id="message" value={this.state.message} onChange={this.handleInputChange} rows="5" placeholder="My pup would love to meet yours!"></textarea>
+                  <textarea className="form-control col-md-12" type="text" name="message" id="message" value={this.state.message} onChange={this.handleInputChange} rows="5" placeholder="Your message here"></textarea>
                     <br/>
                 </div>
               </form>
           </ModalBody>
           <ModalFooter>
-            <Button className="btn btn-info" type="sumbit" id="send" onClick={this.handleFormSubmit}>Bork!</Button>
+            <Button className="btn btn-info" type="sumbit" id="send" onClick={this.handleFormSubmit} method="POST">Bork!</Button>
           </ModalFooter>
         </Modal>
       </div>
-    );
+    ); 
   }
 }
-
 export default BorkModal;
-

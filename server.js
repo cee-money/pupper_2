@@ -32,7 +32,3 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pupper", { useN
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
-
-// app.listen(config.port, () => {
-//   console.log(`Application started at localhost:${config.port}`);
-// });
