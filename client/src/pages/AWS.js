@@ -31,9 +31,9 @@ class AWS extends Component {
         let fileName = fileParts[0];
         let fileType = fileParts[1];
         console.log("Preparing the upload");
-        axios.post("http://localhost:6969/sign_s3", {
-            fileName: fileName,
-            fileType: fileType
+        axios.post("https://protected-chamber-61114.herokuapp.com/sign_s3", {
+            fileName,
+            fileType
         })
             .then(response => {
                 var returnData = response.data.data.returnData;
@@ -62,11 +62,8 @@ class AWS extends Component {
     }
     render() {
         const SuccessMessage = () => (
-            <div className='col-md-4 col-xs-12 form-group' value={this.state.url} 
-            style={{ color: 'green' }}>SUCCESSFUL UPLOAD</div>
-        )
-
-     
+            <div className='col-md-4 col-xs-12 form-group' value={this.state.url} style={{ color: 'green' }}>SUCCESSFUL UPLOAD</div>
+    )
         const ErrorMessage = () => (
             <div style={{ padding: 50 }}>
                 <h3 style={{ color: 'red' }}>FAILED UPLOAD</h3>
@@ -78,11 +75,9 @@ class AWS extends Component {
         return (
             <>
             {console.log(this.props.url)}
-            <div className="col-md-4 col-xs-12 form-group App">
+            <div className="col-md-4 col-xs-12 form-group AWS">
                 <label>Your Pupper's Photo*:</label>
                 <center>
-                    {this.state.success ? <SuccessMessage /> : null}
-                    {this.state.error ? <ErrorMessage /> : null}
                     <input
                         className="form-control"
                         id="dog-photo"
@@ -92,6 +87,8 @@ class AWS extends Component {
                         ref={(ref) => { this.uploadInput = ref; }}
                         type="file"
                     />
+                    {this.state.success ? <SuccessMessage /> : null}
+                    {this.state.error ? <ErrorMessage /> : null}
                 </center>
             </div>
             <div className="col-md-2 col-xs-12 form-group">

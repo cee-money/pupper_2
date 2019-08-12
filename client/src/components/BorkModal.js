@@ -36,7 +36,7 @@ class BorkModal extends React.Component {
     const recipient= document.getElementById('recipient').value;
     axios({
         method: "POST", 
-        url:"http://localhost:3000/send", 
+        url:"http://localhost:3001/send", 
         // url: "/send",
         data: {
             name,
@@ -82,11 +82,11 @@ class BorkModal extends React.Component {
               </form>
           </ModalBody>
           <ModalFooter>
-            <Button className="btn btn-info" type="sumbit" id="send" onClick={this.handleFormSubmit}>Bork!</Button>
+            <Button className="btn btn-info" type="sumbit" id="send" onClick={this.handleFormSubmit} method="POST">Bork!</Button>
           </ModalFooter>
         </Modal>
       </div>
-    );
+    ); 
   }
 }
 export default BorkModal;

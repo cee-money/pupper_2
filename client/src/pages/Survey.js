@@ -189,13 +189,13 @@ class Survey extends Component {
                   value={this.state.size}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Small">
+                  <option value="small">
                     Small (under 25 lbs)
                   </option>
-                  <option value="Medium">
+                  <option value="medium">
                     Medium (between 25-50 lbs)
                   </option>
-                  <option value="Large">
+                  <option value="large">
                     Large (over 50 lbs)
                   </option>
                 </select>
