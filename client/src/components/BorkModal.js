@@ -36,7 +36,7 @@ class BorkModal extends React.Component {
     const recipient= document.getElementById('recipient').value;
     axios({
         method: "POST", 
-        url:"http://localhost:3001/send", 
+        url:"http://localhost:3002/send", 
         // url: "/send",
         data: {
             name,
