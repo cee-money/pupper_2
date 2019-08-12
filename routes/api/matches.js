@@ -6,7 +6,7 @@ router.route("/")
     .post(pupperController.create);
 // matches with /api/matches/:email
 router.route("/:email")
-    .get(pupperController.findOne)
+    .get(pupperController.findOne);
 // matches with "/api/matches/:size/:energetic/:dominant"
 router.route("/:size/:energetic/:dominant")
     .get(pupperController.findMatches)
@@ -15,4 +15,4 @@ router.route("/:id")
     .delete(pupperController.remove)
     .put(pupperController.update);
 
-module.exports = router
+module.exports = router;
