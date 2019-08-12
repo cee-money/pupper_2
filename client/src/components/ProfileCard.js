@@ -1,7 +1,7 @@
 import React from "react";
 import EditRemoveBtn from "../components/EditRemoveBtn";
 import ProfileImage from "../components/ProfileImage";
-// import ProfileSummary from "../components/ProfileSummary";
+import ProfileSummary from "../components/ProfileSummary";
 import ProfileEdit from "../components/ProfileEdit";
 
 
@@ -12,6 +12,7 @@ const h4Style = {
 
 function ProfileCard(props) {
 
+    console.log(props)
     return (
         <>
         <div className="col-md-12">
@@ -22,12 +23,13 @@ function ProfileCard(props) {
                     </h4>  
                     <EditRemoveBtn 
                             _id={props._id}
+                            loadPuppers={props.loadPuppers}
                         /> 
                 </div>
                 <div className="card-body row">
                     <ProfileImage {...props} />
-                    {/* <ProfileSummary {...props} /> */}
-                    <ProfileEdit {...props} />
+                    <ProfileSummary {...props} />
+                    {/* <ProfileEdit {...props} /> */}
                 </div>
             </div>
         </div>

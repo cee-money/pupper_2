@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom"
 import { Alert } from "reactstrap";
 import MatchCard from "../components/MatchCard";
 import API from "../utils/API";
@@ -20,9 +21,9 @@ const jumboStyle = {
 class Match extends Component {
     state = {
         matches: [],
-    size: "",
-    energetic: "",
-    dominant: "",
+    size: "medium",
+    energetic: "yes",
+    dominant: "yes",
   };
 
   handleInputChange = event => {
@@ -57,7 +58,7 @@ class Match extends Component {
     this.setState({ matches: [] });
   };
 
-  render() {
+  render(props) {
     return (
       <>
         <div
@@ -170,9 +171,10 @@ class Match extends Component {
                       key={match._id}
                       _id={match._id}
                       url={match.url}
-                      ownerFirstName={match.ownerFirstName}
+                      recipientFirstName={match.ownerFirstName}
                       dogName={match.dogName}
-                      ownerEmail={match.ownerEmail}
+                      recipientEmail={match.ownerEmail}
+                      user={this.props.user}
                     />
                   ))}
                 </div>
@@ -192,9 +194,9 @@ class Match extends Component {
                 <h4>
                   <Alert color="light">
                     There are no matches. Select different parameters and
-                    <a href="/match" className="alert-link">
+                    <Link to="/match" className="alert-link">
                       search again
-                    </a>
+                    </Link>
                     .
                   </Alert>
                 </h4>

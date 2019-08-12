@@ -27,14 +27,13 @@ class RemoveModal extends Component {
     event.preventDefault();
 
     API.deleteProfile(this.props._id)
-        .then(res => this.loadPuppers())
+        .then(res => this.props.loadPuppers())
         .catch(err => console.log(err))
 };
 
   render() {
     return (
       <div>
-        {/* {console.log(this.props)} */}
         <Button style={buttonStyle} color="secondary" onClick={this.toggle}>Remove Profile</Button>
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
             <ModalHeader className="text-info" toggle={this.toggle}><i className="fas fa-paw"></i>&nbsp;&nbsp;Confirm Delete

@@ -15,7 +15,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  findOne: (req, res) => {
+  find: (req, res) => {
     db.Pupper.find({
       ownerEmail: req.params.email
     })
