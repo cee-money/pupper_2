@@ -68,7 +68,7 @@ class ProfileEdit extends Component {
                 <br />
                 Size:&nbsp;&nbsp;
                 <select
-                  className="form-control form-group col-md-6 questions"
+                  className="form-control form-control-sm form-group col-md-6 questions"
                   name="size"
                   value={this.state.size}
                   onChange={this.handleInputChange}
@@ -80,7 +80,7 @@ class ProfileEdit extends Component {
                 
                 Family friendly:&nbsp;&nbsp;
                 <select
-                  className="form-control form-group col-md-6 questions"
+                  className="form-control form-control-sm form-group col-md-6 questions"
                   name="familyFriendly"
                   value={this.state.familyFriendly}
                   onChange={this.handleInputChange}
@@ -91,7 +91,7 @@ class ProfileEdit extends Component {
                 
                 Energetic:&nbsp;&nbsp;
                 <select
-                  className="form-control form-group col-md-6 questions"
+                  className="form-control form-control-sm form-group col-md-6 questions"
                   name="energetic"
                   value={this.state.energetic}
                   onChange={this.handleInputChange}
@@ -102,7 +102,7 @@ class ProfileEdit extends Component {
                 
                 Skittish (dogs):&nbsp;&nbsp;
                 <select
-                  className="form-control form-group col-md-6 questions"
+                  className="form-control form-control-sm form-group col-md-6 questions"
                   name="dogDanger"
                   value={this.state.dogDanger}
                   onChange={this.handleInputChange}
@@ -113,7 +113,7 @@ class ProfileEdit extends Component {
                 
                 Skittish (people):&nbsp;&nbsp;
                 <select
-                  className="form-control form-group col-md-6 questions"
+                  className="form-control form-control-sm form-group col-md-6 questions"
                   name="strangerDanger"
                   value={this.state.strangerDanger}
                   onChange={this.handleInputChange}
@@ -124,7 +124,7 @@ class ProfileEdit extends Component {
                 
                 Large playmates:&nbsp;&nbsp;
                 <select
-                  className="form-control form-group col-md-6 questions"
+                  className="form-control form-control-sm form-group col-md-6 questions"
                   name="largeDogDanger"
                   value={this.state.largeDogDanger}
                   onChange={this.handleInputChange}
@@ -139,7 +139,7 @@ class ProfileEdit extends Component {
                 
                 Small playmates:&nbsp;&nbsp;
                 <select
-                  className="form-control form-group col-md-6 questions"
+                  className="form-control form-control-sm form-group col-md-6 questions"
                   name="smallDogDanger"
                   value={this.state.smallDogDanger}
                   onChange={this.handleInputChange}
@@ -150,7 +150,7 @@ class ProfileEdit extends Component {
                 
                 Dominant:&nbsp;&nbsp;
                 <select
-                  className="form-control form-group col-md-6 questions"
+                  className="form-control form-control-sm form-group col-md-6 questions"
                   name="dominant"
                   value={this.state.dominant}
                   onChange={this.handleInputChange}
@@ -161,7 +161,7 @@ class ProfileEdit extends Component {
                 
                 Guards resouces:&nbsp;&nbsp;
                 <select
-                  className="form-control form-group col-md-6 questions"
+                  className="form-control form-control-sm form-group col-md-6 questions"
                   name="doesntShare"
                   value={this.state.doesntShare}
                   onChange={this.handleInputChange}
@@ -172,7 +172,7 @@ class ProfileEdit extends Component {
                 
                 Loves chase:&nbsp;&nbsp;
                 <select
-                  className="form-control form-group col-md-6 questions"
+                  className="form-control form-control-sm form-group col-md-6 questions"
                   name="chaser"
                   value={this.state.chaser}
                   onChange={this.handleInputChange}
@@ -183,7 +183,7 @@ class ProfileEdit extends Component {
                 
                 Loves wrestling:&nbsp;&nbsp;
                 <select
-                  className="form-control form-group col-md-6 questions"
+                  className="form-control form-control-sm form-group col-md-6 questions"
                   id="q12"
                   name="wrestler"
                   value={this.state.wrestler}
@@ -195,7 +195,7 @@ class ProfileEdit extends Component {
                 
                 Outgoing:&nbsp;&nbsp;
                 <select
-                  className="form-control form-group col-md-6 questions"
+                  className="form-control form-control-sm form-group col-md-6 questions"
                   id="q13"
                   name="allDogFriendly"
                   value={this.state.allDogFriendly}

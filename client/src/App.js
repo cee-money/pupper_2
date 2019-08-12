@@ -7,7 +7,6 @@ import Survey from "./pages/Survey";
 import Match from "./pages/Match";
 import Err from "./pages/Err";
 import Footer from "./components/Footer";
-import Contact from './pages/Contact';
 import Navbar from './components/NavBar';
 // import PrivateRoute from "./components/PrivateRoute";
 
@@ -60,16 +59,6 @@ function App() {
             loading={loading} 
           />}
         />
-
-        {/* <Route exact path="/contact" render={(props) => 
-          <ChatApp {...props}
-            isAuthenticated={isAuthenticated} 
-            loginWithRedirect={loginWithRedirect} 
-            logout={logout} 
-            user={user} 
-            loading={loading} 
-          />}
-        /> */}
         
         <Route component={Err} />
       </Switch>
