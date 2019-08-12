@@ -78,7 +78,7 @@ class BorkModal extends React.Component {
           <ModalBody>
             <form method="POST" action="send">
               <div className="form-group">
-                  <label>Your First Name</label>
+                  {/* <label>Your First Name</label>
                   <input className="form-control col-md-4" type="text" name="name" id="name" value={this.state.name} onChange={this.handleInputChange} placeholder={this.state.name}/>
                     <br/>
                   <label>Your Email Address</label>
@@ -86,7 +86,7 @@ class BorkModal extends React.Component {
                     <br/> 
                   <label>Recipient Email</label>
                   <input className="form-control col-md-8" type="email" name="recipient" id="recipient" value={this.state.recipient} onChange={this.handleInputChange} placeholder={this.state.recipient}/>
-                    <br/>  
+                    <br/>   */}
                   <label>Your Bork</label>
                   <textarea className="form-control col-md-12" type="text" name="message" id="message" value={this.state.message} onChange={this.handleInputChange} rows="5" placeholder={this.state.message}></textarea>
                     <br/>
