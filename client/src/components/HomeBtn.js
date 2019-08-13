@@ -9,6 +9,4 @@ function HomeBtn(){
 }
 
 
-                    
-
 export default HomeBtn;

@@ -14,7 +14,10 @@ const imgStyle = {
 
 function MatchCard(props) {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
     return (
         <div className="col-md-4 col-xs-12">
             <div className="card text-white bg-info mb-3" style={cardStyleDiv}>

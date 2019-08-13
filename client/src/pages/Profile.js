@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Alert } from 'reactstrap';
 import ProfileCard from "../components/ProfileCard";
+<<<<<<< HEAD
 // import { useAuth0 } from "../react-auth0-wrapper";
+=======
+>>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
 import API from "../utils/API";
 import {Link} from "react-router-dom";
 
@@ -23,6 +26,7 @@ const jumboStyle ={
 class Profile extends Component {
 
     state = {
+<<<<<<< HEAD
         puppers: [
         // {
         //     dogName: "Fido",
@@ -44,18 +48,29 @@ class Profile extends Component {
         //     dominant: "No"
         // }
         ],
+=======
+        puppers: [],
+>>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
         ownerEmail: this.props.user.email
     }
 
 componentDidMount() {
+<<<<<<< HEAD
     // console.log(this.state.ownerEmail)
+=======
+
+>>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
     this.loadPuppers();
 };
 
 loadPuppers = () => {
     API.getProfile(this.state.ownerEmail)
         .then(res => 
+<<<<<<< HEAD
             // console.log(res)
+=======
+
+>>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
             this.setState({ puppers: res.data })
             )
         .catch(err => console.log(err))

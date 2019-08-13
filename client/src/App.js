@@ -8,7 +8,6 @@ import Match from "./pages/Match";
 import Err from "./pages/Err";
 import Footer from "./components/Footer";
 import Navbar from './components/NavBar';
-// import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const { isAuthenticated, loginWithRedirect, logout, user, loading } = useAuth0();
@@ -51,24 +50,14 @@ function App() {
         />
        
         <Route exact path="/match" render={(props) => 
-          <Match {...props}
-            isAuthenticated={isAuthenticated} 
-            loginWithRedirect={loginWithRedirect} 
-            logout={logout} 
-            user={user} 
-            loading={loading} 
-          />}
-        />
-
-        {/* <Route exact path="/contact" render={(props) => 
-          <ChatApp {...props}
-            isAuthenticated={isAuthenticated} 
-            loginWithRedirect={loginWithRedirect} 
-            logout={logout} 
-            user={user} 
-            loading={loading} 
-          />}
-        /> */}
+        <Match {...props}
+          isAuthenticated={isAuthenticated} 
+          loginWithRedirect={loginWithRedirect} 
+          logout={logout} 
+          user={user} 
+          loading={loading}
+       />}
+       />
         
         <Route component={Err} />
       </Switch>

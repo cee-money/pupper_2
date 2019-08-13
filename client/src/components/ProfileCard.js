@@ -12,7 +12,10 @@ class ProfileCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
       // key: this.props.key,
+=======
+>>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
       _id: this.props._id,
       url: this.props.url,
       dogName: this.props.dogName,
@@ -44,7 +47,10 @@ class ProfileCard extends Component {
 }
     
   };
+<<<<<<< HEAD
   // need to set editActive to false on click of savebtn, also need api call (update route)
+=======
+>>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
 
   render() {
     return (

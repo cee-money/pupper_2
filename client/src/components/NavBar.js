@@ -53,7 +53,10 @@ function Navbar(props) {
           </ul>
         {props.isAuthenticated && (
           <div className="nav-item">
-              <button className="btn btn-info bg-secondary" onClick={() => props.logout()}>Log out</button>
+              <button 
+                className="btn btn-info bg-secondary" 
+                onClick={() => props.logout()}
+              >Log out</button>
             </div>
           )}
         </div>
