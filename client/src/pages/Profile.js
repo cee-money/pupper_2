@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { Alert } from 'reactstrap';
 import ProfileCard from "../components/ProfileCard";
-<<<<<<< HEAD
-// import { useAuth0 } from "../react-auth0-wrapper";
-=======
->>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
 import API from "../utils/API";
 import {Link} from "react-router-dom";
 
@@ -26,51 +22,17 @@ const jumboStyle ={
 class Profile extends Component {
 
     state = {
-<<<<<<< HEAD
-        puppers: [
-        // {
-        //     dogName: "Fido",
-        //     _id: 7,
-        //     url:"https://www.azhumane.org/wp-content/uploads/2015/10/iStock-623499258-200x200.jpg",
-        //     ownerEmail: "dawn@me.com",
-        //     size: "Small",
-        //     energetic: "Yes",
-        //     dominant: "No"
-        // }
-        // ,
-        // {
-        //     dogName: "Frank",
-        //     _id: 8,
-        //     url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbYquZS-VxQyz92r3dmKeBzx-V_o7xm3jobIXOftVk7T03YffF",
-        //     ownerEmail: "sherry@aol.com",
-        //     size: "Medium",
-        //     energetic: "Yes",
-        //     dominant: "No"
-        // }
-        ],
-=======
         puppers: [],
->>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
         ownerEmail: this.props.user.email
     }
 
 componentDidMount() {
-<<<<<<< HEAD
-    // console.log(this.state.ownerEmail)
-=======
-
->>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
     this.loadPuppers();
 };
 
 loadPuppers = () => {
     API.getProfile(this.state.ownerEmail)
         .then(res => 
-<<<<<<< HEAD
-            // console.log(res)
-=======
-
->>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
             this.setState({ puppers: res.data })
             )
         .catch(err => console.log(err))

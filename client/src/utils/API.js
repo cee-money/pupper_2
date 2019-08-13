@@ -12,10 +12,7 @@ export default {
         return axios.get("/api/matches/" + email);
     },
 
-<<<<<<< HEAD
-=======
     // Updates profile data in Mongo based on id
->>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
     updateProfile: function(id, profileData) {
         return axios.put("/api/matches/" + id, profileData)
     },

@@ -67,20 +67,12 @@ class AWS extends Component {
 
         const SuccessMessage = () => (
             <div className='row'>
-<<<<<<< HEAD
-                <div className='col-md-12 form-group' value={this.state.url} style={{ color: 'green' }}>
-                    <small>&nbsp;&nbsp;&nbsp;&nbsp;Succesful Upload!</small>
-                </div>
-            </div>
-        )
-=======
                 <div className='col-md-12 form-group' id='url' value={this.state.url} style={{color: 'green'}}>
                     <small>&nbsp;&nbsp;&nbsp;&nbsp;Succesful Upload!</small>
                 </div>
             </div>
         );
 
->>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
 
         const ErrorMessage = () => (
             <div style={{padding: 50}}>
@@ -92,14 +84,8 @@ class AWS extends Component {
         );
         return (
             <>
-<<<<<<< HEAD
-            {console.log(this.props.url)}
-            <div className="col-md-4 col-xs-12 form-group AWS">
-                <label>Your Pupper's Photo*:</label>
-=======
                 <div className="col-md-4 col-xs-12 form-group AWS">
                     <label>Your Pupper's Photo*:</label>
->>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
                     <input
                         className="form-control"
                         id="dog-photo"
@@ -110,18 +96,6 @@ class AWS extends Component {
                         }}
                         type="file"
                     />
-<<<<<<< HEAD
-                    {this.state.success ? <SuccessMessage /> : null}
-                    {this.state.error ? <ErrorMessage /> : null}
-            </div>
-            <div className="col-md-2 col-xs-12 form-group">
-                <button
-                    className="btn btn-info btn-sm"
-                    onClick={this.handleUpload}
-                    style={uploadBtn}>Upload
-                </button>
-            </div>
-=======
                     {this.state.success ? <SuccessMessage/> : null}
                     {this.state.error ? <ErrorMessage/> : null}
                 </div>
@@ -132,15 +106,10 @@ class AWS extends Component {
                         style={uploadBtn}>Upload
                     </button>
                 </div>
->>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
             </>
         )
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 7edc5f427ffefed57a001bd1084a1eaba8492186
 export default AWS;
 
 
