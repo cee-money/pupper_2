@@ -51,30 +51,14 @@ function App() {
         />
        
         <Route exact path="/match" render={(props) => 
-
         <Match {...props}
-        isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading}
+        isAuthenticated={isAuthenticated}
+        loginWithRedirect={loginWithRedirect}
+        logout={logout}
+        user={user}
+        loading={loading}
        />}/>
-
-          <Match {...props}
-            isAuthenticated={isAuthenticated} 
-            loginWithRedirect={loginWithRedirect} 
-            logout={logout} 
-            user={user} 
-            loading={loading} 
-          />}
-        />
-
-        {/* <Route exact path="/contact" render={(props) => 
-          <ChatApp {...props}
-            isAuthenticated={isAuthenticated} 
-            loginWithRedirect={loginWithRedirect} 
-            logout={logout} 
-            user={user} 
-            loading={loading} 
-          />}
-        /> */}
-        
+    
         <Route component={Err} />
       </Switch>
       </>
