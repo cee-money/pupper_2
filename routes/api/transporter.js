@@ -1,20 +1,23 @@
-// Nodemailer routing
 
 var nodemailer = require('nodemailer');
 const router = require("express").Router();
+require("dotenv").config();
 
 var transport = {
   host: 'smtp.gmail.com',
   port: 465,
+  secure: true,
   auth: {
     type: 'OAuth2',
     user: "pupperconnectionapp@gmail.com",
-    clientID: '349667216343-n2ht59rhf3ike9korso7qgmqv6acjeed.apps.googleusercontent.com',
-    clientSecret: process.env.clientSecret,
-    refreshToken: "1/KT4XnpJNF_Etg0-SKQM8ITWwD6bVPlURm1uP4ule6UY9tuJ_9LYiZWft2Sent0WN",
-    accessToken: "ya29.GltiB1cqzkwb21W2kfiDkWtuix7K67m3DxNDwp7v-mgp8rmWRCvUum2WODonQLao1X-9GZjviG2g-BCcmAxG99mWXlgEPsMDgeUuhZqTdS-tUC0_WpEXqz8UQtX_"
+    clientId: '393606901902-gsdk2g3nkdpgkqtei7eemrjf7gn972ok.apps.googleusercontent.com',
+    clientSecret: process.env.CLIENT_SECRET,
+    refreshToken: "1/ETcuCUeUhdw4pJ57bZnCycrJnACvxGEmv1DIKClh_Cg",
+    accessToken: "ya29.GltjByi6QKAYp8xVQy-fqwSdBEtl5HEZxOT7uq1EIwwTmTI0ijyna8SQ4W5SR4sb8qrEOOWha9vbHy6sQsIpeeHyWWg5krA0MrB8xTzG_T_zjGu72TtzczNVYDds",
+    expires: 3600
   }
 }
+
 
 var transporter = nodemailer.createTransport(transport)
 

@@ -25,7 +25,7 @@ const pupSeed = [{
     dogName: "Pupper",
     size: "small",
     familyFriendly: "yes",
-    energetic: "yes",
+    energetic: "no",
     lazy: "no",
     strangerDanger: "yes",
     dogDanger: "yes",
