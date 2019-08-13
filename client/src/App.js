@@ -51,14 +51,13 @@ function App() {
        
         <Route exact path="/match" render={(props) => 
         <Match {...props}
-          isAuthenticated={isAuthenticated} 
-          loginWithRedirect={loginWithRedirect} 
-          logout={logout} 
-          user={user} 
-          loading={loading}
-       />}
-       />
-        
+        isAuthenticated={isAuthenticated}
+        loginWithRedirect={loginWithRedirect}
+        logout={logout}
+        user={user}
+        loading={loading}
+       />}/>
+    
         <Route component={Err} />
       </Switch>
       </>
