@@ -9,6 +9,7 @@ import Err from "./pages/Err";
 import Footer from "./components/Footer";
 import Navbar from './components/NavBar';
 
+
 function App() {
   const { isAuthenticated, loginWithRedirect, logout, user, loading } = useAuth0();
 
