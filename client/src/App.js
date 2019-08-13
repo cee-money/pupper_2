@@ -8,6 +8,7 @@ import Match from "./pages/Match";
 import Err from "./pages/Err";
 import Footer from "./components/Footer";
 import Navbar from './components/NavBar';
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const { isAuthenticated, loginWithRedirect, logout, user, loading } = useAuth0();
@@ -29,7 +30,7 @@ function App() {
           />}
         />
 
-        <Route exact path="/profile" render={(props) => 
+        <PrivateRoute exact path="/profile" render={(props) => 
           <Profile {...props}
             isAuthenticated={isAuthenticated} 
             loginWithRedirect={loginWithRedirect} 
@@ -39,7 +40,7 @@ function App() {
           />}
        />
 
-        <Route exact path="/survey" render={(props) => 
+        <PrivateRoute exact path="/survey" render={(props) => 
           <Survey {...props}
             isAuthenticated={isAuthenticated} 
             loginWithRedirect={loginWithRedirect} 
@@ -49,7 +50,7 @@ function App() {
           />}
         />
        
-        <Route exact path="/match" render={(props) => 
+        <PrivateRoute exact path="/match" render={(props) => 
         <Match {...props}
         isAuthenticated={isAuthenticated}
         loginWithRedirect={loginWithRedirect}
