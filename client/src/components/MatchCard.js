@@ -1,7 +1,6 @@
 import React from "react";
 import BorkModal from "./BorkModal";
 
-
 const cardStyleDiv = {
     maxWidth: "20rem"
 }
@@ -15,9 +14,6 @@ const imgStyle = {
 
 function MatchCard(props) {
 
-    // const {user} = useAuth0();
-
-    // console.log("Match card", user)
 
     return (
         <div className="col-md-4 col-xs-12">

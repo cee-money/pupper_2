@@ -61,9 +61,15 @@ class AWS extends Component {
             })
     }
     render() {
+
         const SuccessMessage = () => (
-            <div className='col-md-4 col-xs-12 form-group' value={this.state.url} style={{ color: 'green' }}>SUCCESSFUL UPLOAD</div>
-    )
+            <div className='row'>
+                <div className='col-md-12 form-group' value={this.state.url} style={{ color: 'green' }}>
+                    <small>&nbsp;&nbsp;&nbsp;&nbsp;Succesful Upload!</small>
+                </div>
+            </div>
+        )
+
         const ErrorMessage = () => (
             <div style={{ padding: 50 }}>
                 <h3 style={{ color: 'red' }}>FAILED UPLOAD</h3>
@@ -77,7 +83,6 @@ class AWS extends Component {
             {console.log(this.props.url)}
             <div className="col-md-4 col-xs-12 form-group AWS">
                 <label>Your Pupper's Photo*:</label>
-                <center>
                     <input
                         className="form-control"
                         id="dog-photo"
@@ -89,7 +94,6 @@ class AWS extends Component {
                     />
                     {this.state.success ? <SuccessMessage /> : null}
                     {this.state.error ? <ErrorMessage /> : null}
-                </center>
             </div>
             <div className="col-md-2 col-xs-12 form-group">
                 <button
@@ -103,3 +107,6 @@ class AWS extends Component {
     }
 }
 export default AWS;
+
+
+

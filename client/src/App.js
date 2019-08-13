@@ -21,24 +21,55 @@ function App() {
       <Switch>
 
         <Route exact path="/" render={(props) => 
-        <Home {...props}
-        isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading}
-       />}/>
+          <Home {...props}
+            isAuthenticated={isAuthenticated} 
+            loginWithRedirect={loginWithRedirect} 
+            logout={logout} 
+            user={user} 
+            loading={loading} 
+          />}
+        />
 
         <Route exact path="/profile" render={(props) => 
-        <Profile {...props}
-        isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading}
-       />}/>
+          <Profile {...props}
+            isAuthenticated={isAuthenticated} 
+            loginWithRedirect={loginWithRedirect} 
+            logout={logout} 
+            user={user} 
+            loading={loading} 
+          />}
+       />
 
         <Route exact path="/survey" render={(props) => 
-        <Survey {...props}
-        isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading}
-       />}/>
+          <Survey {...props}
+            isAuthenticated={isAuthenticated} 
+            loginWithRedirect={loginWithRedirect} 
+            logout={logout} 
+            user={user}
+            loading={loading} 
+          />}
+        />
        
         <Route exact path="/match" render={(props) => 
-        <Match {...props}
-        isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} user={user} loading={loading}
-       />}/>
+          <Match {...props}
+            isAuthenticated={isAuthenticated} 
+            loginWithRedirect={loginWithRedirect} 
+            logout={logout} 
+            user={user} 
+            loading={loading} 
+          />}
+        />
+
+        {/* <Route exact path="/contact" render={(props) => 
+          <ChatApp {...props}
+            isAuthenticated={isAuthenticated} 
+            loginWithRedirect={loginWithRedirect} 
+            logout={logout} 
+            user={user} 
+            loading={loading} 
+          />}
+        /> */}
+        
         <Route component={Err} />
       </Switch>
       </>
