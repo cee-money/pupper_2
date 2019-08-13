@@ -106,7 +106,7 @@ class Match extends Component {
                 <div className="col-md-4 col-xs-12 form-group">
                   <label>I am looking to meet dogs that are:</label>
                   <select
-                    className="form-control form-group col-md-6 match-questions"
+                    className="form-control form-group col-md-8 match-questions"
                     id="match-q1"
                     name="size"
                     value={this.state.size}

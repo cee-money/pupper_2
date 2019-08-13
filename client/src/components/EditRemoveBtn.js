@@ -9,7 +9,13 @@ const buttonStyle = {
 function EditRemoveBtn(props) {
     return (
         <>
-       <button style={buttonStyle} className="btn btn-secondary" _id={props._id} onClick={(e) => {props.handleEdit(e)}} id="edit-profile">Edit Profile</button>
+        <button 
+            style={buttonStyle} 
+            className="btn btn-secondary" 
+            _id={props._id} 
+            onClick={(e) => {props.handleEdit(e)}}
+        >
+        Edit Profile</button>
         <RemoveModal
             _id={props._id}
             loadPuppers={props.loadPuppers}

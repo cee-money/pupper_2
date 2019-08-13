@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from "reactstrap";
-// import { useAuth0 } from "../react-auth0-wrapper";
 import API from "../utils/API";
 import AWS from "./AWS";
 
@@ -21,27 +20,6 @@ const jumboStyle = {
 
 
 class Survey extends Component {
-    // state = {
-    //     url: "",
-    //     dogName: "",
-    //     size: "medium",
-    //     familyFriendly: "yes",
-    //     energetic: "yes",
-    //     lazy: "yes",
-    //     strangerDanger: "yes",
-    //     dogDanger: "yes",
-    //     largeDogDanger: "yes",
-    //     smallDogDanger: "yes",
-    //     dominant: "yes",
-    //     doesntShare: "yes",
-    //     chaser: "yes",
-    //     wrestler: "yes",
-    //     allDogFriendly: "yes",
-    //     ownerFirstName: "",
-    //     ownerLastName: "",
-    //     ownerEmail: "",
-    //     modal: false
-    // };
 
     constructor(props) {
       super(props);
@@ -99,9 +77,7 @@ class Survey extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
 
-        if (this.state.dogName) {
-            //   console.log("Yup!");
-            //   console.log(this.props);
+        if (this.state.dogName && this.state.url) {
 
             API.create({
                 url: this.state.url,
@@ -148,13 +124,10 @@ class Survey extends Component {
                 })
                 .catch(err => console.log(err));
         }
-        // else {
-        //     console.log("Nope!")
-        // }
     };
 
     render() {
-        // console.log(this.props)
+
         return (
             <>
                 <div
