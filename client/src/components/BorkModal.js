@@ -29,9 +29,7 @@ class BorkModal extends React.Component {
 
   handleFormSubmit = event =>{
     event.preventDefault(); 
-    
-    console.log(this.props.user.given_name, this.props.user.email, this.state.recipient, this.state.message)
-   
+       
     axios({
         method: "POST", 
         url:"/api/transporter/send", 
@@ -42,11 +40,18 @@ class BorkModal extends React.Component {
             message: this.state.message
         }
     }).then((response)=>{
+
+      this.setState({
+        message: ""
+      })
+
         if (response.data.msg === 'success'){
             console.log("Message Sent."); 
             this.toggle();
+            
         }else if(response.data.msg === 'fail'){
-            console.log("Message failed to send.")
+            console.log("Message failed to send.");
+            this.toggle();
         }
     })
 }

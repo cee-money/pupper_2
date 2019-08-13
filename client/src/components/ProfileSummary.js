@@ -31,6 +31,4 @@ function ProfileSummary(props) {
 }
 
 
-                        
-
 export default ProfileSummary;

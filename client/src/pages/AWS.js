@@ -90,7 +90,6 @@ class AWS extends Component {
                         className="form-control"
                         id="dog-photo"
                         name="url"
-                        // value={this.state.url}
                         onChange={this.handleChange}
                         ref={(ref) => {
                             this.uploadInput = ref;
