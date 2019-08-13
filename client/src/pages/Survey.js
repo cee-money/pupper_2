@@ -123,7 +123,7 @@ class Survey extends Component {
                     this.toggle()
                 })
                 .catch(err => console.log(err));
-        }
+        } 
     };
 
     render() {
