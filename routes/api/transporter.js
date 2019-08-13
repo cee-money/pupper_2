@@ -1,4 +1,3 @@
-// Nodemailer routing
 
 var nodemailer = require('nodemailer');
 const router = require("express").Router();
@@ -18,7 +17,9 @@ var transport = {
     expires: 3600
   }
 }
-var transporter = nodemailer.createTransport(transport);
+
+
+var transporter = nodemailer.createTransport(transport)
 
 transporter.verify((error, success) => {
   if (error) {
