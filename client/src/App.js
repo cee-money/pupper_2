@@ -8,7 +8,6 @@ import Match from "./pages/Match";
 import Err from "./pages/Err";
 import Footer from "./components/Footer";
 import Navbar from './components/NavBar';
-// import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const { isAuthenticated, loginWithRedirect, logout, user, loading } = useAuth0();
