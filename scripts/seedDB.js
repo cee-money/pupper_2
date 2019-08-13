@@ -18,7 +18,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Frank",
     ownerLastName: "Smith",
-    ownerEmail: "fsmith@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://scontent-den4-1.xx.fbcdn.net/v/t1.0-9/51493028_3156638835047_8658433406201233408_o.jpg?_nc_cat=110&_nc_oc=AQkc_MhcuTpB9iVgfKU_IkL2FG6AhkVyeum48eeLXIqvAnsvT8L5iuVHmpagV5njyL4&_nc_ht=scontent-den4-1.xx&oh=77179099655e14e0b253dcac70676e3c&oe=5DEC2FED"
 },
 {
@@ -38,7 +38,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Fred",
     ownerLastName: "Johnson",
-    ownerEmail: "fredjohnson@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://www.petmd.com/sites/default/files/Acute-Dog-Diarrhea-47066074.jpg"
 },
 {
@@ -58,7 +58,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Betty",
     ownerLastName: "Ford",
-    ownerEmail: "BFordClinic@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://d17fnq9dkz9hgj.cloudfront.net/breed-uploads/2018/09/dog-landing-hero-lg.jpg?bust=1536935129&width=1080"
 },
 {
@@ -78,7 +78,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Tom",
     ownerLastName: "Hanks",
-    ownerEmail: "THanks@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fpeopledotcom.files.wordpress.com%2F2019%2F06%2Fshetland-sheepdog.jpg&w=400&c=sc&poi=face&q=85"
 },
 {
@@ -98,7 +98,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Rosie",
     ownerLastName: "O'Donnell",
-    ownerEmail: "rosie@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://amp.businessinsider.com/images/5ab514477708e97acc0f0cc9-750-562.jpg"
 },
 {
@@ -118,7 +118,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Bill",
     ownerLastName: "Nye",
-    ownerEmail: "scienceguy@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com.com",
     url: "https://i.huffpost.com/gen/3754046/original.jpg"
 },
 {
@@ -138,7 +138,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Ivanka",
     ownerLastName: "Tramp",
-    ownerEmail: "Itramp@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com.com",
     url: "https://cdn.vox-cdn.com/thumbor/lQHYF_Gqpv77XSfMJZseaSDLFzQ=/0x0:4000x1672/1200x800/filters:focal(379x414:1019x1054)/cdn.vox-cdn.com/uploads/chorus_image/image/59108275/isle1.0.jpg"
 },
 {
@@ -158,7 +158,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Amy",
     ownerLastName: "Poehler",
-    ownerEmail: "jessicadawnjensen@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com.com",
     url: "https://cdn.the-scientist.com/assets/articleNo/64930/aImg/29067/labs-s.jpg"
 },
 {
@@ -178,7 +178,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Charlie",
     ownerLastName: "Parsons",
-    ownerEmail: "cparsons@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://scontent-den4-1.xx.fbcdn.net/v/t1.0-9/60390902_10101008321996756_1175734588471771136_n.jpg?_nc_cat=109&_nc_oc=AQlQ2yiAQVXdBVoLObUfurGUCWreTIx1L8JJYlG3EN0vl5Q-zfcWdKuXtCkkttLh3U4&_nc_ht=scontent-den4-1.xx&oh=44a1743e943720321d47c9abdb7ec65a&oe=5DB0"
 },
 {
@@ -198,7 +198,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Zeus",
     ownerLastName: "",
-    ownerEmail: "greekgod@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://www.holidogtimes.com/wp-content/uploads/2017/12/corgi-raisons-fi.png"
 },
 {
@@ -218,7 +218,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Pete",
     ownerLastName: "Buttigieg",
-    ownerEmail: "mayorpete@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/Stitch_%28Lilo_%26_Stitch%29.svg/220px-Stitch_%28Lilo_%26_Stitch%29.svg.png"
 },
 {
@@ -238,7 +238,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Kamala",
     ownerLastName: "Harris",
-    ownerEmail: "kh4pres@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://i.ytimg.com/vi/M2Hl-lkupcc/hqdefault.jpg"
 },
 {
@@ -258,7 +258,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Mitch",
     ownerLastName: "Doe",
-    ownerEmail: "getmitchquick@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://i.ytimg.com/vi/3dcli9i_pvA/hqdefault.jpg"
 },
 {
@@ -278,7 +278,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Megan",
     ownerLastName: "Markle",
-    ownerEmail: "queen2be@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeAllSxXVEKByW0xZ8k5M0kZvRen6XWahCqVjYopw0riVG6wmC"
 },
 {
@@ -298,7 +298,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Steve",
     ownerLastName: "Miller",
-    ownerEmail: "joker@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSdnzC2i0lle1vduvJ_BvfgX5c8c98kIdARxxVqpuka_Rx8XxLCw"
 },
 {
@@ -318,7 +318,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Larry",
     ownerLastName: "Jones",
-    ownerEmail: "ljones@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://cdn.editorchoice.com/wp-content/uploads/2019/06/dogtilt.jpg"
 },
 {
@@ -338,7 +338,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Eric",
     ownerLastName: "Clapton",
-    ownerEmail: "claps@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://i.imgur.com/mHnEQaQ.jpg"
 },
 {
@@ -358,7 +358,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Beyonce",
     ownerLastName: "Knowles",
-    ownerEmail: "queenBee@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://i.imgur.com/52jBCEB.jpg"
 },
 {
@@ -378,7 +378,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Jim",
     ownerLastName: "James",
-    ownerEmail: "mmj@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://i.imgur.com/KaT5ZLu.jpg"
 },
 {
@@ -398,7 +398,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "JK",
     ownerLastName: "Rowling",
-    ownerEmail: "hogwarts@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://s3.us-west-2.amazonaws.com/photos.puppyspot.com/breeds/299/card/500000290_medium.jpg"
 },
 {
@@ -418,7 +418,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "John",
     ownerLastName: "Goodman",
-    ownerEmail: "biglebowski@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://live.staticflickr.com/65535/48332499507_5ca1c05331_z.jpg"
 },
 {
@@ -438,7 +438,7 @@ const pupSeed = [{
     allDogFriendly: "yes",
     ownerFirstName: "Tim",
     ownerLastName: "Ryan",
-    ownerEmail: "alsoran@gmail.com",
+    ownerEmail: "cdaltonparsons@gmail.com",
     url: "https://live.staticflickr.com/65535/48332363666_b99a1edce8_z.jpg"
 }
 ]
