@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// Creating model for Pupper collection's fields
 const pupperSchema = new Schema({
   dogName: { type: String, required: true },
   size: { type: String },

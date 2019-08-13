@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import axios from 'axios';
 
 
 const uploadBtn = {
     marginTop: 32,
     marginLeft: -10
-}
+};
 
 
 class AWS extends Component {
@@ -18,13 +18,14 @@ class AWS extends Component {
             errorMessage: ""
         }
     }
-    handleChange = (event) => {
-       const {value} = event.target
-        this.setState({ success: false, url: value });
 
-    }
+    handleChange = (event) => {
+        const {value} = event.target;
+        this.setState({success: false, url: value});
+
+    };
     handleUpload = (event) => {
-       event.preventDefault();
+        event.preventDefault();
         let file = this.uploadInput.files[0];
         // Split the filename to get the name and type
         let fileParts = this.uploadInput.files[0].name.split('.');
@@ -36,21 +37,22 @@ class AWS extends Component {
             fileType
         })
             .then(response => {
-                var returnData = response.data.data.returnData;
-                var signedRequest = returnData.signedRequest;
-                var url = returnData.url;
-                this.setState({ url: url })
+                const returnData = response.data.data.returnData;
+                const signedRequest = returnData.signedRequest;
+                const url = returnData.url;
+                this.setState({url: url});
                 console.log("Recieved a signed request " + signedRequest);
 
-                var options = {
+                const options = {
                     headers: {
                         'Content-Type': fileType
                     }
                 };
                 axios.put(signedRequest, file, options)
                     .then(result => {
-                        console.log("Response from s3")
-                        this.setState({ success: true });
+                        console.log("Response from s3");
+                        this.setState({success: true});
+                        this.props.setPupperURL(this.state.url);
                     })
                     .catch(error => {
                         alert("ERROR " + JSON.stringify(error));
@@ -59,53 +61,56 @@ class AWS extends Component {
             .catch(error => {
                 alert(JSON.stringify(error));
             })
-    }
+    };
+
     render() {
 
         const SuccessMessage = () => (
             <div className='row'>
-                <div className='col-md-12 form-group' value={this.state.url} style={{ color: 'green' }}>
+                <div className='col-md-12 form-group' id='url' value={this.state.url} style={{color: 'green'}}>
                     <small>&nbsp;&nbsp;&nbsp;&nbsp;Succesful Upload!</small>
                 </div>
             </div>
-        )
+        );
+
 
         const ErrorMessage = () => (
-            <div style={{ padding: 50 }}>
-                <h3 style={{ color: 'red' }}>FAILED UPLOAD</h3>
-                <span style={{ color: 'red', backgroundColor: 'black' }}>ERROR: </span>
+            <div style={{padding: 50}}>
+                <h3 style={{color: 'red'}}>FAILED UPLOAD</h3>
+                <span style={{color: 'red', backgroundColor: 'black'}}>ERROR: </span>
                 <span>{this.state.errorMessage}</span>
-                <br />
+                <br/>
             </div>
-        )
+        );
         return (
             <>
-            {console.log(this.props.url)}
-            <div className="col-md-4 col-xs-12 form-group AWS">
-                <label>Your Pupper's Photo*:</label>
+                <div className="col-md-4 col-xs-12 form-group AWS">
+                    <label>Your Pupper's Photo*:</label>
                     <input
                         className="form-control"
                         id="dog-photo"
                         name="url"
-                        // value={this.state.url}
                         onChange={this.handleChange}
-                        ref={(ref) => { this.uploadInput = ref; }}
+                        ref={(ref) => {
+                            this.uploadInput = ref;
+                        }}
                         type="file"
                     />
-                    {this.state.success ? <SuccessMessage /> : null}
-                    {this.state.error ? <ErrorMessage /> : null}
-            </div>
-            <div className="col-md-2 col-xs-12 form-group">
-                <button
-                    className="btn btn-info btn-sm"
-                    onClick={this.handleUpload}
-                    style={uploadBtn}>Upload
-                </button>
-            </div>
+                    {this.state.success ? <SuccessMessage/> : null}
+                    {this.state.error ? <ErrorMessage/> : null}
+                </div>
+                <div className="col-md-2 col-xs-12 form-group">
+                    <button
+                        className="btn btn-info btn-sm"
+                        onClick={this.handleUpload}
+                        style={uploadBtn}>Upload
+                    </button>
+                </div>
             </>
         )
     }
 }
+
 export default AWS;
 
 
