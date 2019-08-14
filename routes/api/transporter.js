@@ -36,14 +36,14 @@ router.post('/send', (req, res, next) => {
   var recipient = req.body.recipient
   var content = `name: ${name} \n email: ${email} \n message: ${message} `
 
-  var mail = {
+  var mailOptions = {
     from: "pupperconnectionapp@gmail.com",
     to: recipient,  //Change to email address that you want to receive messages on
     subject: 'Pupper Contact Request',
     text: content
   }
 
-  transporter.sendMail(mail, (err, data) => {
+  transporter.sendMail(mailOptions, (err, data) => {
     if (err) {
       console.log("err" , err)
       res.json({

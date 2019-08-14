@@ -110,7 +110,6 @@ class AWS extends Component {
         )
     }
 }
-
 export default AWS;
 
 

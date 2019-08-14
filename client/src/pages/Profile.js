@@ -27,14 +27,12 @@ class Profile extends Component {
     }
 
 componentDidMount() {
-
     this.loadPuppers();
 };
 
 loadPuppers = () => {
     API.getProfile(this.state.ownerEmail)
         .then(res => 
-
             this.setState({ puppers: res.data })
             )
         .catch(err => console.log(err))
